@@ -22,9 +22,9 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabelTurma = new javax.swing.JLabel();
         jLabelAula = new javax.swing.JLabel();
         jLabelAluno = new javax.swing.JLabel();
-        MenuBarHome = new javax.swing.JMenuBar();
-        MenuFileHome = new javax.swing.JMenu();
-        MenuItemNovaTurmaHome = new javax.swing.JMenuItem();
+        jMenuBarHome = new javax.swing.JMenuBar();
+        jMenuFileHome = new javax.swing.JMenu();
+        jMenuItemTurmaHome = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -113,20 +113,20 @@ public class HomeFrame extends javax.swing.JFrame {
                     .addComponent(jLabelAluno)))
         );
 
-        MenuFileHome.setText("Arquivo");
+        jMenuFileHome.setText("Arquivo");
 
-        MenuItemNovaTurmaHome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        MenuItemNovaTurmaHome.setText("Turma");
-        MenuItemNovaTurmaHome.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTurmaHome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemTurmaHome.setText("Turma");
+        jMenuItemTurmaHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemNovaTurmaHomeActionPerformed(evt);
+                jMenuItemTurmaHomeActionPerformed(evt);
             }
         });
-        MenuFileHome.add(MenuItemNovaTurmaHome);
+        jMenuFileHome.add(jMenuItemTurmaHome);
 
-        MenuBarHome.add(MenuFileHome);
+        jMenuBarHome.add(jMenuFileHome);
 
-        setJMenuBar(MenuBarHome);
+        setJMenuBar(jMenuBarHome);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,10 +155,10 @@ public class HomeFrame extends javax.swing.JFrame {
         Turma.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButtonTurmaMouseClicked
 
-    private void MenuItemNovaTurmaHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemNovaTurmaHomeActionPerformed
+    private void jMenuItemTurmaHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaHomeActionPerformed
         TurmaFrame Turma = new TurmaFrame();
         Turma.setVisible(true);
-    }//GEN-LAST:event_MenuItemNovaTurmaHomeActionPerformed
+    }//GEN-LAST:event_jMenuItemTurmaHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,9 +198,6 @@ public class HomeFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelBody;
     private javax.swing.JPanel JPanelHead;
-    private javax.swing.JMenuBar MenuBarHome;
-    private javax.swing.JMenu MenuFileHome;
-    private javax.swing.JMenuItem MenuItemNovaTurmaHome;
     private javax.swing.JButton jButtonAluno;
     private javax.swing.JButton jButtonAula;
     private javax.swing.JButton jButtonTurma;
@@ -208,5 +205,8 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAula;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelTurma;
+    private javax.swing.JMenuBar jMenuBarHome;
+    private javax.swing.JMenu jMenuFileHome;
+    private javax.swing.JMenuItem jMenuItemTurmaHome;
     // End of variables declaration//GEN-END:variables
 }

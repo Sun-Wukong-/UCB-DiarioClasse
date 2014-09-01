@@ -2,14 +2,14 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Menu class="javax.swing.JMenuBar" name="MenuBarHome">
+    <Menu class="javax.swing.JMenuBar" name="jMenuBarHome">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="MenuFileHome">
+        <Menu class="javax.swing.JMenu" name="jMenuFileHome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Arquivo"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="MenuItemNovaTurmaHome">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTurmaHome">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+T"/>
@@ -17,7 +17,7 @@
                 <Property name="text" type="java.lang.String" value="Turma"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemNovaTurmaHomeActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTurmaHomeActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -32,7 +32,7 @@
     </Property>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="MenuBarHome"/>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBarHome"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
