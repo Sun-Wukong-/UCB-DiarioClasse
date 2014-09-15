@@ -28,7 +28,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="PanelTituloTurma" max="32767" attributes="0"/>
           <Component id="PanelMenuTurma" alignment="0" min="-2" max="-2" attributes="0"/>
-          <Component id="PanelBodyTurma" alignment="0" min="-2" pref="736" max="-2" attributes="0"/>
+          <Component id="PanelBodyTurma" alignment="0" min="-2" max="-2" attributes="0"/>
           <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -107,7 +107,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="34" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jSeparator2" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -181,13 +181,18 @@
         </Component>
         <Component class="javax.swing.JTextField" name="TextNomeTurma">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TextCursoTurma">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextCursoTurmaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="LabelCursoTurma">
           <Properties>
@@ -196,6 +201,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="TextDisciplinaTurma">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
           </Properties>
         </Component>
@@ -211,6 +217,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="ComboBoxTurnoTurma">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="Manh&#xe3;"/>
@@ -219,6 +226,7 @@
                 <StringItem index="3" value=" "/>
               </StringArray>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxTurnoTurmaActionPerformed"/>
@@ -231,6 +239,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="TextPeriodoTurma">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="2"/>
           </Properties>
         </Component>
@@ -283,6 +292,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonIncluirActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonAlterar">
               <Properties>
@@ -309,14 +321,20 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSalvarActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="ButtonCancelar">
+            <Component class="javax.swing.JButton" name="ButtonLimpar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="text" type="java.lang.String" value="Limpar"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonLimparActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

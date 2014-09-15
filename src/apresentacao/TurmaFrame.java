@@ -1,5 +1,7 @@
 package apresentacao;
 
+import javax.swing.JOptionPane;
+
 public class TurmaFrame extends javax.swing.JFrame {
 
     public TurmaFrame() {
@@ -32,7 +34,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         ButtonExcluir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
-        ButtonCancelar = new javax.swing.JButton();
+        ButtonLimpar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -68,19 +70,29 @@ public class TurmaFrame extends javax.swing.JFrame {
 
         LabelNomeTurma.setText("Nome");
 
+        TextNomeTurma.setEditable(false);
         TextNomeTurma.setColumns(20);
 
+        TextCursoTurma.setEditable(false);
         TextCursoTurma.setColumns(20);
+        TextCursoTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextCursoTurmaActionPerformed(evt);
+            }
+        });
 
         LabelCursoTurma.setText("Curso");
 
+        TextDisciplinaTurma.setEditable(false);
         TextDisciplinaTurma.setColumns(20);
 
         LabelDisciplinaTurma.setText("Disciplina");
 
         LabelTurnoTurma.setText("Turno");
 
+        ComboBoxTurnoTurma.setEditable(true);
         ComboBoxTurnoTurma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manhã", "Tarde", "Noite", " " }));
+        ComboBoxTurnoTurma.setEnabled(false);
         ComboBoxTurnoTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxTurnoTurmaActionPerformed(evt);
@@ -89,6 +101,7 @@ public class TurmaFrame extends javax.swing.JFrame {
 
         LabelPeriodoTurma.setText("Periodo");
 
+        TextPeriodoTurma.setEditable(false);
         TextPeriodoTurma.setColumns(2);
 
         javax.swing.GroupLayout PanelBodyTurmaLayout = new javax.swing.GroupLayout(PanelBodyTurma);
@@ -99,7 +112,7 @@ public class TurmaFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBodyTurmaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 34, Short.MAX_VALUE)
                         .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator2)
                             .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
@@ -159,6 +172,11 @@ public class TurmaFrame extends javax.swing.JFrame {
         ButtonIncluir.setFocusable(false);
         ButtonIncluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonIncluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonIncluirActionPerformed(evt);
+            }
+        });
         ToolBarMenuTurma.add(ButtonIncluir);
 
         ButtonAlterar.setText("Alterar");
@@ -178,13 +196,23 @@ public class TurmaFrame extends javax.swing.JFrame {
         ButtonSalvar.setFocusable(false);
         ButtonSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSalvarActionPerformed(evt);
+            }
+        });
         ToolBarMenuTurma.add(ButtonSalvar);
 
-        ButtonCancelar.setText("Cancelar");
-        ButtonCancelar.setFocusable(false);
-        ButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ToolBarMenuTurma.add(ButtonCancelar);
+        ButtonLimpar.setText("Limpar");
+        ButtonLimpar.setFocusable(false);
+        ButtonLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonLimparActionPerformed(evt);
+            }
+        });
+        ToolBarMenuTurma.add(ButtonLimpar);
 
         javax.swing.GroupLayout PanelMenuTurmaLayout = new javax.swing.GroupLayout(PanelMenuTurma);
         PanelMenuTurma.setLayout(PanelMenuTurmaLayout);
@@ -252,7 +280,7 @@ public class TurmaFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelTituloTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PanelMenuTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(PanelBodyTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PanelBodyTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
@@ -273,6 +301,35 @@ public class TurmaFrame extends javax.swing.JFrame {
     private void ComboBoxTurnoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTurnoTurmaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxTurnoTurmaActionPerformed
+
+    private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
+        if(validarCampos()){
+            JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
+            
+        }
+    }//GEN-LAST:event_ButtonSalvarActionPerformed
+
+    private void ButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIncluirActionPerformed
+        TextNomeTurma.setEditable(true);
+        TextCursoTurma.setEditable(true);
+        TextDisciplinaTurma.setEditable(true);
+        ComboBoxTurnoTurma.setEnabled(true);
+        TextPeriodoTurma.setEditable(true);
+    }//GEN-LAST:event_ButtonIncluirActionPerformed
+
+    private void TextCursoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCursoTurmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextCursoTurmaActionPerformed
+
+    private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
+        limparTela();
+        TextNomeTurma.setEditable(false);
+        TextCursoTurma.setEditable(false);
+        TextDisciplinaTurma.setEditable(false);
+        ComboBoxTurnoTurma.setEnabled(false);
+        TextPeriodoTurma.setEditable(false);
+        
+    }//GEN-LAST:event_ButtonLimparActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -308,9 +365,9 @@ public class TurmaFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAlterar;
-    private javax.swing.JButton ButtonCancelar;
     private javax.swing.JButton ButtonExcluir;
     private javax.swing.JButton ButtonIncluir;
+    private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JComboBox ComboBoxTurnoTurma;
     private javax.swing.JLabel LabelCursoTurma;
@@ -333,4 +390,38 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void limparTela() {
+       TextNomeTurma.setText("");
+       TextCursoTurma.setText("");
+       TextPeriodoTurma.setText("");
+       TextDisciplinaTurma.setText("");
+       ComboBoxTurnoTurma.setSelectedIndex(0);
 }
+
+    private boolean validarCampos(){
+        if(TextNomeTurma.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Digite o Nome");
+           TextNomeTurma.requestFocus();
+           return false;
+        }
+        if(TextCursoTurma.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Digite o Curso");
+           TextCursoTurma.requestFocus();
+           return false;
+        }
+        if(TextDisciplinaTurma.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Digite a Disciplina");
+           TextDisciplinaTurma.requestFocus();
+           return false;
+        }
+        if(TextPeriodoTurma.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Digite o Periodo");
+           TextPeriodoTurma.requestFocus();
+           return false;
+        }
+        return true;
+
+    }
+}
+
