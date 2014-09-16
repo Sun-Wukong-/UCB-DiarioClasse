@@ -36,7 +36,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneTurma = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +44,7 @@ public class TurmaFrame extends javax.swing.JFrame {
 
         PanelTituloTurma.setBackground(new java.awt.Color(255, 255, 255));
 
-        LabelTituloTurma.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        LabelTituloTurma.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LabelTituloTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemTurma.png"))); // NOI18N
         LabelTituloTurma.setText("Turma");
 
@@ -68,6 +68,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         PanelBodyTurma.setBackground(new java.awt.Color(204, 204, 204));
         PanelBodyTurma.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        LabelNomeTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelNomeTurma.setText("Nome");
 
         TextNomeTurma.setEditable(false);
@@ -81,16 +82,20 @@ public class TurmaFrame extends javax.swing.JFrame {
             }
         });
 
+        LabelCursoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelCursoTurma.setText("Curso");
 
         TextDisciplinaTurma.setEditable(false);
         TextDisciplinaTurma.setColumns(20);
 
+        LabelDisciplinaTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelDisciplinaTurma.setText("Disciplina");
 
+        LabelTurnoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelTurnoTurma.setText("Turno");
 
         ComboBoxTurnoTurma.setEditable(true);
+        ComboBoxTurnoTurma.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ComboBoxTurnoTurma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manhã", "Tarde", "Noite", " " }));
         ComboBoxTurnoTurma.setEnabled(false);
         ComboBoxTurnoTurma.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +104,7 @@ public class TurmaFrame extends javax.swing.JFrame {
             }
         });
 
+        LabelPeriodoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelPeriodoTurma.setText("Periodo");
 
         TextPeriodoTurma.setEditable(false);
@@ -111,19 +117,6 @@ public class TurmaFrame extends javax.swing.JFrame {
             .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBodyTurmaLayout.createSequentialGroup()
-                        .addGap(0, 34, Short.MAX_VALUE)
-                        .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator2)
-                            .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
-                                .addComponent(LabelNomeTurma)
-                                .addGap(18, 18, 18)
-                                .addComponent(TextNomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(LabelCursoTurma)
-                                .addGap(18, 18, 18)
-                                .addComponent(TextCursoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(42, 42, 42))
                     .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
                         .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelDisciplinaTurma)
@@ -137,7 +130,20 @@ public class TurmaFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(TextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(TextDisciplinaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBodyTurmaLayout.createSequentialGroup()
+                        .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelBodyTurmaLayout.createSequentialGroup()
+                                .addComponent(LabelNomeTurma)
+                                .addGap(43, 43, 43)
+                                .addComponent(TextNomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(LabelCursoTurma)
+                                .addGap(18, 18, 18)
+                                .addComponent(TextCursoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         PanelBodyTurmaLayout.setVerticalGroup(
             PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,6 +174,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         ToolBarMenuTurma.setBackground(new java.awt.Color(204, 204, 204));
         ToolBarMenuTurma.setRollover(true);
 
+        ButtonIncluir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonIncluir.setText("Incluir");
         ButtonIncluir.setFocusable(false);
         ButtonIncluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -179,12 +186,14 @@ public class TurmaFrame extends javax.swing.JFrame {
         });
         ToolBarMenuTurma.add(ButtonIncluir);
 
+        ButtonAlterar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonAlterar.setText("Alterar");
         ButtonAlterar.setFocusable(false);
         ButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         ToolBarMenuTurma.add(ButtonAlterar);
 
+        ButtonExcluir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonExcluir.setText("Excluir");
         ButtonExcluir.setFocusable(false);
         ButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -192,6 +201,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         ToolBarMenuTurma.add(ButtonExcluir);
         ToolBarMenuTurma.add(jSeparator1);
 
+        ButtonSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.setFocusable(false);
         ButtonSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -203,6 +213,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         });
         ToolBarMenuTurma.add(ButtonSalvar);
 
+        ButtonLimpar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonLimpar.setText("Limpar");
         ButtonLimpar.setFocusable(false);
         ButtonLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -220,7 +231,7 @@ public class TurmaFrame extends javax.swing.JFrame {
             PanelMenuTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenuTurmaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToolBarMenuTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                .addComponent(ToolBarMenuTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelMenuTurmaLayout.setVerticalGroup(
@@ -234,44 +245,39 @@ public class TurmaFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPaneTurma.setBackground(new java.awt.Color(204, 204, 204));
 
+        jTable1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Curso", "Title 3", "Title 4"
+                "Nome", "Curso", "Disciplina", "Periodo", "Turno"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPaneTurma.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,9 +285,9 @@ public class TurmaFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelTituloTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelMenuTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(PanelBodyTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PanelMenuTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelBodyTurma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,8 +297,8 @@ public class TurmaFrame extends javax.swing.JFrame {
                 .addComponent(PanelMenuTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelBodyTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -385,7 +391,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JTextField TextPeriodoTurma;
     private javax.swing.JToolBar ToolBarMenuTurma;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPaneTurma;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;

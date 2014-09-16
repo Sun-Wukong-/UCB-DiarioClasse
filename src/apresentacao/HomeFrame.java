@@ -14,17 +14,17 @@ public class HomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         JPanelHead = new javax.swing.JPanel();
-        jLabelTitulo = new javax.swing.JLabel();
+        JLabelTitulo = new javax.swing.JLabel();
         JPanelBody = new javax.swing.JPanel();
-        jButtonTurma = new javax.swing.JButton();
-        jButtonAula = new javax.swing.JButton();
-        jButtonAluno = new javax.swing.JButton();
-        jLabelTurma = new javax.swing.JLabel();
-        jLabelAula = new javax.swing.JLabel();
-        jLabelAluno = new javax.swing.JLabel();
-        jMenuBarHome = new javax.swing.JMenuBar();
-        jMenuFileHome = new javax.swing.JMenu();
-        jMenuItemTurmaHome = new javax.swing.JMenuItem();
+        JButtonTurma = new javax.swing.JButton();
+        JButtonAula = new javax.swing.JButton();
+        JButtonAluno = new javax.swing.JButton();
+        JLabelTurma = new javax.swing.JLabel();
+        JLabelAula = new javax.swing.JLabel();
+        JLabelAluno = new javax.swing.JLabel();
+        JMenuBar = new javax.swing.JMenuBar();
+        JMenuHome = new javax.swing.JMenu();
+        JMenuItemTurma = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -32,52 +32,55 @@ public class HomeFrame extends javax.swing.JFrame {
         JPanelHead.setBackground(new java.awt.Color(204, 204, 204));
         JPanelHead.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabelTitulo.setText("Diario de Classe");
+        JLabelTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        JLabelTitulo.setText("Diario de Classe");
 
         javax.swing.GroupLayout JPanelHeadLayout = new javax.swing.GroupLayout(JPanelHead);
         JPanelHead.setLayout(JPanelHeadLayout);
         JPanelHeadLayout.setHorizontalGroup(
             JPanelHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelHeadLayout.createSequentialGroup()
-                .addComponent(jLabelTitulo)
-                .addGap(0, 618, Short.MAX_VALUE))
+                .addComponent(JLabelTitulo)
+                .addGap(0, 238, Short.MAX_VALUE))
         );
         JPanelHeadLayout.setVerticalGroup(
             JPanelHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitulo)
+            .addComponent(JLabelTitulo)
         );
 
         JPanelBody.setBackground(java.awt.Color.white);
         JPanelBody.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 18), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        jButtonTurma.setText("Gerenciar Turmas");
-        jButtonTurma.addMouseListener(new java.awt.event.MouseAdapter() {
+        JButtonTurma.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JButtonTurma.setText("Gerenciar Turmas");
+        JButtonTurma.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonTurmaMouseClicked(evt);
+                JButtonTurmaMouseClicked(evt);
             }
         });
 
-        jButtonAula.setText("Gerenciar Aulas");
-        jButtonAula.addActionListener(new java.awt.event.ActionListener() {
+        JButtonAula.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JButtonAula.setText("Gerenciar Aulas");
+        JButtonAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAulaActionPerformed(evt);
+                JButtonAulaActionPerformed(evt);
             }
         });
 
-        jButtonAluno.setText("Gerenciar Alunos");
+        JButtonAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        JButtonAluno.setText("Gerenciar Alunos");
 
-        jLabelTurma.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabelTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemTurma.png"))); // NOI18N
-        jLabelTurma.setText("Turma");
+        JLabelTurma.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        JLabelTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemTurma.png"))); // NOI18N
+        JLabelTurma.setText("Turma");
 
-        jLabelAula.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabelAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/ico_espaco.gif"))); // NOI18N
-        jLabelAula.setText("Aula");
+        JLabelAula.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        JLabelAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemAula.gif"))); // NOI18N
+        JLabelAula.setText("Aula");
 
-        jLabelAluno.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabelAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/aluno.png"))); // NOI18N
-        jLabelAluno.setText("Aluno");
+        JLabelAluno.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        JLabelAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemAluno.png"))); // NOI18N
+        JLabelAluno.setText("Aluno");
 
         javax.swing.GroupLayout JPanelBodyLayout = new javax.swing.GroupLayout(JPanelBody);
         JPanelBody.setLayout(JPanelBodyLayout);
@@ -86,47 +89,48 @@ public class HomeFrame extends javax.swing.JFrame {
             .addGroup(JPanelBodyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTurma)
-                    .addComponent(jLabelAula)
-                    .addComponent(jLabelAluno))
+                    .addComponent(JLabelTurma)
+                    .addComponent(JLabelAula)
+                    .addComponent(JLabelAluno))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonAula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonTurma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                    .addComponent(jButtonAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JButtonAula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JButtonTurma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                    .addComponent(JButtonAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPanelBodyLayout.setVerticalGroup(
             JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelBodyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonTurma)
-                    .addComponent(jLabelTurma))
+                    .addComponent(JButtonTurma)
+                    .addComponent(JLabelTurma))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAula)
-                    .addComponent(jLabelAula))
+                    .addComponent(JButtonAula)
+                    .addComponent(JLabelAula))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAluno)
-                    .addComponent(jLabelAluno)))
+                    .addComponent(JButtonAluno)
+                    .addComponent(JLabelAluno)))
         );
 
-        jMenuFileHome.setText("Arquivo");
+        JMenuHome.setText("Home");
+        JMenuHome.setToolTipText("");
 
-        jMenuItemTurmaHome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemTurmaHome.setText("Turma");
-        jMenuItemTurmaHome.addActionListener(new java.awt.event.ActionListener() {
+        JMenuItemTurma.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        JMenuItemTurma.setText("Turma");
+        JMenuItemTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemTurmaHomeActionPerformed(evt);
+                JMenuItemTurmaActionPerformed(evt);
             }
         });
-        jMenuFileHome.add(jMenuItemTurmaHome);
+        JMenuHome.add(JMenuItemTurma);
 
-        jMenuBarHome.add(jMenuFileHome);
+        JMenuBar.add(JMenuHome);
 
-        setJMenuBar(jMenuBarHome);
+        setJMenuBar(JMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,25 +144,25 @@ public class HomeFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(JPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JPanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(JPanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAulaActionPerformed
+    private void JButtonAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAulaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAulaActionPerformed
+    }//GEN-LAST:event_JButtonAulaActionPerformed
 
-    private void jButtonTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTurmaMouseClicked
+    private void JButtonTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonTurmaMouseClicked
         TurmaFrame Turma = new TurmaFrame();
         Turma.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTurmaMouseClicked
+    }//GEN-LAST:event_JButtonTurmaMouseClicked
 
-    private void jMenuItemTurmaHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaHomeActionPerformed
+    private void JMenuItemTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemTurmaActionPerformed
         TurmaFrame Turma = new TurmaFrame();
         Turma.setVisible(true);
-    }//GEN-LAST:event_jMenuItemTurmaHomeActionPerformed
+    }//GEN-LAST:event_JMenuItemTurmaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,17 +200,17 @@ public class HomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonAluno;
+    private javax.swing.JButton JButtonAula;
+    private javax.swing.JButton JButtonTurma;
+    private javax.swing.JLabel JLabelAluno;
+    private javax.swing.JLabel JLabelAula;
+    private javax.swing.JLabel JLabelTitulo;
+    private javax.swing.JLabel JLabelTurma;
+    private javax.swing.JMenuBar JMenuBar;
+    private javax.swing.JMenu JMenuHome;
+    private javax.swing.JMenuItem JMenuItemTurma;
     private javax.swing.JPanel JPanelBody;
     private javax.swing.JPanel JPanelHead;
-    private javax.swing.JButton jButtonAluno;
-    private javax.swing.JButton jButtonAula;
-    private javax.swing.JButton jButtonTurma;
-    private javax.swing.JLabel jLabelAluno;
-    private javax.swing.JLabel jLabelAula;
-    private javax.swing.JLabel jLabelTitulo;
-    private javax.swing.JLabel jLabelTurma;
-    private javax.swing.JMenuBar jMenuBarHome;
-    private javax.swing.JMenu jMenuFileHome;
-    private javax.swing.JMenuItem jMenuItemTurmaHome;
     // End of variables declaration//GEN-END:variables
 }
