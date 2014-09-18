@@ -1,14 +1,12 @@
 package apresentacao;
 
-
 public class HomeFrame extends javax.swing.JFrame {
 
     public HomeFrame() {
         initComponents();
+        
     }
 
- 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,6 +64,11 @@ public class HomeFrame extends javax.swing.JFrame {
 
         JButtonAula.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         JButtonAula.setText("Gerenciar Aulas");
+        JButtonAula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButtonAulaMouseClicked(evt);
+            }
+        });
         JButtonAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButtonAulaActionPerformed(evt);
@@ -192,9 +195,11 @@ public class HomeFrame extends javax.swing.JFrame {
         Aluno.setVisible(true);
     }//GEN-LAST:event_JButtonAlunoMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void JButtonAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonAulaMouseClicked
+        AulaFrame Aula = new AulaFrame();
+        Aula.setVisible(true);
+    }//GEN-LAST:event_JButtonAulaMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

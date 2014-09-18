@@ -36,7 +36,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabelNota3Aluno = new javax.swing.JLabel();
         jTextFieldNota3Aluno = new javax.swing.JTextField();
         jLabel1NotaFinalAluno = new javax.swing.JLabel();
-        jTextFieldNotaFinalAluno = new javax.swing.JTextField();
+        jLabelNotaFinalRespostaAluno = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPaneAluno = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();
@@ -215,7 +215,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabel1NotaFinalAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel1NotaFinalAluno.setText("Nota Final:");
 
-        jTextFieldNotaFinalAluno.setColumns(2);
+        jLabelNotaFinalRespostaAluno.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,7 +239,7 @@ public class AlunoFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1NotaFinalAluno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNotaFinalAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelNotaFinalRespostaAluno)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -256,8 +256,8 @@ public class AlunoFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1NotaFinalAluno)
-                    .addComponent(jTextFieldNotaFinalAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelNotaFinalRespostaAluno))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -294,7 +294,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+            .addComponent(jScrollPaneAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -401,6 +401,7 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNota1Aluno;
     private javax.swing.JLabel jLabelNota2Aluno;
     private javax.swing.JLabel jLabelNota3Aluno;
+    private javax.swing.JLabel jLabelNotaFinalRespostaAluno;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPaneAluno;
@@ -410,6 +411,5 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNota1Aluno;
     private javax.swing.JTextField jTextFieldNota2Aluno;
     private javax.swing.JTextField jTextFieldNota3Aluno;
-    private javax.swing.JTextField jTextFieldNotaFinalAluno;
     // End of variables declaration//GEN-END:variables
 }
