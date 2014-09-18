@@ -49,13 +49,18 @@ public class HomeFrame extends javax.swing.JFrame {
         );
 
         JPanelBody.setBackground(java.awt.Color.white);
-        JPanelBody.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        JPanelBody.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
 
         JButtonTurma.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         JButtonTurma.setText("Gerenciar Turmas");
         JButtonTurma.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JButtonTurmaMouseClicked(evt);
+            }
+        });
+        JButtonTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonTurmaActionPerformed(evt);
             }
         });
 
@@ -69,6 +74,16 @@ public class HomeFrame extends javax.swing.JFrame {
 
         JButtonAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         JButtonAluno.setText("Gerenciar Alunos");
+        JButtonAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButtonAlunoMouseClicked(evt);
+            }
+        });
+        JButtonAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonAlunoActionPerformed(evt);
+            }
+        });
 
         JLabelTurma.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         JLabelTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemTurma.png"))); // NOI18N
@@ -163,6 +178,19 @@ public class HomeFrame extends javax.swing.JFrame {
         TurmaFrame Turma = new TurmaFrame();
         Turma.setVisible(true);
     }//GEN-LAST:event_JMenuItemTurmaActionPerformed
+
+    private void JButtonTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonTurmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButtonTurmaActionPerformed
+
+    private void JButtonAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButtonAlunoActionPerformed
+
+    private void JButtonAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonAlunoMouseClicked
+        AlunoFrame Aluno = new AlunoFrame();
+        Aluno.setVisible(true);
+    }//GEN-LAST:event_JButtonAlunoMouseClicked
 
     /**
      * @param args the command line arguments

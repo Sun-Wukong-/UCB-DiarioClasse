@@ -113,7 +113,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Diario">
-              <Font PropertyName="font" name="Arial" size="18" style="0"/>
+              <Font PropertyName="font" name="Arial" size="18" style="1"/>
               <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -172,6 +172,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JButtonTurmaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JButtonTurmaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="JButtonAula">
@@ -192,6 +193,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Gerenciar Alunos"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JButtonAlunoMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JButtonAlunoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="JLabelTurma">
           <Properties>

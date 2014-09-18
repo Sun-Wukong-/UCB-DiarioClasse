@@ -66,7 +66,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         );
 
         PanelBodyTurma.setBackground(new java.awt.Color(204, 204, 204));
-        PanelBodyTurma.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        PanelBodyTurma.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações Basicas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
 
         LabelNomeTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelNomeTurma.setText("Nome");
@@ -243,7 +243,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turmas Cadastradas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
 
         jScrollPaneTurma.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -277,7 +277,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
