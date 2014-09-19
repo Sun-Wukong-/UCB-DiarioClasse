@@ -56,7 +56,6 @@ public class AulaFrame extends javax.swing.JFrame {
         LabelDataAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelDataAula.setText("Data");
 
-        TextNomeAluno.setEditable(false);
         TextNomeAluno.setColumns(5);
 
         LabelTurmaAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N

@@ -1,5 +1,7 @@
 package apresentacao;
 
+import javax.swing.JOptionPane;
+
 public class AlunoFrame extends javax.swing.JFrame {
 
     public AlunoFrame() {
@@ -27,7 +29,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelTurmaAluno = new javax.swing.JLabel();
         jComboBoxTurmaAluno = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldMatriculaAluno = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabelNota1Aluno = new javax.swing.JLabel();
         jTextFieldNota1Aluno = new javax.swing.JTextField();
@@ -88,6 +90,11 @@ public class AlunoFrame extends javax.swing.JFrame {
         ButtonAlterar.setFocusable(false);
         ButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAlterarActionPerformed(evt);
+            }
+        });
         ToolBarMenuAluno.add(ButtonAlterar);
 
         ButtonExcluir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -152,11 +159,18 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelTurmaAluno.setText("Turma");
 
         jComboBoxTurmaAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTurmaAluno.setEnabled(false);
+        jComboBoxTurmaAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTurmaAlunoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel4.setText("Matricula:");
 
-        jTextField3.setColumns(10);
+        jTextFieldMatriculaAluno.setEditable(false);
+        jTextFieldMatriculaAluno.setColumns(10);
 
         javax.swing.GroupLayout PanelBodyAlunoLayout = new javax.swing.GroupLayout(PanelBodyAluno);
         PanelBodyAluno.setLayout(PanelBodyAlunoLayout);
@@ -175,7 +189,7 @@ public class AlunoFrame extends javax.swing.JFrame {
                         .addComponent(LabelTurmaAluno)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBoxTurmaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelBodyAlunoLayout.setVerticalGroup(
@@ -190,7 +204,7 @@ public class AlunoFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PanelBodyAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -200,8 +214,10 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabelNota1Aluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelNota1Aluno.setText("1º Nota:");
 
+        jTextFieldNota1Aluno.setEditable(false);
         jTextFieldNota1Aluno.setColumns(2);
 
+        jTextFieldNota2Aluno.setEditable(false);
         jTextFieldNota2Aluno.setColumns(2);
 
         jLabelNota2Aluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -210,6 +226,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabelNota3Aluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelNota3Aluno.setText("3º Nota:");
 
+        jTextFieldNota3Aluno.setEditable(false);
         jTextFieldNota3Aluno.setColumns(2);
 
         jLabel1NotaFinalAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -325,29 +342,47 @@ public class AlunoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIncluirActionPerformed
+        TextNomeAluno.requestFocus();
         TextNomeAluno.setEditable(true);
-        TextCursoTurma.setEditable(true);
-        TextDisciplinaTurma.setEditable(true);
-        ComboBoxTurnoTurma.setEnabled(true);
-        TextPeriodoTurma.setEditable(true);
+        jTextFieldMatriculaAluno.setEditable(true);
+        jComboBoxTurmaAluno.setEnabled(true);
+        jTextFieldNota1Aluno.setEditable(true);
+        jTextFieldNota2Aluno.setEditable(true);
+        jTextFieldNota3Aluno.setEditable(true);
+
     }//GEN-LAST:event_ButtonIncluirActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        if(validarCampos()){
+        if (validarCampos()) {
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
-
+            limparTela();
+            TextNomeAluno.setEditable(false);
+            jTextFieldMatriculaAluno.setEditable(false);
+            jComboBoxTurmaAluno.setEnabled(false);
+            jTextFieldNota1Aluno.setEditable(false);
+            jTextFieldNota2Aluno.setEditable(false);
+            jTextFieldNota3Aluno.setEditable(false);
         }
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
         limparTela();
-        TextNomeAluno.setEditable(false);
-        TextCursoTurma.setEditable(false);
-        TextDisciplinaTurma.setEditable(false);
-        ComboBoxTurnoTurma.setEnabled(false);
-        TextPeriodoTurma.setEditable(false);
-
     }//GEN-LAST:event_ButtonLimparActionPerformed
+
+    private void jComboBoxTurmaAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
+
+    private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
+       /* ButtonIncluir.setEnabled(false);
+        TextNomeAluno.setEditable(false);
+        jTextFieldMatriculaAluno.setEditable(true);
+        jComboBoxTurmaAluno.setEnabled(false);
+        jTextFieldNota1Aluno.setEditable(false);
+        jTextFieldNota2Aluno.setEditable(false);
+        jTextFieldNota3Aluno.setEditable(false);
+        jTextFieldMatriculaAluno.requestFocus();*/
+    }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -407,9 +442,38 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneAluno;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTable jTableAluno;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextFieldMatriculaAluno;
     private javax.swing.JTextField jTextFieldNota1Aluno;
     private javax.swing.JTextField jTextFieldNota2Aluno;
     private javax.swing.JTextField jTextFieldNota3Aluno;
     // End of variables declaration//GEN-END:variables
+
+    private void limparTela() {
+        TextNomeAluno.setText("");
+        jTextFieldMatriculaAluno.setText("");
+        jTextFieldNota1Aluno.setText("");
+        jTextFieldNota2Aluno.setText("");
+        jTextFieldNota3Aluno.setText("");
+        jComboBoxTurmaAluno.setSelectedIndex(0);
+    }
+
+    private boolean validarCampos() {
+        if (TextNomeAluno.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite o Nome");
+            TextNomeAluno.requestFocus();
+            return false;
+        }
+        if (jTextFieldMatriculaAluno.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite a matricula do aluno");
+            jTextFieldMatriculaAluno.requestFocus();
+            return false;
+        }
+        if (jComboBoxTurmaAluno.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Escolha uma turma");
+            jComboBoxTurmaAluno.requestFocus();
+            return false;
+        }
+        return true;
+
+    }
 }
