@@ -16,10 +16,10 @@ public class HomeFrame extends javax.swing.JFrame {
         JPanelBody = new javax.swing.JPanel();
         JButtonTurma = new javax.swing.JButton();
         JButtonAula = new javax.swing.JButton();
-        JButtonAluno = new javax.swing.JButton();
         JLabelTurma = new javax.swing.JLabel();
         JLabelAula = new javax.swing.JLabel();
         JLabelAluno = new javax.swing.JLabel();
+        jButtonAluno = new javax.swing.JButton();
         JMenuBar = new javax.swing.JMenuBar();
         JMenuHome = new javax.swing.JMenu();
         JMenuItemTurma = new javax.swing.JMenuItem();
@@ -75,19 +75,6 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         });
 
-        JButtonAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        JButtonAluno.setText("Gerenciar Alunos");
-        JButtonAluno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JButtonAlunoMouseClicked(evt);
-            }
-        });
-        JButtonAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JButtonAlunoActionPerformed(evt);
-            }
-        });
-
         JLabelTurma.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         JLabelTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemTurma.png"))); // NOI18N
         JLabelTurma.setText("Turma");
@@ -100,6 +87,14 @@ public class HomeFrame extends javax.swing.JFrame {
         JLabelAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemAluno.png"))); // NOI18N
         JLabelAluno.setText("Aluno");
 
+        jButtonAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonAluno.setText("Gerenciar Alunos");
+        jButtonAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAlunoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPanelBodyLayout = new javax.swing.GroupLayout(JPanelBody);
         JPanelBody.setLayout(JPanelBodyLayout);
         JPanelBodyLayout.setHorizontalGroup(
@@ -108,13 +103,13 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JLabelTurma)
-                    .addComponent(JLabelAula)
-                    .addComponent(JLabelAluno))
+                    .addComponent(JLabelAluno)
+                    .addComponent(JLabelAula))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(JButtonAula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(JButtonTurma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                    .addComponent(JButtonAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPanelBodyLayout.setVerticalGroup(
@@ -124,14 +119,15 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JButtonTurma)
                     .addComponent(JLabelTurma))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLabelAluno)
+                    .addComponent(jButtonAluno))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JButtonAula)
-                    .addComponent(JLabelAula))
-                .addGap(18, 18, 18)
-                .addGroup(JPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JButtonAluno)
-                    .addComponent(JLabelAluno)))
+                    .addComponent(JLabelAula)
+                    .addComponent(JButtonAula))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         JMenuHome.setText("Home");
@@ -186,19 +182,15 @@ public class HomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JButtonTurmaActionPerformed
 
-    private void JButtonAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAlunoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JButtonAlunoActionPerformed
-
-    private void JButtonAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonAlunoMouseClicked
-        AlunoFrame Aluno = new AlunoFrame();
-        Aluno.setVisible(true);
-    }//GEN-LAST:event_JButtonAlunoMouseClicked
-
     private void JButtonAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonAulaMouseClicked
         AulaFrame Aula = new AulaFrame();
         Aula.setVisible(true);
     }//GEN-LAST:event_JButtonAulaMouseClicked
+
+    private void jButtonAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAlunoMouseClicked
+        AlunoFrame Aluno = new AlunoFrame();
+        Aluno.setVisible(true);
+    }//GEN-LAST:event_jButtonAlunoMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -233,7 +225,6 @@ public class HomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JButtonAluno;
     private javax.swing.JButton JButtonAula;
     private javax.swing.JButton JButtonTurma;
     private javax.swing.JLabel JLabelAluno;
@@ -245,5 +236,6 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemTurma;
     private javax.swing.JPanel JPanelBody;
     private javax.swing.JPanel JPanelHead;
+    private javax.swing.JButton jButtonAluno;
     // End of variables declaration//GEN-END:variables
 }

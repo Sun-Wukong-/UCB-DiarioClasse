@@ -162,7 +162,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelTurmaAluno.setText("Turma");
 
         jComboBoxTurmaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxTurmaAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Turma 1", "Turma 2", "Turma 3", " " }));
+        jComboBoxTurmaAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Turma", "Turma 1", "Turma 2", "Turma 3", "Turma 4" }));
         jComboBoxTurmaAluno.setEnabled(false);
         jComboBoxTurmaAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +199,7 @@ public class AlunoFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jComboBoxTurmaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelTurmaSelecionadaAluno))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelBodyAlunoLayout.setVerticalGroup(
             PanelBodyAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,38 +362,15 @@ public class AlunoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIncluirActionPerformed
-        jTextNomeAluno.requestFocus();
-        jTextNomeAluno.setEditable(true);
-        jTextFieldMatriculaAluno.setEditable(true);
-        jComboBoxTurmaAluno.setEnabled(true);
-        jTextFieldNota1Aluno.setEditable(true);
-        jTextFieldNota2Aluno.setEditable(true);
-        jTextFieldNota3Aluno.setEditable(true);
-
+        incluirCampos();
     }//GEN-LAST:event_ButtonIncluirActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        if (validarCampos()) {
-            adicionarValorTabela(valorNotaFinal());
-            JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
-            limparTela();
-            jTextNomeAluno.setEditable(false);
-            jTextFieldMatriculaAluno.setEditable(false);
-            jComboBoxTurmaAluno.setEnabled(false);
-            jTextFieldNota1Aluno.setEditable(false);
-            jTextFieldNota2Aluno.setEditable(false);
-            jTextFieldNota3Aluno.setEditable(false);
-        }
+        salvarCampos();
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
         limparTela();
-        jTextNomeAluno.setEditable(false);
-        jTextFieldMatriculaAluno.setEditable(false);
-        jComboBoxTurmaAluno.setEnabled(false);
-        jTextFieldNota1Aluno.setEditable(false);
-        jTextFieldNota2Aluno.setEditable(false);
-        jTextFieldNota3Aluno.setEditable(false);
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void jComboBoxTurmaAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoActionPerformed
@@ -507,6 +484,36 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextFieldNota3Aluno.setText("");
         jLabelMedia.setText("0");
         jComboBoxTurmaAluno.setSelectedIndex(0);
+        jLabelTurmaSelecionadaAluno.setText("Turma Selecionada");
+        
+        jTextNomeAluno.setEditable(false);
+        jTextFieldMatriculaAluno.setEditable(false);
+        jComboBoxTurmaAluno.setEnabled(false);
+        jTextFieldNota1Aluno.setEditable(false);
+        jTextFieldNota2Aluno.setEditable(false);
+        jTextFieldNota3Aluno.setEditable(false);
+    }
+    
+    //Metodo para Habilitar Campos
+    private void incluirCampos()
+    {
+        jTextNomeAluno.requestFocus();
+        jTextNomeAluno.setEditable(true);
+        jTextFieldMatriculaAluno.setEditable(true);
+        jComboBoxTurmaAluno.setEnabled(true);
+        jTextFieldNota1Aluno.setEditable(true);
+        jTextFieldNota2Aluno.setEditable(true);
+        jTextFieldNota3Aluno.setEditable(true);
+    }
+    
+    //Metodo de Salvar Campos
+    private void salvarCampos()
+    {
+        if (validarCampos()) {
+            adicionarValorTabela(valorNotaFinal());
+            JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
+            limparTela();
+        }
     }
 
     //Metodo de Validar Campos
@@ -521,9 +528,13 @@ public class AlunoFrame extends javax.swing.JFrame {
             jTextFieldMatriculaAluno.requestFocus();
             return false;
         }
-
+        
+        if (jComboBoxTurmaAluno.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Selecione uma Turma");
+            jComboBoxTurmaAluno.requestFocus();
+            return false;
+        }
         return true;
-
     }
     
     //Metodo ValorNotaFinal
@@ -539,8 +550,22 @@ public class AlunoFrame extends javax.swing.JFrame {
         return NotaFinal;
     }
     
-    //Metodo de Adicionar na Tabela
-    private void adicionarValorTabela(float valorNotaFinal)
+    //Metodo de Adicionar na Tabela sem Notas
+    private void adicionarValorTabela()
+    {
+        String matricula = jTextFieldMatriculaAluno.getText();
+        String nome = jTextNomeAluno.getText();
+        String turma = jLabelTurmaSelecionadaAluno.getText();
+        
+         Object[] row = { matricula, turma ,nome};
+        
+        DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
+        
+        model.addRow(row);
+    }
+    
+    //Metodo de Adicionar na Tabela com Notas
+    private void adicionarValorTabela(float valorNotaFinal) 
     {
         String matricula = jTextFieldMatriculaAluno.getText();
         String nome = jTextNomeAluno.getText();

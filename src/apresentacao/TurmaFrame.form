@@ -105,42 +105,47 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="LabelDisciplinaTurma" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelTurnoTurma" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="ComboBoxTurnoTurma" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="LabelPeriodoTurma" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="TextPeriodoTurma" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="TextDisciplinaTurma" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jSeparator2" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="LabelNomeTurma" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelNomeTurma" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="TextNomeTurma" min="-2" pref="287" max="-2" attributes="0"/>
+                                  <Component id="jTextNomeTurma" min="-2" pref="287" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="LabelCursoTurma" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelCursoTurma" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="TextCursoTurma" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextCursoTurma" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="LabelDisciplinaTurma" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelTurnoTurma" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jComboBoxTurnoTurma" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="LabelPeriodoTurma" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jTextPeriodoTurma" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jTextDisciplinaTurma" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jLabelTurnoSelecionadoTurma" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -151,32 +156,34 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="LabelNomeTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextNomeTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="LabelCursoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextCursoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNomeTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextNomeTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCursoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextCursoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="18" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="LabelDisciplinaTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextDisciplinaTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextDisciplinaTurma" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="LabelTurnoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ComboBoxTurnoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelTurnoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxTurnoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="LabelPeriodoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextPeriodoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextPeriodoTurma" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabelTurnoSelecionadoTurma" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="LabelNomeTurma">
+        <Component class="javax.swing.JLabel" name="jLabelNomeTurma">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="16" style="0"/>
@@ -184,22 +191,22 @@
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextNomeTurma">
+        <Component class="javax.swing.JTextField" name="jTextNomeTurma">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextCursoTurma">
+        <Component class="javax.swing.JTextField" name="jTextCursoTurma">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextCursoTurmaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCursoTurmaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="LabelCursoTurma">
+        <Component class="javax.swing.JLabel" name="jLabelCursoTurma">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="16" style="0"/>
@@ -207,7 +214,7 @@
             <Property name="text" type="java.lang.String" value="Curso"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextDisciplinaTurma">
+        <Component class="javax.swing.JTextField" name="jTextDisciplinaTurma">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
@@ -221,7 +228,7 @@
             <Property name="text" type="java.lang.String" value="Disciplina"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="LabelTurnoTurma">
+        <Component class="javax.swing.JLabel" name="jLabelTurnoTurma">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="16" style="0"/>
@@ -229,24 +236,23 @@
             <Property name="text" type="java.lang.String" value="Turno"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="ComboBoxTurnoTurma">
+        <Component class="javax.swing.JComboBox" name="jComboBoxTurnoTurma">
           <Properties>
-            <Property name="editable" type="boolean" value="true"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="18" style="0"/>
+              <Font name="Arial" size="16" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Manh&#xe3;"/>
-                <StringItem index="1" value="Tarde"/>
-                <StringItem index="2" value="Noite"/>
-                <StringItem index="3" value=" "/>
+                <StringItem index="0" value="Selecione Turno"/>
+                <StringItem index="1" value="Manh&#xe3;"/>
+                <StringItem index="2" value="Tarde"/>
+                <StringItem index="3" value="Noite"/>
               </StringArray>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxTurnoTurmaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxTurnoTurmaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="LabelPeriodoTurma">
@@ -257,13 +263,21 @@
             <Property name="text" type="java.lang.String" value="Periodo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextPeriodoTurma">
+        <Component class="javax.swing.JTextField" name="jTextPeriodoTurma">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelTurnoSelecionadoTurma">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="16" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Turno Selecionado"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -397,7 +411,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPaneTurma" alignment="0" pref="158" max="32767" attributes="0"/>
+              <Component id="jScrollPaneTurma" alignment="0" pref="155" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -411,18 +425,18 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="jTableTurma">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
+                  <Table columnCount="5" rowCount="0">
                     <Column editable="true" title="Nome" type="java.lang.String"/>
                     <Column editable="true" title="Curso" type="java.lang.String"/>
                     <Column editable="true" title="Disciplina" type="java.lang.String"/>
-                    <Column editable="true" title="Periodo" type="java.lang.Integer"/>
-                    <Column editable="true" title="Turno" type="java.lang.Object"/>
+                    <Column editable="true" title="Periodo" type="java.lang.String"/>
+                    <Column editable="true" title="Turno" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
