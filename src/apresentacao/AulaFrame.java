@@ -40,7 +40,7 @@ public class AulaFrame extends javax.swing.JFrame {
         jTablePresenca = new javax.swing.JTable();
         PanelMenuAula = new javax.swing.JPanel();
         ToolBarMenuAula = new javax.swing.JToolBar();
-        ButtonIncluir = new javax.swing.JButton();
+        ButtonHabilitar = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -318,17 +318,17 @@ public class AulaFrame extends javax.swing.JFrame {
         ToolBarMenuAula.setBackground(new java.awt.Color(204, 204, 204));
         ToolBarMenuAula.setRollover(true);
 
-        ButtonIncluir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        ButtonIncluir.setText("Incluir");
-        ButtonIncluir.setFocusable(false);
-        ButtonIncluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonIncluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonIncluir.addActionListener(new java.awt.event.ActionListener() {
+        ButtonHabilitar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ButtonHabilitar.setText("Habilitar");
+        ButtonHabilitar.setFocusable(false);
+        ButtonHabilitar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonHabilitar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonHabilitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonIncluirActionPerformed(evt);
+                ButtonHabilitarActionPerformed(evt);
             }
         });
-        ToolBarMenuAula.add(ButtonIncluir);
+        ToolBarMenuAula.add(ButtonHabilitar);
 
         ButtonAlterar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonAlterar.setText("Alterar");
@@ -347,6 +347,11 @@ public class AulaFrame extends javax.swing.JFrame {
         ButtonExcluir.setFocusable(false);
         ButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonExcluirActionPerformed(evt);
+            }
+        });
         ToolBarMenuAula.add(ButtonExcluir);
         ToolBarMenuAula.add(jSeparator1);
 
@@ -415,9 +420,9 @@ public class AulaFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIncluirActionPerformed
+    private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
         incluirCampos();
-    }//GEN-LAST:event_ButtonIncluirActionPerformed
+    }//GEN-LAST:event_ButtonHabilitarActionPerformed
 
     @SuppressWarnings("empty-statement")
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
@@ -458,6 +463,21 @@ public class AulaFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ButtonAlterarActionPerformed
+
+    private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
+        if(jTableAula.isCellSelected(jTableAula.getSelectedRow(), jTableAula.getSelectedColumn()))
+        {
+            excluirRegistroAula();
+        }else{
+            if(jTablePresenca.isCellSelected(jTablePresenca.getSelectedRow(), jTablePresenca.getSelectedColumn()))
+            {
+                excluirRegistroPresenca();
+            }else
+            {
+                JOptionPane.showMessageDialog(this,"Selecione um registro para exclusão");
+            }
+        }
+    }//GEN-LAST:event_ButtonExcluirActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -493,7 +513,7 @@ public class AulaFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAlterar;
     private javax.swing.JButton ButtonExcluir;
-    private javax.swing.JButton ButtonIncluir;
+    private javax.swing.JButton ButtonHabilitar;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JLabel LabelAulaPresenca;
@@ -599,6 +619,7 @@ public class AulaFrame extends javax.swing.JFrame {
     {
       
             jTableAula.getModel().setValueAt(inputUsuario, jTableAula.getSelectedRow(), jTableAula.getSelectedColumn());
+            JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
         
     }
     
@@ -606,6 +627,25 @@ public class AulaFrame extends javax.swing.JFrame {
     private void alterarCampoPresenca(String inputUsuario)
     {
             jTablePresenca.getModel().setValueAt(inputUsuario, jTablePresenca.getSelectedRow(), jTablePresenca.getSelectedColumn());
+            JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
+    }
+    
+    //Remover Registro da Tabela Aula
+    private void excluirRegistroAula()
+    {
+        DefaultTableModel model;
+        model = (DefaultTableModel)jTableAula.getModel();
+        model.removeRow(jTableAula.getSelectedRow());
+        JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
+    }
+    
+    //Remover Registro da Tabela Presença
+        private void excluirRegistroPresenca()
+    {
+        DefaultTableModel model;
+        model = (DefaultTableModel)jTablePresenca.getModel();
+        model.removeRow(jTablePresenca.getSelectedRow());
+        JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
     }
     
     //Metodo Validar Campos
