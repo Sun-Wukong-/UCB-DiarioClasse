@@ -158,9 +158,16 @@ public class AulaFrame extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPaneAula.setViewportView(jTableAula);
@@ -276,9 +283,16 @@ public class AulaFrame extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPanePresenca.setViewportView(jTablePresenca);
@@ -321,6 +335,11 @@ public class AulaFrame extends javax.swing.JFrame {
         ButtonAlterar.setFocusable(false);
         ButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAlterarActionPerformed(evt);
+            }
+        });
         ToolBarMenuAula.add(ButtonAlterar);
 
         ButtonExcluir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -424,6 +443,21 @@ public class AulaFrame extends javax.swing.JFrame {
         jLabelTurmaSelecionadaAula.setText(var);
     }//GEN-LAST:event_jComboBoxTurmaAulaActionPerformed
 
+    private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
+         if(jTableAula.isCellSelected(jTableAula.getSelectedRow(), jTableAula.getSelectedColumn()))
+         {
+           String inputUsuario = JOptionPane.showInputDialog("Informe novo valor: ");
+           alterarCamposAula(inputUsuario);
+        }else{
+            if(jTablePresenca.isCellSelected(jTablePresenca.getSelectedRow(), jTablePresenca.getSelectedColumn()))
+            {
+                String inputUsuario = JOptionPane.showInputDialog("Informe novo valor: ");
+                alterarCampoPresenca(inputUsuario);
+            }else{
+                JOptionPane.showMessageDialog(this, "Selecione um campo para alterar");
+            }
+        }
+    }//GEN-LAST:event_ButtonAlterarActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -501,6 +535,8 @@ public class AulaFrame extends javax.swing.JFrame {
             jComboBoxTurmaAula.setEnabled(false);
             jTextDataAula.setEditable(false);
             jLabelTurmaSelecionadaAula.setText("Turma Selecionada");
+            jTableAula.setEnabled(false);
+            jTableAula.setRowSelectionAllowed(false);
         }else
         {
             if(jSplitPanePresenca.isShowing());
@@ -511,6 +547,8 @@ public class AulaFrame extends javax.swing.JFrame {
                 jComboBoxAlunoPresenca.setEnabled(false);
                 jLabelAlunoSelecionadoPresenca.setText("Aluno Selecionada");
                 jLabelAulaSelecionadaPresenca.setText("Aula Selecionada");
+                jTablePresenca.setEnabled(false);
+                jTablePresenca.setRowSelectionAllowed(false);
         }
     }
     
@@ -520,11 +558,17 @@ public class AulaFrame extends javax.swing.JFrame {
             jTextDataAula.requestFocus();
             jTextDataAula.setEditable(true);
             jComboBoxTurmaAula.setEnabled(true);
+            jTableAula.setEnabled(true);
+            jTableAula.setRowSelectionAllowed(true);
+            jTablePresenca.setRowSelectionAllowed(false);
         }else{
             if(jSplitPanePresenca.isShowing()){
                 jComboBoxAulaPresenca.requestFocus();
                 jComboBoxAulaPresenca.setEnabled(true);
                 jComboBoxAlunoPresenca.setEnabled(true);
+                jTablePresenca.setEnabled(true);
+                jTablePresenca.setRowSelectionAllowed(true);
+                jTableAula.setRowSelectionAllowed(false);
             }
         }
     }
@@ -548,6 +592,20 @@ public class AulaFrame extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    
+    //Metodo Alterar Campos
+    private void alterarCamposAula(String inputUsuario)
+    {
+      
+            jTableAula.getModel().setValueAt(inputUsuario, jTableAula.getSelectedRow(), jTableAula.getSelectedColumn());
+        
+    }
+    
+    //Metodo Alterar Campos Tabela Presença
+    private void alterarCampoPresenca(String inputUsuario)
+    {
+            jTablePresenca.getModel().setValueAt(inputUsuario, jTablePresenca.getSelectedRow(), jTablePresenca.getSelectedColumn());
     }
     
     //Metodo Validar Campos

@@ -21,8 +21,10 @@ public class HomeFrame extends javax.swing.JFrame {
         JLabelAluno = new javax.swing.JLabel();
         jButtonAluno = new javax.swing.JButton();
         JMenuBar = new javax.swing.JMenuBar();
-        JMenuHome = new javax.swing.JMenu();
+        JMenuCadastro = new javax.swing.JMenu();
         JMenuItemTurma = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -130,19 +132,40 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        JMenuHome.setText("Home");
-        JMenuHome.setToolTipText("");
+        JMenuCadastro.setText("Cadastro");
+        JMenuCadastro.setToolTipText("");
 
         JMenuItemTurma.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        JMenuItemTurma.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         JMenuItemTurma.setText("Turma");
         JMenuItemTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMenuItemTurmaActionPerformed(evt);
             }
         });
-        JMenuHome.add(JMenuItemTurma);
+        JMenuCadastro.add(JMenuItemTurma);
 
-        JMenuBar.add(JMenuHome);
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem1.setText("Aluno");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        JMenuCadastro.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMenuItem2.setText("Aula");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        JMenuCadastro.add(jMenuItem2);
+
+        JMenuBar.add(JMenuCadastro);
 
         setJMenuBar(JMenuBar);
 
@@ -192,6 +215,16 @@ public class HomeFrame extends javax.swing.JFrame {
         Aluno.setVisible(true);
     }//GEN-LAST:event_jButtonAlunoMouseClicked
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        AlunoFrame Aluno = new AlunoFrame();
+        Aluno.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        AulaFrame Aula = new AulaFrame();
+        Aula.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -232,10 +265,12 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel JLabelTitulo;
     private javax.swing.JLabel JLabelTurma;
     private javax.swing.JMenuBar JMenuBar;
-    private javax.swing.JMenu JMenuHome;
+    private javax.swing.JMenu JMenuCadastro;
     private javax.swing.JMenuItem JMenuItemTurma;
     private javax.swing.JPanel JPanelBody;
     private javax.swing.JPanel JPanelHead;
     private javax.swing.JButton jButtonAluno;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

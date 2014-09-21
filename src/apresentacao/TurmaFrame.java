@@ -200,6 +200,11 @@ public class TurmaFrame extends javax.swing.JFrame {
         ButtonAlterar.setFocusable(false);
         ButtonAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAlterarActionPerformed(evt);
+            }
+        });
         ToolBarMenuTurma.add(ButtonAlterar);
 
         ButtonExcluir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -268,9 +273,16 @@ public class TurmaFrame extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPaneTurma.setViewportView(jTableTurma);
@@ -330,6 +342,15 @@ public class TurmaFrame extends javax.swing.JFrame {
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
         limparTela();
     }//GEN-LAST:event_ButtonLimparActionPerformed
+
+    private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
+         if(jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn())){
+            String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
+            alterarCampos(inputUsuario);
+        }else{
+            JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
+        }
+    }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -399,11 +420,14 @@ public class TurmaFrame extends javax.swing.JFrame {
        jTextDisciplinaTurma.setText("");
        jComboBoxTurnoTurma.setSelectedIndex(0);
        jLabelTurnoSelecionadoTurma.setText("Turno Selecionado");
-        jTextNomeTurma.setEditable(false);
-        jTextCursoTurma.setEditable(false);
-        jTextDisciplinaTurma.setEditable(false);
-        jTextPeriodoTurma.setEditable(false);
-        jComboBoxTurnoTurma.setEnabled(false);
+       
+       jTextNomeTurma.setEditable(false);
+       jTextCursoTurma.setEditable(false);
+       jTextDisciplinaTurma.setEditable(false);
+       jTextPeriodoTurma.setEditable(false);
+       jComboBoxTurnoTurma.setEnabled(false);
+        jTableTurma.setEnabled(false);
+        jTableTurma.setRowSelectionAllowed(false);
     }
     
     private void incluirCampos()
@@ -414,6 +438,8 @@ public class TurmaFrame extends javax.swing.JFrame {
         jTextDisciplinaTurma.setEditable(true);
         jComboBoxTurnoTurma.setEnabled(true);
         jTextPeriodoTurma.setEditable(true);
+        jTableTurma.setEnabled(true);
+        jTableTurma.setRowSelectionAllowed(true);
     }
     
     //Metodo para Salvar Campos 
@@ -424,6 +450,12 @@ public class TurmaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
         }
+    }
+    
+    //Metodo Alterar Campos
+    private void alterarCampos(String inputUsuario)
+    {
+            jTableTurma.getModel().setValueAt(inputUsuario, jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn());
     }
 
     private boolean validarCampos(){

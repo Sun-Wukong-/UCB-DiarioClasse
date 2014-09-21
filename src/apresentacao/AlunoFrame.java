@@ -313,11 +313,19 @@ public class AlunoFrame extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        jTableAluno.setEnabled(false);
         jScrollPaneAluno.setViewportView(jTableAluno);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -379,14 +387,12 @@ public class AlunoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-       /* ButtonIncluir.setEnabled(false);
-        TextNomeAluno.setEditable(false);
-        jTextFieldMatriculaAluno.setEditable(true);
-        jComboBoxTurmaAluno.setEnabled(false);
-        jTextFieldNota1Aluno.setEditable(false);
-        jTextFieldNota2Aluno.setEditable(false);
-        jTextFieldNota3Aluno.setEditable(false);
-        jTextFieldMatriculaAluno.requestFocus();*/
+        if(jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn())){
+            String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
+            alterarCampos(inputUsuario);
+        }else{
+            JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
+        }
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void jButtonMediaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMediaMouseClicked
@@ -492,6 +498,8 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextFieldNota1Aluno.setEditable(false);
         jTextFieldNota2Aluno.setEditable(false);
         jTextFieldNota3Aluno.setEditable(false);
+        jTableAluno.setEnabled(false);
+        jTableAluno.setRowSelectionAllowed(false);
     }
     
     //Metodo para Habilitar Campos
@@ -504,6 +512,8 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextFieldNota1Aluno.setEditable(true);
         jTextFieldNota2Aluno.setEditable(true);
         jTextFieldNota3Aluno.setEditable(true);
+        jTableAluno.setEnabled(true);
+        jTableAluno.setRowSelectionAllowed(true);
     }
     
     //Metodo de Salvar Campos
@@ -514,6 +524,12 @@ public class AlunoFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
         }
+    }
+    
+    //Metodo Alterar Campos
+    private void alterarCampos(String inputUsuario)
+    {
+            jTableAluno.getModel().setValueAt(inputUsuario, jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn());
     }
 
     //Metodo de Validar Campos
