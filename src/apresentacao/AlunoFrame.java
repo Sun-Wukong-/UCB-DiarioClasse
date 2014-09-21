@@ -254,6 +254,11 @@ public class AlunoFrame extends javax.swing.JFrame {
                 jButtonMediaMouseClicked(evt);
             }
         });
+        jButtonMedia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMediaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -387,33 +392,32 @@ public class AlunoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void jComboBoxTurmaAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoActionPerformed
-        String var = (String)jComboBoxTurmaAluno.getSelectedItem();
+        String var = (String) jComboBoxTurmaAluno.getSelectedItem();
         jLabelTurmaSelecionadaAluno.setText(var);
     }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-        if(jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn())){
+        if (jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn())) {
             String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
             alterarCampos(inputUsuario);
-        }else{
-            JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um campo para ser alterado");
         }
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void jButtonMediaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMediaMouseClicked
-        if(jTextFieldNota1Aluno.getText().equals("")) {
+        if (jTextFieldNota1Aluno.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Digite a Nota 1");
             jTextNomeAluno.requestFocus();
-        }else{
-            if(jTextFieldNota2Aluno.getText().equals("")) {
+        } else {
+            if (jTextFieldNota2Aluno.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Digite a Nota 2");
                 jTextNomeAluno.requestFocus();
-            }else{
-                if(jTextFieldNota3Aluno.getText().equals("")) {
+            } else {
+                if (jTextFieldNota3Aluno.getText().equals("")) {
                     JOptionPane.showMessageDialog(this, "Digite a Nota 3");
                     jTextNomeAluno.requestFocus();
-                }else
-                {
+                } else {
                     jLabelMedia.setText(Float.toString(valorNotaFinal()));
                 }
             }
@@ -423,6 +427,10 @@ public class AlunoFrame extends javax.swing.JFrame {
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
         excluirRegistro();
     }//GEN-LAST:event_ButtonExcluirActionPerformed
+
+    private void jButtonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMediaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMediaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -500,20 +508,19 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabelMedia.setText("0");
         jComboBoxTurmaAluno.setSelectedIndex(0);
         jLabelTurmaSelecionadaAluno.setText("Turma Selecionada");
-        
+
         jTextNomeAluno.setEditable(false);
         jTextFieldMatriculaAluno.setEditable(false);
         jComboBoxTurmaAluno.setEnabled(false);
         jTextFieldNota1Aluno.setEditable(false);
         jTextFieldNota2Aluno.setEditable(false);
         jTextFieldNota3Aluno.setEditable(false);
-        jTableAluno.setEnabled(false);
-        jTableAluno.setRowSelectionAllowed(false);
+        jTableAluno.setEnabled(true);
+        jTableAluno.setRowSelectionAllowed(true);
     }
-    
+
     //Metodo para Habilitar Campos
-    private void incluirCampos()
-    {
+    private void incluirCampos() {
         jTextNomeAluno.requestFocus();
         jTextNomeAluno.setEditable(true);
         jTextFieldMatriculaAluno.setEditable(true);
@@ -521,39 +528,45 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextFieldNota1Aluno.setEditable(true);
         jTextFieldNota2Aluno.setEditable(true);
         jTextFieldNota3Aluno.setEditable(true);
-        jTableAluno.setEnabled(true);
-        jTableAluno.setRowSelectionAllowed(true);
+        jTableAluno.setEnabled(false);
+        jTableAluno.setRowSelectionAllowed(false);
     }
-    
+
     //Metodo de Salvar Campos
-    private void salvarCampos()
-    {
+    private void salvarCampos() {
+
         if (validarCampos()) {
-            adicionarValorTabela(valorNotaFinal());
+            if (jTextFieldNota1Aluno.getText().equals("") && jTextFieldNota2Aluno.getText().equals("")
+                    && jTextFieldNota3Aluno.getText().equals("")) {
+                adicionarValorTabela();
+
+            } else {
+                adicionarValorTabela(valorNotaFinal());
+            }
+
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
+            jTableAluno.setEnabled(true);
+            jTableAluno.setRowSelectionAllowed(true);
+
         }
     }
-    
+
     //Metodo Alterar Campos
-    private void alterarCampos(String inputUsuario)
-    {
+    private void alterarCampos(String inputUsuario) {
         jTableAluno.getModel().setValueAt(inputUsuario, jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn());
         JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
     }
-    
+
     //Metodo Remover Registro
-    private void excluirRegistro()
-    {
-        if(jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn()))
-        {
+    private void excluirRegistro() {
+        if (jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn())) {
             DefaultTableModel model;
-            model = (DefaultTableModel)jTableAluno.getModel();
+            model = (DefaultTableModel) jTableAluno.getModel();
             model.removeRow(jTableAluno.getSelectedRow());
-            JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
-        }else
-        {
-            JOptionPane.showMessageDialog(this,"Selecione um registro para exclusão");
+            JOptionPane.showMessageDialog(this, "Registro Excluido com Sucesso");
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um registro para exclusão");
         }
     }
 
@@ -569,7 +582,7 @@ public class AlunoFrame extends javax.swing.JFrame {
             jTextFieldMatriculaAluno.requestFocus();
             return false;
         }
-        
+
         if (jComboBoxTurmaAluno.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Selecione uma Turma");
             jComboBoxTurmaAluno.requestFocus();
@@ -577,50 +590,90 @@ public class AlunoFrame extends javax.swing.JFrame {
         }
         return true;
     }
-    
+
     //Metodo ValorNotaFinal
-    private float valorNotaFinal()
-    {
+    private float valorNotaFinal() {
         float NotaFinal;
-        float Nota;
-        int divisor = 2;
+        float Nota = 0;
+        int divisor = 0;
         
-        Nota = (Float.parseFloat(jTextFieldNota1Aluno.getText()) + Float.parseFloat(jTextFieldNota2Aluno.getText())
-        + Float.parseFloat(jTextFieldNota1Aluno.getText()));
-        NotaFinal = (Nota / divisor); 
+        /* tente fazer ele salvar os campos sem por pra salvar todas as notas 
+            mais só funciona dando valor ao campo nota1 */
+        
+        // soma = 1
+        if (jTextFieldNota2Aluno.getText().equals("") && jTextFieldNota3Aluno.getText().equals("")) {
+            Nota = Float.parseFloat(jTextFieldNota1Aluno.getText());
+            divisor = 1;
+        } else {
+            // soma = 1 + 2
+            if (jTextFieldNota3Aluno.getText().equals("")) {
+                Nota = Float.parseFloat(jTextFieldNota1Aluno.getText()) + Float.parseFloat(jTextFieldNota2Aluno.getText());
+                divisor = 2;
+            } else {
+                // soma 2
+                if (jTextFieldNota1Aluno.getText().equals("") && jTextFieldNota3Aluno.getText().equals("")) {
+                    Nota = Float.parseFloat(jTextFieldNota2Aluno.getText());
+                    divisor = 1;
+                } else {
+                    // soma = 2 + 3
+                    if (jTextFieldNota1Aluno.getText().equals("")) {
+                        Nota = Float.parseFloat(jTextFieldNota2Aluno.getText()) + Float.parseFloat(jTextFieldNota3Aluno.getText());
+                        divisor = 2;
+                    } else {
+                        // soma = 3
+                        if (jTextFieldNota1Aluno.getText().equals("") && jTextFieldNota2Aluno.getText().equals("")) {
+                            Nota = Float.parseFloat(jTextFieldNota3Aluno.getText());
+                            divisor = 1;
+                        } else {
+                            // soma = 1 + 3
+                            if (jTextFieldNota2Aluno.getText().equals("")) {
+                                Nota = Float.parseFloat(jTextFieldNota1Aluno.getText()) + Float.parseFloat(jTextFieldNota3Aluno.getText());
+                                divisor = 2;
+                            }
+                        }
+
+                    }
+                }
+                Nota = (Float.parseFloat(jTextFieldNota1Aluno.getText()) + Float.parseFloat(jTextFieldNota2Aluno.getText())
+                        + Float.parseFloat(jTextFieldNota1Aluno.getText()));
+                divisor = 3;
+            }
+        }
+
+        NotaFinal = (Nota / divisor);
         return NotaFinal;
     }
-    
+
     //Metodo de Adicionar na Tabela sem Notas
-    private void adicionarValorTabela()
-    {
+    private void adicionarValorTabela() {
         String matricula = jTextFieldMatriculaAluno.getText();
         String nome = jTextNomeAluno.getText();
         String turma = jLabelTurmaSelecionadaAluno.getText();
-        
-         Object[] row = { matricula, turma ,nome};
-        
+
+        Object[] row = {matricula, turma, nome};
+
         DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
-        
+
         model.addRow(row);
     }
-    
+
     //Metodo de Adicionar na Tabela com Notas
-    private void adicionarValorTabela(float valorNotaFinal) 
-    {
+    private void adicionarValorTabela(float valorNotaFinal) {
+
         String matricula = jTextFieldMatriculaAluno.getText();
         String nome = jTextNomeAluno.getText();
         String turma = jLabelTurmaSelecionadaAluno.getText();
         String nota1 = jTextFieldNota1Aluno.getText();
         String nota2 = jTextFieldNota2Aluno.getText();
         String nota3 = jTextFieldNota3Aluno.getText();
+
         String notaFinal;
         notaFinal = String.valueOf(valorNotaFinal);
-        
-        Object[] row = { matricula, turma ,nome, nota1, nota2, nota3, notaFinal};
-        
+
+        Object[] row = {matricula, turma, nome, nota1, nota2, nota3, notaFinal};
+
         DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
-        
+
         model.addRow(row);
     }
 }

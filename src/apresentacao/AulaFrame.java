@@ -427,6 +427,7 @@ public class AulaFrame extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
         salvarCampos();
+        
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
@@ -551,12 +552,11 @@ public class AulaFrame extends javax.swing.JFrame {
         {
             jTextDataAula.setText("");
             jComboBoxTurmaAula.setSelectedIndex(0);
-            
             jComboBoxTurmaAula.setEnabled(false);
             jTextDataAula.setEditable(false);
             jLabelTurmaSelecionadaAula.setText("Turma Selecionada");
-            jTableAula.setEnabled(false);
-            jTableAula.setRowSelectionAllowed(false);
+            jTableAula.setEnabled(true);
+            jTableAula.setRowSelectionAllowed(true);
         }else
         {
             if(jSplitPanePresenca.isShowing());
@@ -567,8 +567,8 @@ public class AulaFrame extends javax.swing.JFrame {
                 jComboBoxAlunoPresenca.setEnabled(false);
                 jLabelAlunoSelecionadoPresenca.setText("Aluno Selecionada");
                 jLabelAulaSelecionadaPresenca.setText("Aula Selecionada");
-                jTablePresenca.setEnabled(false);
-                jTablePresenca.setRowSelectionAllowed(false);
+                jTablePresenca.setEnabled(true);
+                jTablePresenca.setRowSelectionAllowed(true);
         }
     }
     
@@ -578,17 +578,17 @@ public class AulaFrame extends javax.swing.JFrame {
             jTextDataAula.requestFocus();
             jTextDataAula.setEditable(true);
             jComboBoxTurmaAula.setEnabled(true);
-            jTableAula.setEnabled(true);
-            jTableAula.setRowSelectionAllowed(true);
-            jTablePresenca.setRowSelectionAllowed(false);
+            jTableAula.setEnabled(false);
+            jTableAula.setRowSelectionAllowed(false);
+            jTablePresenca.setRowSelectionAllowed(true);
         }else{
             if(jSplitPanePresenca.isShowing()){
                 jComboBoxAulaPresenca.requestFocus();
                 jComboBoxAulaPresenca.setEnabled(true);
                 jComboBoxAlunoPresenca.setEnabled(true);
-                jTablePresenca.setEnabled(true);
-                jTablePresenca.setRowSelectionAllowed(true);
-                jTableAula.setRowSelectionAllowed(false);
+                jTablePresenca.setEnabled(false);
+                jTablePresenca.setRowSelectionAllowed(false);
+                jTableAula.setRowSelectionAllowed(true);
             }
         }
     }
@@ -601,6 +601,8 @@ public class AulaFrame extends javax.swing.JFrame {
                 adicionarValorTabelaAula();
                 JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
                 limparTela();
+                jTableAula.setEnabled(true);
+                jTableAula.setRowSelectionAllowed(true);
             }
         }else{
             if(jScrollPanePresenca.isShowing())
@@ -609,6 +611,10 @@ public class AulaFrame extends javax.swing.JFrame {
                   adicionarValorTabelaPresenca();
                   JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
                   limparTela();
+                  jTablePresenca.setEnabled(true);
+                  jTablePresenca.setRowSelectionAllowed(true);
+                  jTablePresenca.setEnabled(true);
+                  jTablePresenca.setRowSelectionAllowed(true);
                 }
             }
         }

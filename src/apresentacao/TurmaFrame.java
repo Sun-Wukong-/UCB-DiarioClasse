@@ -290,6 +290,8 @@ public class TurmaFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableTurma.setEnabled(false);
+        jTableTurma.setRowSelectionAllowed(false);
         jScrollPaneTurma.setViewportView(jTableTurma);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -328,7 +330,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxTurnoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurnoTurmaActionPerformed
-        String var = (String)jComboBoxTurnoTurma.getSelectedItem();
+        String var = (String) jComboBoxTurnoTurma.getSelectedItem();
         jLabelTurnoSelecionadoTurma.setText(var);
     }//GEN-LAST:event_jComboBoxTurnoTurmaActionPerformed
 
@@ -349,11 +351,11 @@ public class TurmaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-         if(jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn())){
+        if (jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn())) {
             String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
             alterarCampos(inputUsuario);
-        }else{
-            JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um campo para ser alterado");
         }
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
@@ -423,114 +425,110 @@ public class TurmaFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limparTela() {
-       jTextNomeTurma.setText("");
-       jTextCursoTurma.setText("");
-       jTextPeriodoTurma.setText("");
-       jTextDisciplinaTurma.setText("");
-       jComboBoxTurnoTurma.setSelectedIndex(0);
-       jLabelTurnoSelecionadoTurma.setText("Turno Selecionado");
-       
-       jTextNomeTurma.setEditable(false);
-       jTextCursoTurma.setEditable(false);
-       jTextDisciplinaTurma.setEditable(false);
-       jTextPeriodoTurma.setEditable(false);
-       jComboBoxTurnoTurma.setEnabled(false);
-        jTableTurma.setEnabled(false);
-        jTableTurma.setRowSelectionAllowed(false);
+        jTextNomeTurma.setText("");
+        jTextCursoTurma.setText("");
+        jTextPeriodoTurma.setText("");
+        jTextDisciplinaTurma.setText("");
+        jComboBoxTurnoTurma.setSelectedIndex(0);
+        jLabelTurnoSelecionadoTurma.setText("Turno Selecionado");
+
+        jTextNomeTurma.setEditable(false);
+        jTextCursoTurma.setEditable(false);
+        jTextDisciplinaTurma.setEditable(false);
+        jTextPeriodoTurma.setEditable(false);
+        jComboBoxTurnoTurma.setEnabled(false);
+        jTableTurma.setEnabled(true);
+        jTableTurma.setRowSelectionAllowed(true);
     }
-    
-    private void incluirCampos()
-    {
+
+    private void incluirCampos() {
         jTextNomeTurma.requestFocus();
         jTextNomeTurma.setEditable(true);
         jTextCursoTurma.setEditable(true);
         jTextDisciplinaTurma.setEditable(true);
         jComboBoxTurnoTurma.setEnabled(true);
         jTextPeriodoTurma.setEditable(true);
-        jTableTurma.setEnabled(true);
-        jTableTurma.setRowSelectionAllowed(true);
+        jTableTurma.setEnabled(false);
+        jTableTurma.setRowSelectionAllowed(false);
+        
+
     }
-    
+
     //Metodo para Salvar Campos 
-    private void salvarCampos()
-    {
-        if(validarCampos()){
+    private void salvarCampos() {
+        if (validarCampos()) {
             adicionarValorTabela();
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
-        }
-    }
-    
-    //Metodo Alterar Campos
-    private void alterarCampos(String inputUsuario)
-    {
-            jTableTurma.getModel().setValueAt(inputUsuario, jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn());
-            JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
-    }
-    
-    //Metodo Remover Registro
-    private void excluirRegistro()
-    {
-        if(jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn()))
-        {
-            DefaultTableModel model;
-            model = (DefaultTableModel)jTableTurma.getModel();
-            model.removeRow(jTableTurma.getSelectedRow());
-            JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
-        }else
-        {
-            JOptionPane.showMessageDialog(this,"Selecione um registro para exclusão");
+            jTableTurma.setEnabled(true);
+            jTableTurma.setRowSelectionAllowed(true);
         }
     }
 
-    private boolean validarCampos(){
-        if(jTextNomeTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite o Nome");
-           jTextNomeTurma.requestFocus();
-           return false;
-        }
-        if(jTextCursoTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite o Curso");
-           jTextCursoTurma.requestFocus();
-           return false;
-        }
-        if(jTextDisciplinaTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite a Disciplina");
-           jTextDisciplinaTurma.requestFocus();
-           return false;
-        }
-        if(jTextPeriodoTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite o Periodo");
-           jTextPeriodoTurma.requestFocus();
-           return false;
-        }
+    //Metodo Alterar Campos
+    private void alterarCampos(String inputUsuario) {
         
-        if(jComboBoxTurnoTurma.getSelectedIndex() == 0)
-        {
+ 
+        jTableTurma.getModel().setValueAt(inputUsuario, jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn());
+        JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
+
+    }
+
+    //Metodo Remover Registro
+    private void excluirRegistro() {
+        if (jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn())) {
+            DefaultTableModel model;
+            model = (DefaultTableModel) jTableTurma.getModel();
+            model.removeRow(jTableTurma.getSelectedRow());
+            JOptionPane.showMessageDialog(this, "Registro Excluido com Sucesso");
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um registro para exclusão");
+        }
+    }
+
+    private boolean validarCampos() {
+        if (jTextNomeTurma.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite o Nome");
+            jTextNomeTurma.requestFocus();
+            return false;
+        }
+        if (jTextCursoTurma.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite o Curso");
+            jTextCursoTurma.requestFocus();
+            return false;
+        }
+        if (jTextDisciplinaTurma.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite a Disciplina");
+            jTextDisciplinaTurma.requestFocus();
+            return false;
+        }
+        if (jTextPeriodoTurma.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite o Periodo");
+            jTextPeriodoTurma.requestFocus();
+            return false;
+        }
+
+        if (jComboBoxTurnoTurma.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Selecione um Turno");
             jComboBoxTurnoTurma.requestFocus();
             return false;
         }
-        
+
         return true;
     }
-    
+
     //Metodo de Adicionar na Tabela
-    private void adicionarValorTabela()
-    {
+    private void adicionarValorTabela() {
         String nome = jTextNomeTurma.getText();
         String curso = jTextCursoTurma.getText();
         String disciplina = jTextDisciplinaTurma.getText();
         String periodo = jTextPeriodoTurma.getText();
         String turno = jLabelTurnoSelecionadoTurma.getText();
 
+        Object[] row = {nome, curso, disciplina, periodo, turno};
 
-        
-        Object[] row = { nome, curso ,disciplina, periodo, turno};
-        
         DefaultTableModel model = (DefaultTableModel) jTableTurma.getModel();
-        
+
         model.addRow(row);
     }
 }
-
