@@ -249,6 +249,7 @@ public class AlunoFrame extends javax.swing.JFrame {
 
         jButtonMedia.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jButtonMedia.setText("Media");
+        jButtonMedia.setEnabled(false);
         jButtonMedia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonMediaMouseClicked(evt);
@@ -375,7 +376,7 @@ public class AlunoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        incluirCampos();
+        habilitarCampos();
     }//GEN-LAST:event_ButtonHabilitarActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
@@ -393,7 +394,7 @@ public class AlunoFrame extends javax.swing.JFrame {
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
         if(jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn())){
-            String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
+            String inputUsuario = JOptionPane.showInputDialog("Informe novo valor: ");
             alterarCampos(inputUsuario);
         }else{
             JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
@@ -507,12 +508,13 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextFieldNota1Aluno.setEditable(false);
         jTextFieldNota2Aluno.setEditable(false);
         jTextFieldNota3Aluno.setEditable(false);
+        jButtonMedia.setEnabled(false);
         jTableAluno.setEnabled(false);
         jTableAluno.setRowSelectionAllowed(false);
     }
     
     //Metodo para Habilitar Campos
-    private void incluirCampos()
+    private void habilitarCampos()
     {
         jTextNomeAluno.requestFocus();
         jTextNomeAluno.setEditable(true);
@@ -521,6 +523,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextFieldNota1Aluno.setEditable(true);
         jTextFieldNota2Aluno.setEditable(true);
         jTextFieldNota3Aluno.setEditable(true);
+        jButtonMedia.setEnabled(true);
         jTableAluno.setEnabled(true);
         jTableAluno.setRowSelectionAllowed(true);
     }
@@ -575,6 +578,28 @@ public class AlunoFrame extends javax.swing.JFrame {
             jComboBoxTurmaAluno.requestFocus();
             return false;
         }
+        
+        if(jTextFieldNota1Aluno.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Informe a Nota 1");
+            jTextFieldNota1Aluno.requestFocus();
+            return false;
+        }
+        
+            if(jTextFieldNota2Aluno.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Informe a Nota 2");
+            jTextFieldNota2Aluno.requestFocus();
+            return false;
+        }
+            
+        if(jTextFieldNota3Aluno.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Informe a Nota 3");
+            jTextFieldNota3Aluno.requestFocus();
+            return false;
+        }
+        
         return true;
     }
     
@@ -583,14 +608,14 @@ public class AlunoFrame extends javax.swing.JFrame {
     {
         float NotaFinal;
         float Nota;
-        int divisor = 2;
+        int divisor = 3;
         
         Nota = (Float.parseFloat(jTextFieldNota1Aluno.getText()) + Float.parseFloat(jTextFieldNota2Aluno.getText())
-        + Float.parseFloat(jTextFieldNota1Aluno.getText()));
+        + Float.parseFloat(jTextFieldNota3Aluno.getText()));
         NotaFinal = (Nota / divisor); 
-        return NotaFinal;
+        return Math.round(NotaFinal);
     }
-    
+/*
     //Metodo de Adicionar na Tabela sem Notas
     private void adicionarValorTabela()
     {
@@ -603,8 +628,8 @@ public class AlunoFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
         
         model.addRow(row);
-    }
-    
+    }   
+*/
     //Metodo de Adicionar na Tabela com Notas
     private void adicionarValorTabela(float valorNotaFinal) 
     {

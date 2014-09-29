@@ -421,7 +421,7 @@ public class AulaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        incluirCampos();
+        habilitarCampos();
     }//GEN-LAST:event_ButtonHabilitarActionPerformed
 
     @SuppressWarnings("empty-statement")
@@ -573,7 +573,7 @@ public class AulaFrame extends javax.swing.JFrame {
     }
     
     //Metodo para Habilitar Campos
-    private void incluirCampos()
+    private void habilitarCampos()
     {  if(jSplitPaneAula.isShowing()){   
             jTextDataAula.requestFocus();
             jTextDataAula.setEditable(true);

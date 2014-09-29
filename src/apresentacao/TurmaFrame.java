@@ -337,7 +337,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        incluirCampos();
+        habilitarCampos();
     }//GEN-LAST:event_ButtonHabilitarActionPerformed
 
     private void jTextCursoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCursoTurmaActionPerformed
@@ -439,7 +439,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         jTableTurma.setRowSelectionAllowed(false);
     }
     
-    private void incluirCampos()
+    private void habilitarCampos()
     {
         jTextNomeTurma.requestFocus();
         jTextNomeTurma.setEditable(true);
