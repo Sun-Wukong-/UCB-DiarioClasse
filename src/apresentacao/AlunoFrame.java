@@ -32,16 +32,6 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextFieldMatriculaAluno = new javax.swing.JTextField();
         jLabelTurmaSelecionadaAluno = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabelNota1Aluno = new javax.swing.JLabel();
-        jTextFieldNota1Aluno = new javax.swing.JTextField();
-        jTextFieldNota2Aluno = new javax.swing.JTextField();
-        jLabelNota2Aluno = new javax.swing.JLabel();
-        jLabelNota3Aluno = new javax.swing.JLabel();
-        jTextFieldNota3Aluno = new javax.swing.JTextField();
-        jLabelMedia = new javax.swing.JLabel();
-        jButtonMedia = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jScrollPaneAluno = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();
@@ -220,86 +210,7 @@ public class AlunoFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTurmaSelecionadaAluno))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Notas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
-
-        jLabelNota1Aluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelNota1Aluno.setText("1º Nota:");
-
-        jTextFieldNota1Aluno.setEditable(false);
-        jTextFieldNota1Aluno.setColumns(2);
-
-        jTextFieldNota2Aluno.setEditable(false);
-        jTextFieldNota2Aluno.setColumns(2);
-
-        jLabelNota2Aluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelNota2Aluno.setText("2º Nota:");
-
-        jLabelNota3Aluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelNota3Aluno.setText("3º Nota:");
-
-        jTextFieldNota3Aluno.setEditable(false);
-        jTextFieldNota3Aluno.setColumns(2);
-
-        jLabelMedia.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelMedia.setText("0");
-
-        jButtonMedia.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButtonMedia.setText("Media");
-        jButtonMedia.setEnabled(false);
-        jButtonMedia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonMediaMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelNota1Aluno)
-                        .addGap(26, 26, 26)
-                        .addComponent(jTextFieldNota1Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonMedia)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelMedia)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelNota2Aluno)
-                .addGap(36, 36, 36)
-                .addComponent(jTextFieldNota2Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelNota3Aluno)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldNota3Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNota1Aluno)
-                    .addComponent(jTextFieldNota1Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNota2Aluno)
-                    .addComponent(jLabelNota3Aluno)
-                    .addComponent(jTextFieldNota2Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNota3Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMedia)
-                    .addComponent(jButtonMedia))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -313,14 +224,14 @@ public class AlunoFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matricula", "Turma", "Nome", "1º Nota", "2º Nota", "3º Nota", "Nota Final"
+                "Matricula", "Nome", "Turma"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -338,11 +249,11 @@ public class AlunoFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneAluno)
+            .addComponent(jScrollPaneAluno, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+            .addComponent(jScrollPaneAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
         );
 
         jScrollPaneAluno.getAccessibleContext().setAccessibleName("");
@@ -355,7 +266,6 @@ public class AlunoFrame extends javax.swing.JFrame {
             .addComponent(PanelTituloAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PanelMenuAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PanelBodyAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -366,8 +276,6 @@ public class AlunoFrame extends javax.swing.JFrame {
                 .addComponent(PanelMenuAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelBodyAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -400,26 +308,6 @@ public class AlunoFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
         }
     }//GEN-LAST:event_ButtonAlterarActionPerformed
-
-    private void jButtonMediaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMediaMouseClicked
-        if(jTextFieldNota1Aluno.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Digite a Nota 1");
-            jTextNomeAluno.requestFocus();
-        }else{
-            if(jTextFieldNota2Aluno.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Digite a Nota 2");
-                jTextNomeAluno.requestFocus();
-            }else{
-                if(jTextFieldNota3Aluno.getText().equals("")) {
-                    JOptionPane.showMessageDialog(this, "Digite a Nota 3");
-                    jTextNomeAluno.requestFocus();
-                }else
-                {
-                    jLabelMedia.setText(Float.toString(valorNotaFinal()));
-                }
-            }
-        }
-    }//GEN-LAST:event_jButtonMediaMouseClicked
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
         excluirRegistro();
@@ -470,24 +358,14 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMenuAluno;
     private javax.swing.JPanel PanelTituloAluno;
     private javax.swing.JToolBar ToolBarMenuAluno;
-    private javax.swing.JButton jButtonMedia;
     private javax.swing.JComboBox jComboBoxTurmaAluno;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelMedia;
-    private javax.swing.JLabel jLabelNota1Aluno;
-    private javax.swing.JLabel jLabelNota2Aluno;
-    private javax.swing.JLabel jLabelNota3Aluno;
     private javax.swing.JLabel jLabelTurmaSelecionadaAluno;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPaneAluno;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTableAluno;
     private javax.swing.JTextField jTextFieldMatriculaAluno;
-    private javax.swing.JTextField jTextFieldNota1Aluno;
-    private javax.swing.JTextField jTextFieldNota2Aluno;
-    private javax.swing.JTextField jTextFieldNota3Aluno;
     private javax.swing.JTextField jTextNomeAluno;
     // End of variables declaration//GEN-END:variables
 
@@ -495,20 +373,12 @@ public class AlunoFrame extends javax.swing.JFrame {
     private void limparTela() {
         jTextNomeAluno.setText("");
         jTextFieldMatriculaAluno.setText("");
-        jTextFieldNota1Aluno.setText("");
-        jTextFieldNota2Aluno.setText("");
-        jTextFieldNota3Aluno.setText("");
-        jLabelMedia.setText("0");
         jComboBoxTurmaAluno.setSelectedIndex(0);
         jLabelTurmaSelecionadaAluno.setText("Turma Selecionada");
         
         jTextNomeAluno.setEditable(false);
         jTextFieldMatriculaAluno.setEditable(false);
         jComboBoxTurmaAluno.setEnabled(false);
-        jTextFieldNota1Aluno.setEditable(false);
-        jTextFieldNota2Aluno.setEditable(false);
-        jTextFieldNota3Aluno.setEditable(false);
-        jButtonMedia.setEnabled(false);
         jTableAluno.setEnabled(false);
         jTableAluno.setRowSelectionAllowed(false);
     }
@@ -520,10 +390,6 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTextNomeAluno.setEditable(true);
         jTextFieldMatriculaAluno.setEditable(true);
         jComboBoxTurmaAluno.setEnabled(true);
-        jTextFieldNota1Aluno.setEditable(true);
-        jTextFieldNota2Aluno.setEditable(true);
-        jTextFieldNota3Aluno.setEditable(true);
-        jButtonMedia.setEnabled(true);
         jTableAluno.setEnabled(true);
         jTableAluno.setRowSelectionAllowed(true);
     }
@@ -532,7 +398,7 @@ public class AlunoFrame extends javax.swing.JFrame {
     private void salvarCampos()
     {
         if (validarCampos()) {
-            adicionarValorTabela(valorNotaFinal());
+            adicionarValorTabela();
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
         }
@@ -578,74 +444,20 @@ public class AlunoFrame extends javax.swing.JFrame {
             jComboBoxTurmaAluno.requestFocus();
             return false;
         }
-        
-        if(jTextFieldNota1Aluno.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Informe a Nota 1");
-            jTextFieldNota1Aluno.requestFocus();
-            return false;
-        }
-        
-            if(jTextFieldNota2Aluno.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Informe a Nota 2");
-            jTextFieldNota2Aluno.requestFocus();
-            return false;
-        }
-            
-        if(jTextFieldNota3Aluno.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Informe a Nota 3");
-            jTextFieldNota3Aluno.requestFocus();
-            return false;
-        }
-        
         return true;
     }
     
-    //Metodo ValorNotaFinal
-    private float valorNotaFinal()
-    {
-        float NotaFinal;
-        float Nota;
-        int divisor = 3;
-        
-        Nota = (Float.parseFloat(jTextFieldNota1Aluno.getText()) + Float.parseFloat(jTextFieldNota2Aluno.getText())
-        + Float.parseFloat(jTextFieldNota3Aluno.getText()));
-        NotaFinal = (Nota / divisor); 
-        return Math.round(NotaFinal);
-    }
-/*
-    //Metodo de Adicionar na Tabela sem Notas
+    //Metodo de Adicionar na Tabela 
     private void adicionarValorTabela()
     {
         String matricula = jTextFieldMatriculaAluno.getText();
         String nome = jTextNomeAluno.getText();
         String turma = jLabelTurmaSelecionadaAluno.getText();
         
-         Object[] row = { matricula, turma ,nome};
+         Object[] row = { matricula, nome ,turma};
         
         DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
         
         model.addRow(row);
     }   
-*/
-    //Metodo de Adicionar na Tabela com Notas
-    private void adicionarValorTabela(float valorNotaFinal) 
-    {
-        String matricula = jTextFieldMatriculaAluno.getText();
-        String nome = jTextNomeAluno.getText();
-        String turma = jLabelTurmaSelecionadaAluno.getText();
-        String nota1 = jTextFieldNota1Aluno.getText();
-        String nota2 = jTextFieldNota2Aluno.getText();
-        String nota3 = jTextFieldNota3Aluno.getText();
-        String notaFinal;
-        notaFinal = String.valueOf(valorNotaFinal);
-        
-        Object[] row = { matricula, turma ,nome, nota1, nota2, nota3, notaFinal};
-        
-        DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
-        
-        model.addRow(row);
-    }
 }

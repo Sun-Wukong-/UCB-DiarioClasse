@@ -1,13 +1,18 @@
 package apresentacao;
 
+import java.util.List;
+import java.util.Vector;
+import modelo.entidades.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import persistencia.TurmaDao;
 
 public class TurmaFrame extends javax.swing.JFrame {
 
     public TurmaFrame() {
         initComponents();
         setDefaultCloseOperation(TurmaFrame.DISPOSE_ON_CLOSE);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -34,6 +39,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         ButtonHabilitar = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
@@ -142,13 +148,14 @@ public class TurmaFrame extends javax.swing.JFrame {
                                     .addComponent(jLabelTurnoTurma))
                                 .addGap(18, 18, 18)
                                 .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextDisciplinaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
                                         .addComponent(jComboBoxTurnoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(LabelPeriodoTurma)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextDisciplinaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(48, 48, 48))
                             .addComponent(jLabelTurnoSelecionadoTurma))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -175,7 +182,7 @@ public class TurmaFrame extends javax.swing.JFrame {
                     .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelTurnoSelecionadoTurma)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         PanelMenuTurma.setBackground(new java.awt.Color(204, 204, 204));
@@ -218,6 +225,18 @@ public class TurmaFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuTurma.add(ButtonExcluir);
+
+        jButtonConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.setFocusable(false);
+        jButtonConsultar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConsultar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+        ToolBarMenuTurma.add(jButtonConsultar);
         ToolBarMenuTurma.add(jSeparator1);
 
         ButtonSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -296,11 +315,11 @@ public class TurmaFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPaneTurma)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(jScrollPaneTurma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -349,7 +368,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-         if(jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn())){
+         if(getjTableTurma().isCellSelected(getjTableTurma().getSelectedRow(), getjTableTurma().getSelectedColumn())){
             String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
             alterarCampos(inputUsuario);
         }else{
@@ -360,6 +379,10 @@ public class TurmaFrame extends javax.swing.JFrame {
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
         excluirRegistro();
     }//GEN-LAST:event_ButtonExcluirActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+       consultar();
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -406,6 +429,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMenuTurma;
     private javax.swing.JPanel PanelTituloTurma;
     private javax.swing.JToolBar ToolBarMenuTurma;
+    private javax.swing.JButton jButtonConsultar;
     private javax.swing.JComboBox jComboBoxTurnoTurma;
     private javax.swing.JLabel jLabelCursoTurma;
     private javax.swing.JLabel jLabelNomeTurma;
@@ -421,7 +445,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextNomeTurma;
     private javax.swing.JTextField jTextPeriodoTurma;
     // End of variables declaration//GEN-END:variables
-
+    
     private void limparTela() {
        jTextNomeTurma.setText("");
        jTextCursoTurma.setText("");
@@ -435,8 +459,8 @@ public class TurmaFrame extends javax.swing.JFrame {
        jTextDisciplinaTurma.setEditable(false);
        jTextPeriodoTurma.setEditable(false);
        jComboBoxTurnoTurma.setEnabled(false);
-        jTableTurma.setEnabled(false);
-        jTableTurma.setRowSelectionAllowed(false);
+        getjTableTurma().setEnabled(false);
+        getjTableTurma().setRowSelectionAllowed(false);
     }
     
     private void habilitarCampos()
@@ -447,8 +471,8 @@ public class TurmaFrame extends javax.swing.JFrame {
         jTextDisciplinaTurma.setEditable(true);
         jComboBoxTurnoTurma.setEnabled(true);
         jTextPeriodoTurma.setEditable(true);
-        jTableTurma.setEnabled(true);
-        jTableTurma.setRowSelectionAllowed(true);
+        getjTableTurma().setEnabled(true);
+        getjTableTurma().setRowSelectionAllowed(true);
     }
     
     //Metodo para Salvar Campos 
@@ -456,6 +480,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     {
         if(validarCampos()){
             adicionarValorTabela();
+            Inserir();
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
         }
@@ -464,18 +489,18 @@ public class TurmaFrame extends javax.swing.JFrame {
     //Metodo Alterar Campos
     private void alterarCampos(String inputUsuario)
     {
-            jTableTurma.getModel().setValueAt(inputUsuario, jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn());
+            getjTableTurma().getModel().setValueAt(inputUsuario, getjTableTurma().getSelectedRow(), getjTableTurma().getSelectedColumn());
             JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
     }
     
     //Metodo Remover Registro
     private void excluirRegistro()
     {
-        if(jTableTurma.isCellSelected(jTableTurma.getSelectedRow(), jTableTurma.getSelectedColumn()))
+        if(getjTableTurma().isCellSelected(getjTableTurma().getSelectedRow(), getjTableTurma().getSelectedColumn()))
         {
             DefaultTableModel model;
-            model = (DefaultTableModel)jTableTurma.getModel();
-            model.removeRow(jTableTurma.getSelectedRow());
+            model = (DefaultTableModel)getjTableTurma().getModel();
+            model.removeRow(getjTableTurma().getSelectedRow());
             JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
         }else
         {
@@ -528,9 +553,62 @@ public class TurmaFrame extends javax.swing.JFrame {
         
         Object[] row = { nome, curso ,disciplina, periodo, turno};
         
-        DefaultTableModel model = (DefaultTableModel) jTableTurma.getModel();
+        DefaultTableModel model = (DefaultTableModel) getjTableTurma().getModel();
         
         model.addRow(row);
+    }
+    
+    //Gravar no BD
+    private void Inserir(){
+        
+        //Pronto para Gravar
+        Turma turma = new Turma();
+        turma.setNome(jTextNomeTurma.getText());
+        turma.setCurso(jTextCursoTurma.getText());
+        turma.setDisciplina(jTextDisciplinaTurma.getText());
+        turma.setPeriodo((Integer.parseInt(jTextPeriodoTurma.getText())));
+        turma.setTurno(jLabelTurnoSelecionadoTurma.getText());
+
+        TurmaDao dao = new TurmaDao();
+        
+        // Gravando turma
+        dao.adicionar(turma);
+    }
+    
+    //Consultar BD
+    public void consultar(){
+        TurmaDao dao = new TurmaDao();
+        Turma turma = new Turma();
+
+        dao.getLista();
+        
+        String nome = turma.getNome();
+        String curso = turma.getCurso();
+        String disciplina = turma.getDisciplina();
+        int periodo = turma.getPeriodo();
+        String turno = turma.getTurno();
+
+
+ 
+        Object[] row = { nome, curso ,disciplina, periodo, turno};
+        
+        DefaultTableModel model = (DefaultTableModel) getjTableTurma().getModel();
+        
+        model.addRow(row);
+    }
+
+    /**
+     * @return the jTableTurma
+     */
+    public javax.swing.JTable getjTableTurma() {
+        return jTableTurma;
+    }
+
+    /**
+     * @param jTableTurma the jTableTurma to set
+     */
+    public void setjTableTurma(javax.swing.JTable jTableTurma) {
+        this.jTableTurma = jTableTurma;
     }
 }
 
