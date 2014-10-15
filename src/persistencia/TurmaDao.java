@@ -110,7 +110,7 @@ public class TurmaDao {
      } 
     
     //Atualizar Tabela
-    public void atualizarTabela(){
+    public ResultSet atualizarTabela(){
         PreparedStatement pst = null;
         ResultSet rs = null;
         
@@ -118,12 +118,11 @@ public class TurmaDao {
             String sql;
             sql = "select nome,curso,disciplina,periodo,turno from turma";
             pst = connection.prepareStatement(sql);
-            rs = pst.executeQuery();
-            TurmaFrame turma = new TurmaFrame();
-            turma.getjTableTurma().setModel(DbUtils.resultSetToTableModel(rs));
+            rs = pst.executeQuery();     
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+       return rs;
     }
 }

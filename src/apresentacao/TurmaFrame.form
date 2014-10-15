@@ -142,7 +142,6 @@
                                           <Component id="jTextPeriodoTurma" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabelTurnoSelecionadoTurma" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>

@@ -5,6 +5,7 @@ import java.util.Vector;
 import modelo.entidades.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 import persistencia.TurmaDao;
 
 public class TurmaFrame extends javax.swing.JFrame {
@@ -479,7 +480,6 @@ public class TurmaFrame extends javax.swing.JFrame {
     private void salvarCampos()
     {
         if(validarCampos()){
-            adicionarValorTabela();
             Inserir();
             JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
             limparTela();
@@ -541,23 +541,23 @@ public class TurmaFrame extends javax.swing.JFrame {
     }
     
     //Metodo de Adicionar na Tabela
-    private void adicionarValorTabela()
-    {
-        String nome = jTextNomeTurma.getText();
-        String curso = jTextCursoTurma.getText();
-        String disciplina = jTextDisciplinaTurma.getText();
-        String periodo = jTextPeriodoTurma.getText();
-        String turno = jLabelTurnoSelecionadoTurma.getText();
+//    private void adicionarValorTabela()
+//    {
+//        String nome = jTextNomeTurma.getText();
+//        String curso = jTextCursoTurma.getText();
+//        String disciplina = jTextDisciplinaTurma.getText();
+//        String periodo = jTextPeriodoTurma.getText();
+//        String turno = jLabelTurnoSelecionadoTurma.getText();
+//
+//
+//        
+//        Object[] row = { nome, curso ,disciplina, periodo, turno};
+//        
+//        DefaultTableModel model = (DefaultTableModel) getjTableTurma().getModel();
+//        
+//        model.addRow(row);
+//    }
 
-
-        
-        Object[] row = { nome, curso ,disciplina, periodo, turno};
-        
-        DefaultTableModel model = (DefaultTableModel) getjTableTurma().getModel();
-        
-        model.addRow(row);
-    }
-    
     //Gravar no BD
     private void Inserir(){
         
@@ -578,23 +578,9 @@ public class TurmaFrame extends javax.swing.JFrame {
     //Consultar BD
     public void consultar(){
         TurmaDao dao = new TurmaDao();
-        Turma turma = new Turma();
-
-        dao.getLista();
         
-        String nome = turma.getNome();
-        String curso = turma.getCurso();
-        String disciplina = turma.getDisciplina();
-        int periodo = turma.getPeriodo();
-        String turno = turma.getTurno();
-
-
- 
-        Object[] row = { nome, curso ,disciplina, periodo, turno};
+        jTableTurma.setModel(DbUtils.resultSetToTableModel(dao.atualizarTabela()));
         
-        DefaultTableModel model = (DefaultTableModel) getjTableTurma().getModel();
-        
-        model.addRow(row);
     }
 
     /**
