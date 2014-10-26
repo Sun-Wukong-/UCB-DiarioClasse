@@ -7,21 +7,6 @@ public class Turma {
     private String disciplina;
     private int periodo;
     private String turno;
-    
-
-    /**
-     * @return the nome
-     */
-    public String getNome() {
-        return nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     /**
      * @return the idTurma
@@ -35,6 +20,20 @@ public class Turma {
      */
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
@@ -92,4 +91,7 @@ public class Turma {
     public void setTurno(String turno) {
         this.turno = turno;
     }
+    
+    
+    
 }

@@ -1,10 +1,12 @@
 package apresentacao;
 
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import controle.AlunoControle;
+import modelo.entidades.Aluno;
+import persistencia.AlunoDao;
+import persistencia.TurmaDao;
 
 public class AlunoFrame extends javax.swing.JFrame {
-
+             
     public AlunoFrame() {
         initComponents();
         setDefaultCloseOperation(TurmaFrame.DISPOSE_ON_CLOSE);
@@ -21,6 +23,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         ButtonHabilitar = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
+        jButtonConsultarAluno = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
@@ -37,6 +40,16 @@ public class AlunoFrame extends javax.swing.JFrame {
         jTableAluno = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         PanelTituloAluno.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -101,6 +114,18 @@ public class AlunoFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuAluno.add(ButtonExcluir);
+
+        jButtonConsultarAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonConsultarAluno.setText("Consultar");
+        jButtonConsultarAluno.setFocusable(false);
+        jButtonConsultarAluno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConsultarAluno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonConsultarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarAlunoActionPerformed(evt);
+            }
+        });
+        ToolBarMenuAluno.add(jButtonConsultarAluno);
         ToolBarMenuAluno.add(jSeparator1);
 
         ButtonSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -157,11 +182,20 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelTurmaAluno.setText("Turma");
 
         jComboBoxTurmaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxTurmaAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Turma", "Turma 1", "Turma 2", "Turma 3", "Turma 4" }));
         jComboBoxTurmaAluno.setEnabled(false);
+        jComboBoxTurmaAluno.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBoxTurmaAlunoComponentShown(evt);
+            }
+        });
         jComboBoxTurmaAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxTurmaAlunoActionPerformed(evt);
+            }
+        });
+        jComboBoxTurmaAluno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxTurmaAlunoFocusGained(evt);
             }
         });
 
@@ -284,38 +318,61 @@ public class AlunoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        habilitarCampos();
+        AlunoControle controle = new AlunoControle();
+        controle.habilitarCampos(this);
     }//GEN-LAST:event_ButtonHabilitarActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        salvarCampos();
+        AlunoControle controle = new AlunoControle();
+        controle.salvarCampos(this);
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
-        limparTela();
+        AlunoControle controle = new AlunoControle();
+        controle.limparTela(this);
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void jComboBoxTurmaAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoActionPerformed
-        String var = (String)jComboBoxTurmaAluno.getSelectedItem();
-        jLabelTurmaSelecionadaAluno.setText(var);
+
+        String var = (String)getjComboBoxTurmaAluno().getSelectedItem();
+        getjLabelTurmaSelecionadaAluno().setText(var);
     }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-        if(jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn())){
-            String inputUsuario = JOptionPane.showInputDialog("Informe novo valor: ");
-            alterarCampos(inputUsuario);
-        }else{
-            JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
-        }
+
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
-        excluirRegistro();
+        AlunoControle controle = new AlunoControle();
+        Aluno aluno = new Aluno();
+        controle.Deletar(aluno);
     }//GEN-LAST:event_ButtonExcluirActionPerformed
+
+    private void jButtonConsultarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarAlunoActionPerformed
+       AlunoControle controle = new AlunoControle();
+       controle.consultar(this);
+    }//GEN-LAST:event_jButtonConsultarAlunoActionPerformed
+
+    private void jComboBoxTurmaAlunoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoFocusGained
+
+    }//GEN-LAST:event_jComboBoxTurmaAlunoFocusGained
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+
+    }//GEN-LAST:event_formFocusGained
+
+    private void jComboBoxTurmaAlunoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoComponentShown
+
+    }//GEN-LAST:event_jComboBoxTurmaAlunoComponentShown
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        AlunoDao dao = new AlunoDao();
+        dao.preencherCombo(this);
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+          //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
@@ -336,11 +393,13 @@ public class AlunoFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AlunoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+    
             public void run() {
+                
                 new AlunoFrame().setVisible(true);
+                
             }
         });
     }
@@ -358,6 +417,7 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMenuAluno;
     private javax.swing.JPanel PanelTituloAluno;
     private javax.swing.JToolBar ToolBarMenuAluno;
+    private javax.swing.JButton jButtonConsultarAluno;
     private javax.swing.JComboBox jComboBoxTurmaAluno;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelTurmaSelecionadaAluno;
@@ -369,95 +429,73 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextNomeAluno;
     // End of variables declaration//GEN-END:variables
 
-    // Metodo de Limpar Campos
-    private void limparTela() {
-        jTextNomeAluno.setText("");
-        jTextFieldMatriculaAluno.setText("");
-        jComboBoxTurmaAluno.setSelectedIndex(0);
-        jLabelTurmaSelecionadaAluno.setText("Turma Selecionada");
-        
-        jTextNomeAluno.setEditable(false);
-        jTextFieldMatriculaAluno.setEditable(false);
-        jComboBoxTurmaAluno.setEnabled(false);
-        jTableAluno.setEnabled(false);
-        jTableAluno.setRowSelectionAllowed(false);
-    }
-    
-    //Metodo para Habilitar Campos
-    private void habilitarCampos()
-    {
-        jTextNomeAluno.requestFocus();
-        jTextNomeAluno.setEditable(true);
-        jTextFieldMatriculaAluno.setEditable(true);
-        jComboBoxTurmaAluno.setEnabled(true);
-        jTableAluno.setEnabled(true);
-        jTableAluno.setRowSelectionAllowed(true);
-    }
-    
-    //Metodo de Salvar Campos
-    private void salvarCampos()
-    {
-        if (validarCampos()) {
-            adicionarValorTabela();
-            JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
-            limparTela();
-        }
-    }
-    
-    //Metodo Alterar Campos
-    private void alterarCampos(String inputUsuario)
-    {
-        jTableAluno.getModel().setValueAt(inputUsuario, jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn());
-        JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
-    }
-    
-    //Metodo Remover Registro
-    private void excluirRegistro()
-    {
-        if(jTableAluno.isCellSelected(jTableAluno.getSelectedRow(), jTableAluno.getSelectedColumn()))
-        {
-            DefaultTableModel model;
-            model = (DefaultTableModel)jTableAluno.getModel();
-            model.removeRow(jTableAluno.getSelectedRow());
-            JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
-        }else
-        {
-            JOptionPane.showMessageDialog(this,"Selecione um registro para exclusão");
-        }
+    /**
+     * @return the jTableAluno
+     */
+    public javax.swing.JTable getjTableAluno() {
+        return jTableAluno;
     }
 
-    //Metodo de Validar Campos
-    private boolean validarCampos() {
-        if (jTextNomeAluno.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Digite o Nome");
-            jTextNomeAluno.requestFocus();
-            return false;
-        }
-        if (jTextFieldMatriculaAluno.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Digite a matricula do aluno");
-            jTextFieldMatriculaAluno.requestFocus();
-            return false;
-        }
-        
-        if (jComboBoxTurmaAluno.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Selecione uma Turma");
-            jComboBoxTurmaAluno.requestFocus();
-            return false;
-        }
-        return true;
+    /**
+     * @param jTableAluno the jTableAluno to set
+     */
+    public void setjTableAluno(javax.swing.JTable jTableAluno) {
+        this.jTableAluno = jTableAluno;
     }
-    
-    //Metodo de Adicionar na Tabela 
-    private void adicionarValorTabela()
-    {
-        String matricula = jTextFieldMatriculaAluno.getText();
-        String nome = jTextNomeAluno.getText();
-        String turma = jLabelTurmaSelecionadaAluno.getText();
-        
-         Object[] row = { matricula, nome ,turma};
-        
-        DefaultTableModel model = (DefaultTableModel) jTableAluno.getModel();
-        
-        model.addRow(row);
-    }   
+
+    /**
+     * @return the jTextFieldMatriculaAluno
+     */
+    public javax.swing.JTextField getjTextFieldMatriculaAluno() {
+        return jTextFieldMatriculaAluno;
+    }
+
+    /**
+     * @param jTextFieldMatriculaAluno the jTextFieldMatriculaAluno to set
+     */
+    public void setjTextFieldMatriculaAluno(javax.swing.JTextField jTextFieldMatriculaAluno) {
+        this.jTextFieldMatriculaAluno = jTextFieldMatriculaAluno;
+    }
+
+    /**
+     * @return the jTextNomeAluno
+     */
+    public javax.swing.JTextField getjTextNomeAluno() {
+        return jTextNomeAluno;
+    }
+
+    /**
+     * @param jTextNomeAluno the jTextNomeAluno to set
+     */
+    public void setjTextNomeAluno(javax.swing.JTextField jTextNomeAluno) {
+        this.jTextNomeAluno = jTextNomeAluno;
+    }
+
+    /**
+     * @return the jLabelTurmaSelecionadaAluno
+     */
+    public javax.swing.JLabel getjLabelTurmaSelecionadaAluno() {
+        return jLabelTurmaSelecionadaAluno;
+    }
+
+    /**
+     * @param jLabelTurmaSelecionadaAluno the jLabelTurmaSelecionadaAluno to set
+     */
+    public void setjLabelTurmaSelecionadaAluno(javax.swing.JLabel jLabelTurmaSelecionadaAluno) {
+        this.jLabelTurmaSelecionadaAluno = jLabelTurmaSelecionadaAluno;
+    }
+
+    /**
+     * @return the jComboBoxTurmaAluno
+     */
+    public javax.swing.JComboBox getjComboBoxTurmaAluno() {
+        return jComboBoxTurmaAluno;
+    }
+
+    /**
+     * @param jComboBoxTurmaAluno the jComboBoxTurmaAluno to set
+     */
+    public void setjComboBoxTurmaAluno(javax.swing.JComboBox jComboBoxTurmaAluno) {
+        this.jComboBoxTurmaAluno = jComboBoxTurmaAluno;
+    }
 }

@@ -1,12 +1,12 @@
 package teste;
 
-import modelo.entidades.Turma;
+import modelo.entidades.String;
 import persistencia.TurmaDao;
 
 public class TesteAdicionar {
     public static void main(String args[]){
         // pronto para gravar
-        Turma turma = new Turma();
+        String turma = new String();
         turma.setNome("Marcelo");
         turma.setCurso("Sistemas de Informação");
         turma.setDisciplina("Projeto de Software");

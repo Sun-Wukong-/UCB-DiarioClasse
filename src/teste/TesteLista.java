@@ -1,7 +1,7 @@
 package teste;
 
 import java.util.List;
-import modelo.entidades.Turma;
+import modelo.entidades.String;
 import persistencia.TurmaDao;
 
 public class TesteLista {
@@ -10,9 +10,9 @@ public class TesteLista {
     
         TurmaDao dao = new TurmaDao();
 
-        List<Turma> turmas = dao.getLista();
+        List<String> turmas = dao.getLista();
 
-        for (Turma turma : turmas) {
+        for (String turma : turmas) {
             System.out.println("Nome: " + turma.getNome());
             System.out.println("Curso: " + turma.getCurso());
             System.out.println("Disciplina: " + turma.getDisciplina());

@@ -5,11 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.entidades.Turma;
-import net.proteanit.sql.DbUtils;
 
 public class TurmaDao {
     
@@ -45,36 +42,6 @@ public class TurmaDao {
         } 
     }
    
-   //Selecionar do BD   
-   public List<Turma> getLista() {
-        try {
-            List<Turma> turmas = new ArrayList<>();
-            try (PreparedStatement stmt = this.connection.
-                    prepareStatement("select nome,curso,disciplina,periodo,turno"
-                            + " from turma"); ResultSet rs = stmt.executeQuery()) {
-                
-                while (rs.next()) {
-                    // criando o objeto Turma
-                    Turma turma = new Turma();
-                    turma.setNome(rs.getString("nome"));
-                    turma.setCurso(rs.getString("curso"));
-                    turma.setDisciplina(rs.getString("disciplina"));
-                    turma.setPeriodo(rs.getInt("periodo"));
-                    turma.setTurno(rs.getString("turno"));
-                    
-                    // adicionando o objeto à lista
-                    turmas.add(turma);
-                }
-                
-            }
-            return turmas;
-            
-       }catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-   
-   
    //Alterar BD
     public void alterar(Turma turma) {
         String sql = "update turma set nome=?, curso=?,"+
@@ -97,17 +64,43 @@ public class TurmaDao {
     }
     
     //Remover BD
-    public void remover(Turma turma) {
+    public void remover(Turma turma, int id) {
         try {
              PreparedStatement stmt = connection
                      .prepareStatement("delete from turma where idTurma=?");
-             stmt.setInt(1, turma.getIdTurma());
+             stmt.setInt(1, id);
              stmt.execute();
              stmt.close();
          } catch (SQLException e) {
              throw new RuntimeException(e);
          }
      } 
+    
+    //Selecionar Tabela
+    public void selecionarTabela(String tableClick){
+        try {
+            TurmaFrame turmaFrame = new TurmaFrame();
+            String sql = "select nome,curso,disciplina,periodo,turno from turma where idTurma='"+tableClick+"'";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                String add1 = rs.getString("nome");
+                turmaFrame.getjTextNomeTurma().setText(add1);
+                String add2 = rs.getString("curso");
+                turmaFrame.getjTextCursoTurma().setText(add2);
+                String add3 = rs.getString("disciplina");
+                turmaFrame.getjTextDisciplinaTurma().setText(add3);
+                String add4 = rs.getString("periodo");
+                turmaFrame.getjTextPeriodoTurma().setText(add4);
+                String add5 = rs.getString("turno");
+                turmaFrame.getjComboBoxTurnoTurma().setSelectedItem(add5);
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     
     //Atualizar Tabela
     public ResultSet atualizarTabela(){
@@ -116,7 +109,7 @@ public class TurmaDao {
         
         try {
             String sql;
-            sql = "select nome,curso,disciplina,periodo,turno from turma";
+            sql = "select nome,curso,disciplina,periodo,turno from turma order by nome";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             

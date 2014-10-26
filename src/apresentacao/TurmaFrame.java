@@ -1,19 +1,15 @@
 package apresentacao;
 
-import java.util.List;
-import java.util.Vector;
-import modelo.entidades.*;
+import controle.TurmaControle;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.DbUtils;
-import persistencia.TurmaDao;
+import modelo.entidades.Turma;
 
 public class TurmaFrame extends javax.swing.JFrame {
 
     public TurmaFrame() {
         initComponents();
-        setDefaultCloseOperation(TurmaFrame.DISPOSE_ON_CLOSE);
-        
+        setDefaultCloseOperation(TurmaFrame.DISPOSE_ON_CLOSE); 
     }
 
     @SuppressWarnings("unchecked")
@@ -155,8 +151,7 @@ public class TurmaFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(LabelPeriodoTurma)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(48, 48, 48))
+                                        .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabelTurnoSelecionadoTurma))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -310,6 +305,11 @@ public class TurmaFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableTurma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTurmaMouseClicked(evt);
+            }
+        });
         jScrollPaneTurma.setViewportView(jTableTurma);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -348,16 +348,18 @@ public class TurmaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxTurnoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurnoTurmaActionPerformed
-        String var = (String)jComboBoxTurnoTurma.getSelectedItem();
-        jLabelTurnoSelecionadoTurma.setText(var);
+        String var = (String)getjComboBoxTurnoTurma().getSelectedItem();
+        getjLabelTurnoSelecionadoTurma().setText(var);
     }//GEN-LAST:event_jComboBoxTurnoTurmaActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        salvarCampos();
+        TurmaControle turmaControle = new TurmaControle();
+        turmaControle.salvarCampos(this);
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        habilitarCampos();
+        TurmaControle turmaControle = new TurmaControle();
+        turmaControle.habilitarCampos(this);
     }//GEN-LAST:event_ButtonHabilitarActionPerformed
 
     private void jTextCursoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCursoTurmaActionPerformed
@@ -365,25 +367,29 @@ public class TurmaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCursoTurmaActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
-        limparTela();
+        TurmaControle turmaControle = new TurmaControle();
+        turmaControle.limparTela(this);
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-         if(getjTableTurma().isCellSelected(getjTableTurma().getSelectedRow(), getjTableTurma().getSelectedColumn())){
-            String inputUsuario = JOptionPane.showInputDialog("Informe nova valor: ");
-            alterarCampos(inputUsuario);
-        }else{
-            JOptionPane.showMessageDialog(this,"Selecione um campo para ser alterado");
-        }
+
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
-        excluirRegistro();
+        TurmaControle turmaControle = new TurmaControle();
+        Turma turma = new Turma();
+        turmaControle.Deletar(turma);
     }//GEN-LAST:event_ButtonExcluirActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-       consultar();
+        TurmaControle turmaControle = new TurmaControle();
+        turmaControle.consultar(this);
     }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jTableTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTurmaMouseClicked
+        TurmaControle turmaControle = new TurmaControle();
+        turmaControle.atualizar(this);
+    }//GEN-LAST:event_jTableTurmaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -446,143 +452,8 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextNomeTurma;
     private javax.swing.JTextField jTextPeriodoTurma;
     // End of variables declaration//GEN-END:variables
-    
-    private void limparTela() {
-       jTextNomeTurma.setText("");
-       jTextCursoTurma.setText("");
-       jTextPeriodoTurma.setText("");
-       jTextDisciplinaTurma.setText("");
-       jComboBoxTurnoTurma.setSelectedIndex(0);
-       jLabelTurnoSelecionadoTurma.setText("Turno Selecionado");
-       
-       jTextNomeTurma.setEditable(false);
-       jTextCursoTurma.setEditable(false);
-       jTextDisciplinaTurma.setEditable(false);
-       jTextPeriodoTurma.setEditable(false);
-       jComboBoxTurnoTurma.setEnabled(false);
-        getjTableTurma().setEnabled(false);
-        getjTableTurma().setRowSelectionAllowed(false);
-    }
-    
-    private void habilitarCampos()
-    {
-        jTextNomeTurma.requestFocus();
-        jTextNomeTurma.setEditable(true);
-        jTextCursoTurma.setEditable(true);
-        jTextDisciplinaTurma.setEditable(true);
-        jComboBoxTurnoTurma.setEnabled(true);
-        jTextPeriodoTurma.setEditable(true);
-        getjTableTurma().setEnabled(true);
-        getjTableTurma().setRowSelectionAllowed(true);
-    }
-    
-    //Metodo para Salvar Campos 
-    private void salvarCampos()
-    {
-        if(validarCampos()){
-            Inserir();
-            JOptionPane.showMessageDialog(this, "Cadastro Salvo com Sucesso");
-            limparTela();
-        }
-    }
-    
-    //Metodo Alterar Campos
-    private void alterarCampos(String inputUsuario)
-    {
-            getjTableTurma().getModel().setValueAt(inputUsuario, getjTableTurma().getSelectedRow(), getjTableTurma().getSelectedColumn());
-            JOptionPane.showMessageDialog(this, "Campo Alterado com Sucesso");
-    }
-    
-    //Metodo Remover Registro
-    private void excluirRegistro()
-    {
-        if(getjTableTurma().isCellSelected(getjTableTurma().getSelectedRow(), getjTableTurma().getSelectedColumn()))
-        {
-            DefaultTableModel model;
-            model = (DefaultTableModel)getjTableTurma().getModel();
-            model.removeRow(getjTableTurma().getSelectedRow());
-            JOptionPane.showMessageDialog(this,"Registro Excluido com Sucesso");
-        }else
-        {
-            JOptionPane.showMessageDialog(this,"Selecione um registro para exclusão");
-        }
-    }
-
-    private boolean validarCampos(){
-        if(jTextNomeTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite o Nome");
-           jTextNomeTurma.requestFocus();
-           return false;
-        }
-        if(jTextCursoTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite o Curso");
-           jTextCursoTurma.requestFocus();
-           return false;
-        }
-        if(jTextDisciplinaTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite a Disciplina");
-           jTextDisciplinaTurma.requestFocus();
-           return false;
-        }
-        if(jTextPeriodoTurma.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Digite o Periodo");
-           jTextPeriodoTurma.requestFocus();
-           return false;
-        }
         
-        if(jComboBoxTurnoTurma.getSelectedIndex() == 0)
-        {
-            JOptionPane.showMessageDialog(this, "Selecione um Turno");
-            jComboBoxTurnoTurma.requestFocus();
-            return false;
-        }
-        
-        return true;
-    }
-    
-    //Metodo de Adicionar na Tabela
-//    private void adicionarValorTabela()
-//    {
-//        String nome = jTextNomeTurma.getText();
-//        String curso = jTextCursoTurma.getText();
-//        String disciplina = jTextDisciplinaTurma.getText();
-//        String periodo = jTextPeriodoTurma.getText();
-//        String turno = jLabelTurnoSelecionadoTurma.getText();
-//
-//
-//        
-//        Object[] row = { nome, curso ,disciplina, periodo, turno};
-//        
-//        DefaultTableModel model = (DefaultTableModel) getjTableTurma().getModel();
-//        
-//        model.addRow(row);
-//    }
-
-    //Gravar no BD
-    private void Inserir(){
-        
-        //Pronto para Gravar
-        Turma turma = new Turma();
-        turma.setNome(jTextNomeTurma.getText());
-        turma.setCurso(jTextCursoTurma.getText());
-        turma.setDisciplina(jTextDisciplinaTurma.getText());
-        turma.setPeriodo((Integer.parseInt(jTextPeriodoTurma.getText())));
-        turma.setTurno(jLabelTurnoSelecionadoTurma.getText());
-
-        TurmaDao dao = new TurmaDao();
-        
-        // Gravando turma
-        dao.adicionar(turma);
-    }
-    
-    //Consultar BD
-    public void consultar(){
-        TurmaDao dao = new TurmaDao();
-        
-        jTableTurma.setModel(DbUtils.resultSetToTableModel(dao.atualizarTabela()));
-        
-    }
-
+//Get and Set
     /**
      * @return the jTableTurma
      */
@@ -596,5 +467,89 @@ public class TurmaFrame extends javax.swing.JFrame {
     public void setjTableTurma(javax.swing.JTable jTableTurma) {
         this.jTableTurma = jTableTurma;
     }
+
+    /**
+     * @return the jLabelTurnoSelecionadoTurma
+     */
+    public javax.swing.JLabel getjLabelTurnoSelecionadoTurma() {
+        return jLabelTurnoSelecionadoTurma;
+    }
+
+    /**
+     * @param jLabelTurnoSelecionadoTurma the jLabelTurnoSelecionadoTurma to set
+     */
+    public void setjLabelTurnoSelecionadoTurma(javax.swing.JLabel jLabelTurnoSelecionadoTurma) {
+        this.jLabelTurnoSelecionadoTurma = jLabelTurnoSelecionadoTurma;
+    }
+
+    /**
+     * @return the jTextCursoTurma
+     */
+    public javax.swing.JTextField getjTextCursoTurma() {
+        return jTextCursoTurma;
+    }
+
+    /**
+     * @param jTextCursoTurma the jTextCursoTurma to set
+     */
+    public void setjTextCursoTurma(javax.swing.JTextField jTextCursoTurma) {
+        this.jTextCursoTurma = jTextCursoTurma;
+    }
+
+    /**
+     * @return the jTextDisciplinaTurma
+     */
+    public javax.swing.JTextField getjTextDisciplinaTurma() {
+        return jTextDisciplinaTurma;
+    }
+
+    /**
+     * @param jTextDisciplinaTurma the jTextDisciplinaTurma to set
+     */
+    public void setjTextDisciplinaTurma(javax.swing.JTextField jTextDisciplinaTurma) {
+        this.jTextDisciplinaTurma = jTextDisciplinaTurma;
+    }
+
+    /**
+     * @return the jTextNomeTurma
+     */
+    public javax.swing.JTextField getjTextNomeTurma() {
+        return jTextNomeTurma;
+    }
+
+    /**
+     * @param jTextNomeTurma the jTextNomeTurma to set
+     */
+    public void setjTextNomeTurma(javax.swing.JTextField jTextNomeTurma) {
+        this.jTextNomeTurma = jTextNomeTurma;
+    }
+
+    /**
+     * @return the jTextPeriodoTurma
+     */
+    public javax.swing.JTextField getjTextPeriodoTurma() {
+        return jTextPeriodoTurma;
+    }
+
+    /**
+     * @param jTextPeriodoTurma the jTextPeriodoTurma to set
+     */
+    public void setjTextPeriodoTurma(javax.swing.JTextField jTextPeriodoTurma) {
+        this.jTextPeriodoTurma = jTextPeriodoTurma;
+    }
+
+    /**
+     * @return the jComboBoxTurnoTurma
+     */
+    public javax.swing.JComboBox getjComboBoxTurnoTurma() {
+        return jComboBoxTurnoTurma;
+    }
+
+    /**
+     * @param jComboBoxTurnoTurma the jComboBoxTurnoTurma to set
+     */
+    public void setjComboBoxTurnoTurma(javax.swing.JComboBox jComboBoxTurnoTurma) {
+        this.jComboBoxTurnoTurma = jComboBoxTurnoTurma;
+    } 
 }
 
