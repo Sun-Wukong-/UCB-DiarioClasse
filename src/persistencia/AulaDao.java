@@ -2,7 +2,9 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import modelo.entidades.Aula;
 
 public class AulaDao {
@@ -36,5 +38,23 @@ public class AulaDao {
             throw new RuntimeException(e);
         } 
     }
+   
+    //Atualizar Tabela
+    public ResultSet atualizarTabela(){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        try {
+            String sql;
+            sql = "select data,aluno,presente from aula order by data";
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();     
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+       return rs;
+    }
+   
    
 }

@@ -18,11 +18,11 @@ public class AulaControle {
     }
     
        //Gravar no BD
-    public void Inserir(AulaFrame turmaFrame) {
+    public void Inserir(AulaFrame aulaFrame) {
         Aula aula = new Aula();
-        aula.setData(aulaFrame.);
-        aula.setAluno(aulaFrame.);
-        aula.setPresenca(aulaFrame.);
+        aula.setData(aulaFrame.getjLabelDataAula().getText());
+        aula.setAluno(aulaFrame.getjLabelAlunoSelecionadoAula().getText());
+        aula.setPresenca(aulaFrame.getjLabelPresenteAula().getText());
         AulaDao dao = new AulaDao();
         dao.adicionar(aula);
     }

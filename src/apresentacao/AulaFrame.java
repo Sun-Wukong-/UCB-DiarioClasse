@@ -427,4 +427,63 @@ public class AulaFrame extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTable jTableAula;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the jTableAula
+     */
+    public javax.swing.JTable getjTableAula() {
+        return jTableAula;
+    }
+
+    /**
+     * @param jTableAula the jTableAula to set
+     */
+    public void setjTableAula(javax.swing.JTable jTableAula) {
+        this.jTableAula = jTableAula;
+    }
+
+    /**
+     * @return the jLabelAlunoSelecionadoAula
+     */
+    public javax.swing.JLabel getjLabelAlunoSelecionadoAula() {
+        return jLabelAlunoSelecionadoAula;
+    }
+
+    /**
+     * @param jLabelAlunoSelecionadoAula the jLabelAlunoSelecionadoAula to set
+     */
+    public void setjLabelAlunoSelecionadoAula(javax.swing.JLabel jLabelAlunoSelecionadoAula) {
+        this.jLabelAlunoSelecionadoAula = jLabelAlunoSelecionadoAula;
+    }
+
+    /**
+     * @return the jLabelDataAula
+     */
+    public javax.swing.JLabel getjLabelDataAula() {
+        return jLabelDataAula;
+    }
+
+    /**
+     * @param jLabelDataAula the jLabelDataAula to set
+     */
+    public void setjLabelDataAula(javax.swing.JLabel jLabelDataAula) {
+        this.jLabelDataAula = jLabelDataAula;
+    }
+
+    /**
+     * @return the jLabelPresenteAula
+     */
+    public javax.swing.JLabel getjLabelPresenteAula() {
+        return jLabelPresenteAula;
+    }
+
+    /**
+     * @param jLabelPresenteAula the jLabelPresenteAula to set
+     */
+    public void setjLabelPresenteAula(javax.swing.JLabel jLabelPresenteAula) {
+        this.jLabelPresenteAula = jLabelPresenteAula;
+    }
+
+
+    
 }
