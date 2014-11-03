@@ -170,19 +170,19 @@ public class AulaFrame extends javax.swing.JFrame {
         jLabelDiaAula.setText("Dia");
 
         jComboBoxDiaAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxDiaAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        jComboBoxDiaAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Dia", "1", "2", "3", "4", "5" }));
 
         jLabelMesAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelMesAula.setText("Mês");
 
         jComboBoxMesAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxMesAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jComboBoxMesAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Mês", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabelAnoAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelAnoAula.setText("Ano");
 
         jComboBoxAnoAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxAnoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2013", "2012", "2011", "2010" }));
+        jComboBoxAnoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Ano", "2014", "2013", "2012", "2011", "2010" }));
 
         jLabelDataAula.setText("Data");
 
@@ -329,10 +329,10 @@ public class AulaFrame extends javax.swing.JFrame {
             .addComponent(PanelTituloAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PanelMenuAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,5 +1,6 @@
 package persistencia;
 
+import apresentacao.AlunoAlterarFrame;
 import apresentacao.AlunoFrame;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ public class AlunoDao {
    
    //Adicionar no BD
    public void adicionar(Aluno aluno) {
+       AlunoFrame alunoFrame = new AlunoFrame();
         String sql = "insert into aluno " +
              "(matricula,nome,turma)" +
              " values (?,?,?)";
@@ -96,7 +98,12 @@ public class AlunoDao {
     }
 
     //PreencherComboBox
-    public void preencherCombo(AlunoFrame alunoFrame) {
+
+    /**
+     *
+     * @param alunoFrame
+     */
+        public void preencherCombo(AlunoFrame alunoFrame) {
         try {
             String sql = "select * from turma order by nome";
             PreparedStatement pst = connection.prepareStatement(sql);
@@ -105,6 +112,22 @@ public class AlunoDao {
             while (rs.next()) { 
                 String name = rs.getString("nome");
                 alunoFrame.getjComboBoxTurmaAluno().addItem(name);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+       
+    public void preencherCombo(AlunoAlterarFrame alunoFrame){
+        try {
+            String sql = "select * from turma order by nome";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) { 
+                String name = rs.getString("nome");
+                alunoFrame.getjComboBoxTurmaAlunoAlterar().addItem(name);
             }
             
         } catch (Exception e) {

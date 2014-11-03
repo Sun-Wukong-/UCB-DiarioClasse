@@ -168,6 +168,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelTurmaAluno.setText("Turma");
 
         jComboBoxTurmaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBoxTurmaAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Turma" }));
         jComboBoxTurmaAluno.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jComboBoxTurmaAlunoComponentShown(evt);
@@ -318,7 +319,8 @@ public class AlunoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-
+        AlunoAlterarFrame alunoFrame = new AlunoAlterarFrame();
+        alunoFrame.setVisible(true);
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
