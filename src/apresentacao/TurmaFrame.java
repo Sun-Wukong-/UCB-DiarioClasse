@@ -1,8 +1,6 @@
 package apresentacao;
 
 import controle.TurmaControle;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import modelo.entidades.Turma;
 
 public class TurmaFrame extends javax.swing.JFrame {
@@ -33,10 +31,9 @@ public class TurmaFrame extends javax.swing.JFrame {
         jLabelTurnoSelecionadoTurma = new javax.swing.JLabel();
         PanelMenuTurma = new javax.swing.JPanel();
         ToolBarMenuTurma = new javax.swing.JToolBar();
-        ButtonHabilitar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
-        jButtonConsultar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
@@ -76,10 +73,8 @@ public class TurmaFrame extends javax.swing.JFrame {
         jLabelNomeTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelNomeTurma.setText("Nome");
 
-        jTextNomeTurma.setEditable(false);
         jTextNomeTurma.setColumns(20);
 
-        jTextCursoTurma.setEditable(false);
         jTextCursoTurma.setColumns(20);
         jTextCursoTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +85,6 @@ public class TurmaFrame extends javax.swing.JFrame {
         jLabelCursoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCursoTurma.setText("Curso");
 
-        jTextDisciplinaTurma.setEditable(false);
         jTextDisciplinaTurma.setColumns(20);
 
         LabelDisciplinaTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -101,7 +95,6 @@ public class TurmaFrame extends javax.swing.JFrame {
 
         jComboBoxTurnoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jComboBoxTurnoTurma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Turno", "Manhã", "Tarde", "Noite" }));
-        jComboBoxTurnoTurma.setEnabled(false);
         jComboBoxTurnoTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxTurnoTurmaActionPerformed(evt);
@@ -111,7 +104,6 @@ public class TurmaFrame extends javax.swing.JFrame {
         LabelPeriodoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelPeriodoTurma.setText("Periodo");
 
-        jTextPeriodoTurma.setEditable(false);
         jTextPeriodoTurma.setColumns(2);
 
         jLabelTurnoSelecionadoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -186,17 +178,17 @@ public class TurmaFrame extends javax.swing.JFrame {
         ToolBarMenuTurma.setBackground(new java.awt.Color(204, 204, 204));
         ToolBarMenuTurma.setRollover(true);
 
-        ButtonHabilitar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        ButtonHabilitar.setText("Habilitar");
-        ButtonHabilitar.setFocusable(false);
-        ButtonHabilitar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonHabilitar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonHabilitar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.setFocusable(false);
+        jButtonConsultar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConsultar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonHabilitarActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
             }
         });
-        ToolBarMenuTurma.add(ButtonHabilitar);
+        ToolBarMenuTurma.add(jButtonConsultar);
 
         ButtonAlterar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonAlterar.setText("Alterar");
@@ -221,18 +213,6 @@ public class TurmaFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuTurma.add(ButtonExcluir);
-
-        jButtonConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButtonConsultar.setText("Consultar");
-        jButtonConsultar.setFocusable(false);
-        jButtonConsultar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonConsultar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarActionPerformed(evt);
-            }
-        });
-        ToolBarMenuTurma.add(jButtonConsultar);
         ToolBarMenuTurma.add(jSeparator1);
 
         ButtonSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -287,14 +267,14 @@ public class TurmaFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Curso", "Disciplina", "Periodo", "Turno"
+                "Codigo", "Nome", "Curso", "Disciplina", "Periodo", "Turno"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -357,11 +337,6 @@ public class TurmaFrame extends javax.swing.JFrame {
         turmaControle.salvarCampos(this);
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
-    private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        TurmaControle turmaControle = new TurmaControle();
-        turmaControle.habilitarCampos(this);
-    }//GEN-LAST:event_ButtonHabilitarActionPerformed
-
     private void jTextCursoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCursoTurmaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextCursoTurmaActionPerformed
@@ -387,8 +362,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void jTableTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTurmaMouseClicked
-        TurmaControle turmaControle = new TurmaControle();
-        turmaControle.atualizar(this);
+
     }//GEN-LAST:event_jTableTurmaMouseClicked
 
     public static void main(String args[]) {
@@ -426,7 +400,6 @@ public class TurmaFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAlterar;
     private javax.swing.JButton ButtonExcluir;
-    private javax.swing.JButton ButtonHabilitar;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JLabel LabelDisciplinaTurma;

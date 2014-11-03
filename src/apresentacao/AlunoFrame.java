@@ -20,10 +20,9 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelTituloAluno = new javax.swing.JLabel();
         PanelMenuAluno = new javax.swing.JPanel();
         ToolBarMenuAluno = new javax.swing.JToolBar();
-        ButtonHabilitar = new javax.swing.JButton();
+        jButtonConsultarAluno = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
-        jButtonConsultarAluno = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
@@ -79,17 +78,17 @@ public class AlunoFrame extends javax.swing.JFrame {
         ToolBarMenuAluno.setBackground(new java.awt.Color(204, 204, 204));
         ToolBarMenuAluno.setRollover(true);
 
-        ButtonHabilitar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        ButtonHabilitar.setText("Habilitar");
-        ButtonHabilitar.setFocusable(false);
-        ButtonHabilitar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonHabilitar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonHabilitar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultarAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonConsultarAluno.setText("Consultar");
+        jButtonConsultarAluno.setFocusable(false);
+        jButtonConsultarAluno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConsultarAluno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonConsultarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonHabilitarActionPerformed(evt);
+                jButtonConsultarAlunoActionPerformed(evt);
             }
         });
-        ToolBarMenuAluno.add(ButtonHabilitar);
+        ToolBarMenuAluno.add(jButtonConsultarAluno);
 
         ButtonAlterar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonAlterar.setText("Alterar");
@@ -114,18 +113,6 @@ public class AlunoFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuAluno.add(ButtonExcluir);
-
-        jButtonConsultarAluno.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButtonConsultarAluno.setText("Consultar");
-        jButtonConsultarAluno.setFocusable(false);
-        jButtonConsultarAluno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonConsultarAluno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonConsultarAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarAlunoActionPerformed(evt);
-            }
-        });
-        ToolBarMenuAluno.add(jButtonConsultarAluno);
         ToolBarMenuAluno.add(jSeparator1);
 
         ButtonSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -175,14 +162,12 @@ public class AlunoFrame extends javax.swing.JFrame {
         LabelNomeAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelNomeAluno.setText("Nome");
 
-        jTextNomeAluno.setEditable(false);
         jTextNomeAluno.setColumns(20);
 
         LabelTurmaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         LabelTurmaAluno.setText("Turma");
 
         jComboBoxTurmaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxTurmaAluno.setEnabled(false);
         jComboBoxTurmaAluno.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jComboBoxTurmaAlunoComponentShown(evt);
@@ -202,7 +187,6 @@ public class AlunoFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel4.setText("Matricula:");
 
-        jTextFieldMatriculaAluno.setEditable(false);
         jTextFieldMatriculaAluno.setColumns(10);
 
         jLabelTurmaSelecionadaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -317,11 +301,6 @@ public class AlunoFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        AlunoControle controle = new AlunoControle();
-        controle.habilitarCampos(this);
-    }//GEN-LAST:event_ButtonHabilitarActionPerformed
-
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
         AlunoControle controle = new AlunoControle();
         controle.salvarCampos(this);
@@ -407,7 +386,6 @@ public class AlunoFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAlterar;
     private javax.swing.JButton ButtonExcluir;
-    private javax.swing.JButton ButtonHabilitar;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JLabel LabelNomeAluno;

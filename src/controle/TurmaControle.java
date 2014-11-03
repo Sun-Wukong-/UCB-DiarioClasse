@@ -11,14 +11,6 @@ public class TurmaControle {
     public TurmaControle(){
         TurmaFrame turmaFrame = new TurmaFrame();
     }
-    
-    //Atualizar Tabela
-    public void atualizar(TurmaFrame turmaFrame){
-        int row = turmaFrame.getjTableTurma().getSelectedRow();
-        String tableClick = (turmaFrame.getjTableTurma().getModel().getValueAt(row, 0).toString());
-        TurmaDao dao = new TurmaDao();
-        dao.selecionarTabela(tableClick);
-    }
 
     //Consultar BD
     public void consultar(TurmaFrame turmaFrame) {
@@ -36,6 +28,11 @@ public class TurmaControle {
         turma.setTurno(turmaFrame.getjLabelTurnoSelecionadoTurma().getText());
         TurmaDao dao = new TurmaDao();
         dao.adicionar(turma);
+    }
+    
+    public void Alterar(Turma turma){
+        
+        
     }
     
     public void Deletar(Turma turma){
@@ -82,13 +79,6 @@ public class TurmaControle {
         turmaFrame.getjTextDisciplinaTurma().setText("");
         turmaFrame.getjComboBoxTurnoTurma().setSelectedIndex(0);
         turmaFrame.getjLabelTurnoSelecionadoTurma().setText("Turno Selecionado");
-        turmaFrame.getjTextNomeTurma().setEditable(false);
-        turmaFrame.getjTextCursoTurma().setEditable(false);
-        turmaFrame.getjTextDisciplinaTurma().setEditable(false);
-        turmaFrame.getjTextPeriodoTurma().setEditable(false);
-        turmaFrame.getjComboBoxTurnoTurma().setEnabled(false);
-        turmaFrame.getjTableTurma().setEnabled(false);
-        turmaFrame.getjTableTurma().setRowSelectionAllowed(false);
     }
 
     //Metodo para Salvar Campos
@@ -99,16 +89,5 @@ public class TurmaControle {
             limparTela(turmaFrame);
             consultar(turmaFrame);
         }
-    }
-
-    public void habilitarCampos(TurmaFrame turmaFrame) {
-        turmaFrame.getjTextNomeTurma().requestFocus();
-        turmaFrame.getjTextNomeTurma().setEditable(true);
-        turmaFrame.getjTextCursoTurma().setEditable(true);
-        turmaFrame.getjTextDisciplinaTurma().setEditable(true);
-        turmaFrame.getjComboBoxTurnoTurma().setEnabled(true);
-        turmaFrame.getjTextPeriodoTurma().setEditable(true);
-        turmaFrame.getjTableTurma().setEnabled(true);
-        turmaFrame.getjTableTurma().setRowSelectionAllowed(true);
     }
 }

@@ -1,7 +1,7 @@
 package apresentacao;
 
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import controle.AulaControle;
+import persistencia.AulaDao;
 
 public class AulaFrame extends javax.swing.JFrame {
 
@@ -18,10 +18,9 @@ public class AulaFrame extends javax.swing.JFrame {
         LabelTituloAula = new javax.swing.JLabel();
         PanelMenuAula = new javax.swing.JPanel();
         ToolBarMenuAula = new javax.swing.JToolBar();
-        ButtonHabilitar = new javax.swing.JButton();
+        jButtonConsultarAula = new javax.swing.JButton();
         ButtonAlterar = new javax.swing.JButton();
         ButtonExcluir = new javax.swing.JButton();
-        jButtonConsultarAula = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
@@ -44,9 +43,19 @@ public class AulaFrame extends javax.swing.JFrame {
         jTableAula = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         PanelTituloAula.setBackground(new java.awt.Color(255, 255, 255));
         PanelTituloAula.setAutoscrolls(true);
+        PanelTituloAula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PanelTituloAulaFocusGained(evt);
+            }
+        });
 
         LabelTituloAula.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LabelTituloAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apresentacao/imagens/DiarioClasseImagemAula.gif"))); // NOI18N
@@ -75,17 +84,17 @@ public class AulaFrame extends javax.swing.JFrame {
         ToolBarMenuAula.setBackground(new java.awt.Color(204, 204, 204));
         ToolBarMenuAula.setRollover(true);
 
-        ButtonHabilitar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        ButtonHabilitar.setText("Habilitar");
-        ButtonHabilitar.setFocusable(false);
-        ButtonHabilitar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonHabilitar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonHabilitar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultarAula.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonConsultarAula.setText("Consultar");
+        jButtonConsultarAula.setFocusable(false);
+        jButtonConsultarAula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConsultarAula.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonConsultarAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonHabilitarActionPerformed(evt);
+                jButtonConsultarAulaActionPerformed(evt);
             }
         });
-        ToolBarMenuAula.add(ButtonHabilitar);
+        ToolBarMenuAula.add(jButtonConsultarAula);
 
         ButtonAlterar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ButtonAlterar.setText("Alterar");
@@ -110,18 +119,6 @@ public class AulaFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuAula.add(ButtonExcluir);
-
-        jButtonConsultarAula.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButtonConsultarAula.setText("Consultar");
-        jButtonConsultarAula.setFocusable(false);
-        jButtonConsultarAula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonConsultarAula.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonConsultarAula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarAulaActionPerformed(evt);
-            }
-        });
-        ToolBarMenuAula.add(jButtonConsultarAula);
         ToolBarMenuAula.add(jSeparator1);
 
         ButtonSalvar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -173,16 +170,19 @@ public class AulaFrame extends javax.swing.JFrame {
         jLabelDiaAula.setText("Dia");
 
         jComboBoxDiaAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBoxDiaAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
 
         jLabelMesAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelMesAula.setText("Mês");
 
         jComboBoxMesAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBoxMesAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabelAnoAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelAnoAula.setText("Ano");
 
         jComboBoxAnoAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBoxAnoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2013", "2012", "2011", "2010" }));
 
         jLabelDataAula.setText("Data");
 
@@ -232,9 +232,22 @@ public class AulaFrame extends javax.swing.JFrame {
         jLabelAlunoAula.setText("Aluno");
 
         jComboBoxAlunoAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBoxAlunoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Aluno" }));
+        jComboBoxAlunoAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAlunoAulaActionPerformed(evt);
+            }
+        });
 
         jLabelAlunoSelecionadoAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelAlunoSelecionadoAula.setText("Aluno Selecionado");
+
+        jComboBoxPresencaAual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Presença", "Sim", "Não" }));
+        jComboBoxPresencaAual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPresencaAualActionPerformed(evt);
+            }
+        });
 
         jLabelPresencaAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelPresencaAula.setText("Presença");
@@ -248,20 +261,21 @@ public class AulaFrame extends javax.swing.JFrame {
             jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPrensencaAulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanelPrensencaAulaLayout.createSequentialGroup()
-                        .addComponent(jLabelAlunoSelecionadoAula)
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabelPresenteAula))
-                    .addGroup(jPanelPrensencaAulaLayout.createSequentialGroup()
+                .addGroup(jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrensencaAulaLayout.createSequentialGroup()
                         .addComponent(jLabelAlunoAula)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBoxAlunoAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelPresencaAula)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrensencaAulaLayout.createSequentialGroup()
+                        .addComponent(jLabelAlunoSelecionadoAula)
+                        .addGap(87, 87, 87)))
+                .addGroup(jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPresenteAula)
+                    .addComponent(jLabelPresencaAula))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxPresencaAual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPrensencaAulaLayout.setVerticalGroup(
             jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,10 +329,11 @@ public class AulaFrame extends javax.swing.JFrame {
             .addComponent(PanelTituloAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PanelMenuAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
+                .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,20 +352,21 @@ public class AulaFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHabilitarActionPerformed
-        AulaControle controle AulaControle();
-        controle.habilitarCampos();
-    }//GEN-LAST:event_ButtonHabilitarActionPerformed
-
     @SuppressWarnings("empty-statement")
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-        AulaControle controle AulaControle();
-        controle.salvarCampos();
+        AulaControle controle = new AulaControle();
+        String var = (String)getjComboBoxDiaAula().getSelectedItem();
+        String var2 = (String)getjComboBoxMesAula().getSelectedItem(); 
+        String var3 = (String)getjComboBoxAnoAula().getSelectedItem(); 
+        String var4 = (var + "/" + var2 + "/" + var3);
+        getjLabelDataAula().setText(var4);
+        controle.salvarCampos(this);
+        
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
-        AulaControle controle AulaControle();
-        controle.limparTela();
+        AulaControle controle = new AulaControle();
+        controle.limparTela(this);
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
@@ -362,9 +378,28 @@ public class AulaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonExcluirActionPerformed
 
     private void jButtonConsultarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarAulaActionPerformed
-        AulaControle controle AulaControle();
-        controle.consultar();
+        AulaControle controle = new AulaControle();
+        controle.consultar(this);
     }//GEN-LAST:event_jButtonConsultarAulaActionPerformed
+
+    private void PanelTituloAulaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PanelTituloAulaFocusGained
+
+    }//GEN-LAST:event_PanelTituloAulaFocusGained
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        AulaDao dao = new AulaDao();
+        dao.preencherComboxAluno(this);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jComboBoxAlunoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlunoAulaActionPerformed
+        String var = (String)getjComboBoxAlunoAula().getSelectedItem();
+        getjLabelAlunoSelecionadoAula().setText(var);
+    }//GEN-LAST:event_jComboBoxAlunoAulaActionPerformed
+
+    private void jComboBoxPresencaAualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPresencaAualActionPerformed
+        String var = (String)getjComboBoxPresencaAual().getSelectedItem();
+        getjLabelPresenteAula().setText(var);
+    }//GEN-LAST:event_jComboBoxPresencaAualActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -400,7 +435,6 @@ public class AulaFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAlterar;
     private javax.swing.JButton ButtonExcluir;
-    private javax.swing.JButton ButtonHabilitar;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JLabel LabelTituloAula;
@@ -484,6 +518,73 @@ public class AulaFrame extends javax.swing.JFrame {
         this.jLabelPresenteAula = jLabelPresenteAula;
     }
 
+    /**
+     * @return the jComboBoxAlunoAula
+     */
+    public javax.swing.JComboBox getjComboBoxAlunoAula() {
+        return jComboBoxAlunoAula;
+    }
 
-    
+    /**
+     * @param jComboBoxAlunoAula the jComboBoxAlunoAula to set
+     */
+    public void setjComboBoxAlunoAula(javax.swing.JComboBox jComboBoxAlunoAula) {
+        this.jComboBoxAlunoAula = jComboBoxAlunoAula;
+    }
+
+    /**
+     * @return the jComboBoxAnoAula
+     */
+    public javax.swing.JComboBox getjComboBoxAnoAula() {
+        return jComboBoxAnoAula;
+    }
+
+    /**
+     * @param jComboBoxAnoAula the jComboBoxAnoAula to set
+     */
+    public void setjComboBoxAnoAula(javax.swing.JComboBox jComboBoxAnoAula) {
+        this.jComboBoxAnoAula = jComboBoxAnoAula;
+    }
+
+    /**
+     * @return the jComboBoxDiaAula
+     */
+    public javax.swing.JComboBox getjComboBoxDiaAula() {
+        return jComboBoxDiaAula;
+    }
+
+    /**
+     * @param jComboBoxDiaAula the jComboBoxDiaAula to set
+     */
+    public void setjComboBoxDiaAula(javax.swing.JComboBox jComboBoxDiaAula) {
+        this.jComboBoxDiaAula = jComboBoxDiaAula;
+    }
+
+    /**
+     * @return the jComboBoxMesAula
+     */
+    public javax.swing.JComboBox getjComboBoxMesAula() {
+        return jComboBoxMesAula;
+    }
+
+    /**
+     * @param jComboBoxMesAula the jComboBoxMesAula to set
+     */
+    public void setjComboBoxMesAula(javax.swing.JComboBox jComboBoxMesAula) {
+        this.jComboBoxMesAula = jComboBoxMesAula;
+    }
+
+    /**
+     * @return the jComboBoxPresencaAual
+     */
+    public javax.swing.JComboBox getjComboBoxPresencaAual() {
+        return jComboBoxPresencaAual;
+    }
+
+    /**
+     * @param jComboBoxPresencaAual the jComboBoxPresencaAual to set
+     */
+    public void setjComboBoxPresencaAual(javax.swing.JComboBox jComboBoxPresencaAual) {
+        this.jComboBoxPresencaAual = jComboBoxPresencaAual;
+    }
 }

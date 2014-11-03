@@ -76,32 +76,6 @@ public class TurmaDao {
          }
      } 
     
-    //Selecionar Tabela
-    public void selecionarTabela(String tableClick){
-        try {
-            TurmaFrame turmaFrame = new TurmaFrame();
-            String sql = "select nome,curso,disciplina,periodo,turno from turma where idTurma='"+tableClick+"'";
-            PreparedStatement pst = connection.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            if(rs.next()){
-                String add1 = rs.getString("nome");
-                turmaFrame.getjTextNomeTurma().setText(add1);
-                String add2 = rs.getString("curso");
-                turmaFrame.getjTextCursoTurma().setText(add2);
-                String add3 = rs.getString("disciplina");
-                turmaFrame.getjTextDisciplinaTurma().setText(add3);
-                String add4 = rs.getString("periodo");
-                turmaFrame.getjTextPeriodoTurma().setText(add4);
-                String add5 = rs.getString("turno");
-                turmaFrame.getjComboBoxTurnoTurma().setSelectedItem(add5);
-            }
-            
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
     //Atualizar Tabela
     public ResultSet atualizarTabela(){
         PreparedStatement pst = null;
@@ -109,7 +83,7 @@ public class TurmaDao {
         
         try {
             String sql;
-            sql = "select nome,curso,disciplina,periodo,turno from turma order by nome";
+            sql = "select idTurma,nome,curso,disciplina,periodo,turno from turma order by nome";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             

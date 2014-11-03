@@ -68,21 +68,5 @@ public class AlunoControle {
         alunoFrame.getjTextFieldMatriculaAluno().setText("");
         alunoFrame.getjComboBoxTurmaAluno().setSelectedIndex(0);
         alunoFrame.getjLabelTurmaSelecionadaAluno().setText("Turma Selecionada");
-        alunoFrame.getjTextNomeAluno().setEditable(false);
-        alunoFrame.getjTextFieldMatriculaAluno().setEditable(false);
-        alunoFrame.getjComboBoxTurmaAluno().setEnabled(false);
-        alunoFrame.getjTableAluno().setEnabled(false);
-        alunoFrame.getjTableAluno().setRowSelectionAllowed(false);
     }
-
-    //Metodo para Habilitar Campos
-    public void habilitarCampos(AlunoFrame alunoFrame) {
-        alunoFrame.getjTextNomeAluno().requestFocus();
-        alunoFrame.getjTextNomeAluno().setEditable(true);
-        alunoFrame.getjTextFieldMatriculaAluno().setEditable(true);
-        alunoFrame.getjComboBoxTurmaAluno().setEnabled(true);
-        alunoFrame.getjTableAluno().setEnabled(true);
-        alunoFrame.getjTableAluno().setRowSelectionAllowed(true);
-    }
-    
 }

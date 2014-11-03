@@ -1,6 +1,7 @@
 package controle;
 
 import apresentacao.AulaFrame;
+import javax.swing.JOptionPane;
 import modelo.entidades.Aula;
 import net.proteanit.sql.DbUtils;
 import persistencia.AulaDao;
@@ -25,6 +26,20 @@ public class AulaControle {
         aula.setPresenca(aulaFrame.getjLabelPresenteAula().getText());
         AulaDao dao = new AulaDao();
         dao.adicionar(aula);
+    }
+    
+    //Metodo de Salvar Campos
+    public void salvarCampos(AulaFrame aulaFrame) {
+        Inserir(aulaFrame);
+        JOptionPane.showMessageDialog(aulaFrame, "Cadastro Salvo com Sucesso");
+        consultar(aulaFrame);
+        limparTela(aulaFrame);
+    }
+    
+    public void limparTela(AulaFrame aulaFrame) {
+        aulaFrame.getjLabelDataAula().setText("Data");
+        aulaFrame.getjLabelAlunoSelecionadoAula().setText("Aluno Selecionado");
+        aulaFrame.getjLabelPresenteAula().setText("Presente");
     }
     
 }

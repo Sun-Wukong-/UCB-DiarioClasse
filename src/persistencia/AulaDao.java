@@ -1,5 +1,6 @@
 package persistencia;
 
+import apresentacao.AulaFrame;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class AulaDao {
             PreparedStatement stmt = connection.prepareStatement(sql);
  
             // seta os valores
-            stmt.setDate(1,aula.getData());
+            stmt.setString(1,aula.getData());
             stmt.setString(2,aula.getAluno());
             stmt.setString(3,aula.getPresenca());
          
@@ -38,6 +39,39 @@ public class AulaDao {
             throw new RuntimeException(e);
         } 
     }
+   
+      //Alterar BD
+   @SuppressWarnings("empty-statement")
+    public void alterar(Aula aula) {
+        String sql = "update aula set data=?, aluno=?,"+
+            "presenca=?  where idAula=?";
+        
+        try {
+         PreparedStatement stmt = connection
+            .prepareStatement(sql);
+         stmt.setString(1, aula.getData());
+         stmt.setString(2, aula.getAluno());
+         stmt.setString(3, aula.getPresenca());;
+         stmt.setInt(4, aula.getIdAula());
+         stmt.execute();
+         stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }   
+    }
+   
+   //Remover BD
+    public void remover(Aula aula, int id) {
+        try {
+             PreparedStatement stmt = connection
+                     .prepareStatement("delete from aula where idAula=?");
+             stmt.setInt(1, id);
+             stmt.execute();
+             stmt.close();
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+     } 
    
     //Atualizar Tabela
     public ResultSet atualizarTabela(){
@@ -56,5 +90,19 @@ public class AulaDao {
        return rs;
     }
    
-   
+   public void preencherComboxAluno(AulaFrame aulaFrame) {
+        try {
+            String sql = "select * from aluno order by nome";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) { 
+                String name = rs.getString("nome");
+                aulaFrame.getjComboBoxAlunoAula().addItem(name);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }

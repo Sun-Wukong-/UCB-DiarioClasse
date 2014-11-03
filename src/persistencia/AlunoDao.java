@@ -43,7 +43,7 @@ public class AlunoDao {
    
      //Alterar BD
     public void alterar(Aluno aluno) {
-        String sql = "update turma set matricula=?, nome=?,"+
+        String sql = "update aluno set matricula=?, nome=?,"+
             "turma=?  where idAluno=?";
         
         try {
