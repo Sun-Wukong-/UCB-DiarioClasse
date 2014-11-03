@@ -275,7 +275,7 @@ public class AulaFrame extends javax.swing.JFrame {
                     .addComponent(jLabelPresencaAula))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxPresencaAual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanelPrensencaAulaLayout.setVerticalGroup(
             jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,14 +302,14 @@ public class AulaFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Aula", "Aluno", "Presente"
+                "CodigoAula", "DataAula", "Turma", "Aluno", "Presente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -331,8 +331,7 @@ public class AulaFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -358,7 +357,7 @@ public class AulaFrame extends javax.swing.JFrame {
         String var = (String)getjComboBoxDiaAula().getSelectedItem();
         String var2 = (String)getjComboBoxMesAula().getSelectedItem(); 
         String var3 = (String)getjComboBoxAnoAula().getSelectedItem(); 
-        String var4 = (var + "/" + var2 + "/" + var3);
+        String var4 = (var3 + "/" + var2 + "/" + var);
         getjLabelDataAula().setText(var4);
         controle.salvarCampos(this);
         

@@ -80,7 +80,11 @@ public class AulaDao {
         
         try {
             String sql;
-            sql = "select data,aluno,presente from aula order by data";
+            sql = "select idAula as CodigoAula, "
+                    + "data as DataAula, "
+                    + "aluno as Aluno,"
+                    + "(select turma from aluno where nome = aluno) as Turma, "
+                    + "presente as Presente from aula order by Turma,data,aluno";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             

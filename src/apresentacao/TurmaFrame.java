@@ -267,7 +267,7 @@ public class TurmaFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Curso", "Disciplina", "Periodo", "Turno"
+                "CodigoTurma", "Turma", "Curso", "Disciplina", "Periodo", "Turno"
             }
         ) {
             Class[] types = new Class [] {

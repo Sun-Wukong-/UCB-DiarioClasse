@@ -242,14 +242,14 @@ public class AlunoFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matricula", "Nome", "Turma"
+                "CodigoAluno", "Matricula", "Nome", "Turma"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

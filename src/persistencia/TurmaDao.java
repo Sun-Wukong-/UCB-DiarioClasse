@@ -83,7 +83,13 @@ public class TurmaDao {
         
         try {
             String sql;
-            sql = "select idTurma,nome,curso,disciplina,periodo,turno from turma order by nome";
+            sql = "select idTurma as CodigoTurma,"
+                    + "nome as Turma,"
+                    + "curso as Curso,"
+                    + "disciplina as Disciplina,"
+                    + "periodo as Periodo,"
+                    + "turno as Turno "
+                    + "from turma order by curso,nome";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             

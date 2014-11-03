@@ -80,7 +80,12 @@ public class AlunoDao {
         
         try {
             String sql;
-            sql = "select matricula,nome,turma from aluno";
+            sql = "select idAluno as CodigoAluno, "
+                    + "matricula as Matricula,"
+                    + "nome as Nome,"
+                    + "turma as Turma "
+                    + "from aluno "
+                    + "order by turma,nome";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             
