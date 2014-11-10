@@ -6,7 +6,7 @@ public class Aula {
     
     private int idAula;
     private String data;
-    private String presenca;
+    private boolean presenca;
     private String aluno;
 
     /**
@@ -40,14 +40,14 @@ public class Aula {
     /**
      * @return the presenca
      */
-    public String getPresenca() {
+    public boolean getPresenca() {
         return presenca;
     }
 
     /**
      * @param presenca the presenca to set
      */
-    public void setPresenca(String presenca) {
+    public void setPresenca(boolean presenca) {
         this.presenca = presenca;
     }
 

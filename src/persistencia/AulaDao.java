@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.entidades.Aula;
 
 public class AulaDao {
@@ -18,7 +19,7 @@ public class AulaDao {
    }
    
       //Adicionar no BD
-   public void adicionar(Aula aula) {
+    public void adicionar(Aula aula) {
         String sql = "insert into aula " +
              "(data,aluno,presente)" +
              " values (?,?,?)";
@@ -26,20 +27,18 @@ public class AulaDao {
         try {
             // prepared statement para inserção
             PreparedStatement stmt = connection.prepareStatement(sql);
- 
-            // seta os valores
-            stmt.setString(1,aula.getData());
-            stmt.setString(2,aula.getAluno());
-            stmt.setString(3,aula.getPresenca());
-         
+            stmt.setString(1, aula.getData());
+            stmt.setString(2, aula.getAluno());
+            stmt.setBoolean(3, aula.getPresenca());
             // executa
             stmt.execute();
             stmt.close();
         }catch (SQLException e) {
             throw new RuntimeException(e);
-        } 
+        }
     }
-   
+
+
       //Alterar BD
    @SuppressWarnings("empty-statement")
     public void alterar(Aula aula) {
@@ -51,7 +50,7 @@ public class AulaDao {
             .prepareStatement(sql);
          stmt.setString(1, aula.getData());
          stmt.setString(2, aula.getAluno());
-         stmt.setString(3, aula.getPresenca());;
+         stmt.setBoolean(3, aula.getPresenca());;
          stmt.setInt(4, aula.getIdAula());
          stmt.execute();
          stmt.close();
@@ -80,10 +79,8 @@ public class AulaDao {
         
         try {
             String sql;
-            sql = "select idAula as CodigoAula, "
-                    + "data as DataAula, "
+            sql = "select (select turma from aluno where nome = aluno) as Turma,"
                     + "aluno as Aluno,"
-                    + "(select turma from aluno where nome = aluno) as Turma, "
                     + "presente as Presente from aula order by Turma,data,aluno";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
@@ -94,15 +91,36 @@ public class AulaDao {
        return rs;
     }
    
-   public void preencherComboxAluno(AulaFrame aulaFrame) {
+   public void preencherJTable(AulaFrame aulaFrame) {
         try {
-            String sql = "select * from aluno order by nome";
+            String var = aulaFrame.getjComboBoxTurmaAula().getSelectedItem().toString();
+            String sql = "select nome from aluno where turma = ?" ;
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, var);
+            ResultSet rs = pst.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) aulaFrame.getjTableAula().getModel();
+            model.setRowCount(0);
+            while (rs.next()) { 
+                String name = rs.getString("nome");
+                Object[][] data = {{name}};
+                model.insertRow(aulaFrame.getjTableAula().getRowCount(), new Object[] {name});
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+   
+    public void preencherCombo(AulaFrame aulaFrame){
+        try {
+            String sql = "select * from turma order by nome";
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             
             while (rs.next()) { 
                 String name = rs.getString("nome");
-                aulaFrame.getjComboBoxAlunoAula().addItem(name);
+                aulaFrame.getjComboBoxTurmaAula().addItem(name);
             }
             
         } catch (Exception e) {
