@@ -1,5 +1,6 @@
 package controle;
 
+import apresentacao.TurmaAlterarFrame;
 import apresentacao.TurmaFrame;
 import javax.swing.JOptionPane;
 import modelo.entidades.Turma;
@@ -30,9 +31,21 @@ public class TurmaControle {
         dao.adicionar(turma);
     }
     
-    public void Alterar(Turma turma){
-        
-        
+    public void Atualizar(TurmaAlterarFrame turmaFrame){
+        Turma turma = new Turma();
+        boolean test = false; 
+        turma.setIdTurma(Integer.parseInt(turmaFrame.getjTextFieldCodigoTurmaAlterar().getText()));
+        turma.setNome(turmaFrame.getjTextNomeTurmaAlterar().getText());
+        turma.setCurso(turmaFrame.getjTextFieldCursoTurmaAlterar().getText());
+        turma.setDisciplina(turmaFrame.getjTextTurmaDisciplinaTurma().getText());
+        turma.setPeriodo(Integer.parseInt(turmaFrame.getjTextTurmaPeriodoTurma().getText()));
+        turma.setTurno(turmaFrame.getjComboBoxTurnoTurmaAlterar().getSelectedItem().toString());
+        test = true;
+        if(test){
+            TurmaDao dao = new TurmaDao();
+            dao.alterar(turma);
+            JOptionPane.showMessageDialog(turmaFrame, "Cadastro Atualizado com Sucesso");
+        }
     }
     
     public void Deletar(Turma turma){
@@ -78,6 +91,15 @@ public class TurmaControle {
         turmaFrame.getjTextPeriodoTurma().setText("");
         turmaFrame.getjTextDisciplinaTurma().setText("");
         turmaFrame.getjComboBoxTurnoTurma().setSelectedIndex(0);
+    }
+    
+    public void limparTela(TurmaAlterarFrame turmaFrame){
+        turmaFrame.getjTextFieldCodigoTurmaAlterar().setText("");
+        turmaFrame.getjTextFieldCursoTurmaAlterar().setText("");
+        turmaFrame.getjTextNomeTurmaAlterar().setText("");
+        turmaFrame.getjTextTurmaDisciplinaTurma().setText("");
+        turmaFrame.getjTextTurmaPeriodoTurma().setText("");
+        turmaFrame.getjComboBoxTurnoTurmaAlterar().setSelectedIndex(0);
     }
 
     //Metodo para Salvar Campos
