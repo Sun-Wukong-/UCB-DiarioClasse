@@ -141,11 +141,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jTextFieldMatriculaAlunoAlterar" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextNomeAlunoAlterar" min="-2" pref="287" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jComboBoxTurmaAlunoAlterar" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabelAlunoSelecionadoAlunoAlterar" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jComboBoxTurmaAlunoAlterar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -154,6 +150,7 @@
                                   <Component id="jTextFieldCodigoAlunoAlterar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -184,7 +181,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="LabelTurmaAlunoAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxTurmaAlunoAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelAlunoSelecionadoAlunoAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="87" max="32767" attributes="0"/>
               </Group>
@@ -257,14 +253,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelAlunoSelecionadoAlunoAlterar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="16" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Turma Selecionada"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

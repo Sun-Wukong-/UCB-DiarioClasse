@@ -25,7 +25,7 @@ public class TurmaControle {
         turma.setCurso(turmaFrame.getjTextCursoTurma().getText());
         turma.setDisciplina(turmaFrame.getjTextDisciplinaTurma().getText());
         turma.setPeriodo(Integer.parseInt(turmaFrame.getjTextPeriodoTurma().getText()));
-        turma.setTurno(turmaFrame.getjLabelTurnoSelecionadoTurma().getText());
+        turma.setTurno(turmaFrame.getjComboBoxTurnoTurma().getSelectedItem().toString());
         TurmaDao dao = new TurmaDao();
         dao.adicionar(turma);
     }
@@ -78,7 +78,6 @@ public class TurmaControle {
         turmaFrame.getjTextPeriodoTurma().setText("");
         turmaFrame.getjTextDisciplinaTurma().setText("");
         turmaFrame.getjComboBoxTurnoTurma().setSelectedIndex(0);
-        turmaFrame.getjLabelTurnoSelecionadoTurma().setText("Turno Selecionado");
     }
 
     //Metodo para Salvar Campos

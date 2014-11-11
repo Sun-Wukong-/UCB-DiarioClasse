@@ -45,7 +45,6 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
         jComboBoxTurmaAlunoAlterar = new javax.swing.JComboBox();
         jTextFieldCodigoAlunoAlterar = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabelAlunoSelecionadoAlunoAlterar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -138,9 +137,6 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
 
         jTextFieldCodigoAlunoAlterar.setColumns(2);
 
-        jLabelAlunoSelecionadoAlunoAlterar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelAlunoSelecionadoAlunoAlterar.setText("Turma Selecionada");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -160,14 +156,12 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldMatriculaAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextNomeAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBoxTurmaAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabelAlunoSelecionadoAlunoAlterar))))
+                                    .addComponent(jComboBoxTurmaAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabelCodigoAlunoAlterar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCodigoAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextFieldCodigoAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,8 +184,7 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelTurmaAlunoAlterar)
-                    .addComponent(jComboBoxTurmaAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAlunoSelecionadoAlunoAlterar))
+                    .addComponent(jComboBoxTurmaAlunoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -229,8 +222,6 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
 
     private void jComboBoxTurmaAlunoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoAlterarActionPerformed
 
-        String var = (String)getjComboBoxTurmaAlunoAlterar().getSelectedItem();
-        getjLabelAlunoSelecionadoAlunoAlterar().setText(var);
     }//GEN-LAST:event_jComboBoxTurmaAlunoAlterarActionPerformed
 
     private void jComboBoxTurmaAlunoAlterarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoAlterarFocusGained
@@ -285,7 +276,6 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMenuTurma;
     private javax.swing.JToolBar ToolBarMenuTurma;
     private javax.swing.JComboBox jComboBoxTurmaAlunoAlterar;
-    private javax.swing.JLabel jLabelAlunoSelecionadoAlunoAlterar;
     private javax.swing.JLabel jLabelCodigoAlunoAlterar;
     private javax.swing.JLabel jLabelMatriculaAlunoAlterar;
     private javax.swing.JPanel jPanel1;
@@ -335,20 +325,6 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
      */
     public void setjTextNomeAlunoAlterar(javax.swing.JTextField jTextNomeAlunoAlterar) {
         this.jTextNomeAlunoAlterar = jTextNomeAlunoAlterar;
-    }
-
-    /**
-     * @return the jLabelAlunoSelecionadoAlunoAlterar
-     */
-    public javax.swing.JLabel getjLabelAlunoSelecionadoAlunoAlterar() {
-        return jLabelAlunoSelecionadoAlunoAlterar;
-    }
-
-    /**
-     * @param jLabelAlunoSelecionadoAlunoAlterar the jLabelAlunoSelecionadoAlunoAlterar to set
-     */
-    public void setjLabelAlunoSelecionadoAlunoAlterar(javax.swing.JLabel jLabelAlunoSelecionadoAlunoAlterar) {
-        this.jLabelAlunoSelecionadoAlunoAlterar = jLabelAlunoSelecionadoAlunoAlterar;
     }
 
     /**

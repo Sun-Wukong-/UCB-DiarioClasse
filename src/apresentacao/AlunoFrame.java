@@ -33,7 +33,6 @@ public class AlunoFrame extends javax.swing.JFrame {
         jComboBoxTurmaAluno = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldMatriculaAluno = new javax.swing.JTextField();
-        jLabelTurmaSelecionadaAluno = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPaneAluno = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();
@@ -190,9 +189,6 @@ public class AlunoFrame extends javax.swing.JFrame {
 
         jTextFieldMatriculaAluno.setColumns(10);
 
-        jLabelTurmaSelecionadaAluno.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelTurmaSelecionadaAluno.setText("Turma Selecionada");
-
         javax.swing.GroupLayout PanelBodyAlunoLayout = new javax.swing.GroupLayout(PanelBodyAluno);
         PanelBodyAluno.setLayout(PanelBodyAlunoLayout);
         PanelBodyAlunoLayout.setHorizontalGroup(
@@ -207,12 +203,9 @@ public class AlunoFrame extends javax.swing.JFrame {
                     .addComponent(jTextNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
-                .addGroup(PanelBodyAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelBodyAlunoLayout.createSequentialGroup()
-                        .addComponent(LabelTurmaAluno)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBoxTurmaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelTurmaSelecionadaAluno))
+                .addComponent(LabelTurmaAluno)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxTurmaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelBodyAlunoLayout.setVerticalGroup(
@@ -227,8 +220,7 @@ public class AlunoFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PanelBodyAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextFieldMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTurmaSelecionadaAluno))
+                    .addComponent(jTextFieldMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -314,8 +306,6 @@ public class AlunoFrame extends javax.swing.JFrame {
 
     private void jComboBoxTurmaAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAlunoActionPerformed
 
-        String var = (String)getjComboBoxTurmaAluno().getSelectedItem();
-        getjLabelTurmaSelecionadaAluno().setText(var);
     }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
@@ -400,7 +390,6 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConsultarAluno;
     private javax.swing.JComboBox jComboBoxTurmaAluno;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelTurmaSelecionadaAluno;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPaneAluno;
     private javax.swing.JToolBar.Separator jSeparator1;
@@ -449,20 +438,6 @@ public class AlunoFrame extends javax.swing.JFrame {
      */
     public void setjTextNomeAluno(javax.swing.JTextField jTextNomeAluno) {
         this.jTextNomeAluno = jTextNomeAluno;
-    }
-
-    /**
-     * @return the jLabelTurmaSelecionadaAluno
-     */
-    public javax.swing.JLabel getjLabelTurmaSelecionadaAluno() {
-        return jLabelTurmaSelecionadaAluno;
-    }
-
-    /**
-     * @param jLabelTurmaSelecionadaAluno the jLabelTurmaSelecionadaAluno to set
-     */
-    public void setjLabelTurmaSelecionadaAluno(javax.swing.JLabel jLabelTurmaSelecionadaAluno) {
-        this.jLabelTurmaSelecionadaAluno = jLabelTurmaSelecionadaAluno;
     }
 
     /**

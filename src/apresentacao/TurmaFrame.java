@@ -28,7 +28,6 @@ public class TurmaFrame extends javax.swing.JFrame {
         LabelPeriodoTurma = new javax.swing.JLabel();
         jTextPeriodoTurma = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabelTurnoSelecionadoTurma = new javax.swing.JLabel();
         PanelMenuTurma = new javax.swing.JPanel();
         ToolBarMenuTurma = new javax.swing.JToolBar();
         jButtonConsultar = new javax.swing.JButton();
@@ -106,9 +105,6 @@ public class TurmaFrame extends javax.swing.JFrame {
 
         jTextPeriodoTurma.setColumns(2);
 
-        jLabelTurnoSelecionadoTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelTurnoSelecionadoTurma.setText("Turno Selecionado");
-
         javax.swing.GroupLayout PanelBodyTurmaLayout = new javax.swing.GroupLayout(PanelBodyTurma);
         PanelBodyTurma.setLayout(PanelBodyTurmaLayout);
         PanelBodyTurmaLayout.setHorizontalGroup(
@@ -131,20 +127,17 @@ public class TurmaFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
                         .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelDisciplinaTurma)
+                            .addComponent(jLabelTurnoTurma))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextDisciplinaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
-                                .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelDisciplinaTurma)
-                                    .addComponent(jLabelTurnoTurma))
+                                .addComponent(jComboBoxTurnoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(PanelBodyTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextDisciplinaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(PanelBodyTurmaLayout.createSequentialGroup()
-                                        .addComponent(jComboBoxTurnoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(LabelPeriodoTurma)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabelTurnoSelecionadoTurma))
+                                .addComponent(LabelPeriodoTurma)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         PanelBodyTurmaLayout.setVerticalGroup(
@@ -168,9 +161,7 @@ public class TurmaFrame extends javax.swing.JFrame {
                     .addComponent(jComboBoxTurnoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelPeriodoTurma)
                     .addComponent(jTextPeriodoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelTurnoSelecionadoTurma)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         PanelMenuTurma.setBackground(new java.awt.Color(204, 204, 204));
@@ -328,8 +319,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxTurnoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurnoTurmaActionPerformed
-        String var = (String)getjComboBoxTurnoTurma().getSelectedItem();
-        getjLabelTurnoSelecionadoTurma().setText(var);
+
     }//GEN-LAST:event_jComboBoxTurnoTurmaActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
@@ -413,7 +403,6 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxTurnoTurma;
     private javax.swing.JLabel jLabelCursoTurma;
     private javax.swing.JLabel jLabelNomeTurma;
-    private javax.swing.JLabel jLabelTurnoSelecionadoTurma;
     private javax.swing.JLabel jLabelTurnoTurma;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPaneTurma;
@@ -441,19 +430,6 @@ public class TurmaFrame extends javax.swing.JFrame {
         this.jTableTurma = jTableTurma;
     }
 
-    /**
-     * @return the jLabelTurnoSelecionadoTurma
-     */
-    public javax.swing.JLabel getjLabelTurnoSelecionadoTurma() {
-        return jLabelTurnoSelecionadoTurma;
-    }
-
-    /**
-     * @param jLabelTurnoSelecionadoTurma the jLabelTurnoSelecionadoTurma to set
-     */
-    public void setjLabelTurnoSelecionadoTurma(javax.swing.JLabel jLabelTurnoSelecionadoTurma) {
-        this.jLabelTurnoSelecionadoTurma = jLabelTurnoSelecionadoTurma;
-    }
 
     /**
      * @return the jTextCursoTurma

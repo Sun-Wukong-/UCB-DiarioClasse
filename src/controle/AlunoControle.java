@@ -25,7 +25,7 @@ public class AlunoControle {
         AlunoDao dao = new AlunoDao();
         aluno.setMatricula(alunoFrame.getjTextFieldMatriculaAluno().getText());
         aluno.setNome(alunoFrame.getjTextNomeAluno().getText());
-        aluno.setTurma(alunoFrame.getjLabelTurmaSelecionadaAluno().getText());
+        aluno.setTurma(alunoFrame.getjComboBoxTurmaAluno().getSelectedItem().toString());
 
         dao.adicionar(aluno);
     }
@@ -36,7 +36,7 @@ public class AlunoControle {
         aluno.setIdAluno(Integer.parseInt(alunoFrame.getjTextFieldCodigoAlunoAlterar().getText()));
         aluno.setMatricula(alunoFrame.getjTextFieldMatriculaAlunoAlterar().getText());
         aluno.setNome(alunoFrame.getjTextNomeAlunoAlterar().getText());
-        aluno.setTurma(alunoFrame.getjLabelAlunoSelecionadoAlunoAlterar().getText());
+        aluno.setTurma(alunoFrame.getjComboBoxTurmaAlunoAlterar().getSelectedItem().toString());
         test = true;
         if(test){
             AlunoDao dao = new AlunoDao();
@@ -88,7 +88,6 @@ public class AlunoControle {
         alunoFrame.getjTextNomeAluno().setText("");
         alunoFrame.getjTextFieldMatriculaAluno().setText("");
         alunoFrame.getjComboBoxTurmaAluno().setSelectedIndex(0);
-        alunoFrame.getjLabelTurmaSelecionadaAluno().setText("Turma Selecionada");
     }
     
      // Metodo de Limpar Campos
@@ -96,6 +95,5 @@ public class AlunoControle {
         alunoFrame.getjTextNomeAlunoAlterar().setText("");
         alunoFrame.getjTextFieldMatriculaAlunoAlterar().setText("");
         alunoFrame.getjComboBoxTurmaAlunoAlterar().setSelectedIndex(0);
-        alunoFrame.getjLabelAlunoSelecionadoAlunoAlterar().setText("Turma Selecionada");
     }
 }
