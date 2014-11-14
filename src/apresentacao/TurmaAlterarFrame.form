@@ -137,7 +137,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabelCodigoTurmaAlterar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldCodigoTurmaAlterar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxCodigo" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -170,7 +170,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelCodigoTurmaAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldCodigoTurmaAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
@@ -267,11 +267,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxTurnoTurmaAlterarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldCodigoTurmaAlterar">
-          <Properties>
-            <Property name="columns" type="int" value="2"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelTurmaDisciplinaTurma">
@@ -299,6 +294,21 @@
           <Properties>
             <Property name="columns" type="int" value="2"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxCodigo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="16" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="Selecione Codigo"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxCodigoItemStateChanged"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

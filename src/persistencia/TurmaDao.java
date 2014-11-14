@@ -1,6 +1,6 @@
 package persistencia;
 
-import apresentacao.TurmaFrame;
+import apresentacao.TurmaAlterarFrame;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,5 +97,49 @@ public class TurmaDao {
             JOptionPane.showMessageDialog(null, e);
         }
        return rs;
+    }
+    
+    public void preencherComboCodigo(TurmaAlterarFrame turmaFrame){
+        try {
+            String sql = "select * from turma order by idTurma";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) { 
+                int codigo = rs.getInt("idTurma");
+                turmaFrame.getjComboBoxCodigo().addItem(codigo);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void preencherCodigoText(TurmaAlterarFrame turmaFrame){
+        try{
+            String var = turmaFrame.getjComboBoxCodigo().getSelectedItem().toString();
+            String sql = "select nome,curso,disciplina,periodo,turno from turma where idTurma = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, var);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String nome = rs.getString("nome");
+                String curso = rs.getString("curso");
+                String disciplina = rs.getString("disciplina");
+                int periodo = rs.getInt("periodo");
+                String turno = rs.getString("turno");
+                
+                turmaFrame.getjTextNomeTurmaAlterar().setText(nome);
+                turmaFrame.getjTextFieldCursoTurmaAlterar().setText(curso);
+                turmaFrame.getjTextTurmaDisciplinaTurma().setText(disciplina);
+                turmaFrame.getjTextTurmaPeriodoTurma().setText(String.valueOf(periodo));
+                turmaFrame.getjComboBoxTurnoTurmaAlterar().getModel().setSelectedItem(turno);
+            }
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
     }
 }

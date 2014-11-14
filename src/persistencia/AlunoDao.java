@@ -33,9 +33,7 @@ public class AlunoDao {
             stmt.setInt(1,aluno.getMatricula());
             stmt.setString(2,aluno.getNome());
             stmt.setString(3, turma.getNome());
-            
-
-         
+              
             // executa
             stmt.execute();
             stmt.close();
@@ -45,16 +43,17 @@ public class AlunoDao {
     }
    
      //Alterar BD
-    public void alterar(Aluno aluno) {
-        String sql = "update aluno set matricula=?, nome=?"+
-            "where idAluno=?";
+    public void alterar(Aluno aluno, Turma turma) {
+        String sql = "update aluno set matricula=?, nome=? , codigoTurma = (select idTurma from turma where nome = ?) "+
+            "where idAluno=? ";
         
         try {
          PreparedStatement stmt = connection
             .prepareStatement(sql);
          stmt.setInt(1, aluno.getMatricula());
          stmt.setString(2, aluno.getNome());
-         stmt.setInt(3, aluno.getIdAluno());
+         stmt.setString(3, turma.getNome());
+         stmt.setInt(4, aluno.getIdAluno());
          stmt.executeUpdate();
          stmt.close();
         } catch (SQLException e) {
@@ -82,7 +81,8 @@ public class AlunoDao {
         
         try {
             String sql;
-            sql = "select idAluno as CodigoAluno, matricula as Matricula, nome as Nome, (select turma.nome from turma join aluno where turma.idTurma = aluno.codigoTurma limit 1) as Turma from aluno";
+            sql = "select idAluno as CodigoAluno, matricula as Matricula, aluno.nome as Nome, turma.nome as Turma from aluno, turma where codigoTurma = idTurma";
+
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             
@@ -128,6 +128,47 @@ public class AlunoDao {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+    
+    public void preencherComboCodigo(AlunoAlterarFrame alunoFrame){
+        try {
+            String sql = "select * from aluno order by idAluno";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) { 
+                int codigo = rs.getInt("idAluno");
+                alunoFrame.getjComboBoxAlterarCodigo().addItem(codigo);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+     public void preencherCodigoText(AlunoAlterarFrame alunoFrame){
+        try{
+            String var = alunoFrame.getjComboBoxAlterarCodigo().getSelectedItem().toString();
+            String sql = "select aluno.nome as Nome, matricula, turma.nome as Turma from aluno, turma where codigoTurma = idTurma and aluno.idAluno = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, var);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String nome = rs.getString("Nome");
+                int matricula = rs.getInt("matricula");
+                String turma = rs.getString("Turma");
+                
+                alunoFrame.getjTextNomeAlunoAlterar().setText(nome);
+                alunoFrame.getjTextFieldMatriculaAlunoAlterar().setText(String.valueOf(matricula));
+                alunoFrame.getjComboBoxTurmaAlunoAlterar().getModel().setSelectedItem(turma);
+            }
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
     }
 }
    

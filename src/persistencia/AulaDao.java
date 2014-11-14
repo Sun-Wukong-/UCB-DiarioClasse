@@ -25,7 +25,7 @@ public class AulaDao {
     public void adicionar(Aula aula, Aluno aluno) {
         String sql = "insert into aula " +
              "(data,presente,codigoAluno)" +
-             " values (?,?,(select idAluno from aluno where matricula = ?))";
+             " values (?,?,(select idAluno from aluno where matricula = ? limit 1))";
  
         try {
             // prepared statement para inserção
@@ -156,7 +156,7 @@ public class AulaDao {
         }
     }
         
-        public void preencherComboCodigo(AulaAlterarFrame aulaFrame){
+    public void preencherComboCodigo(AulaAlterarFrame aulaFrame){
         try {
             String sql = "select * from aula order by idAula";
             PreparedStatement pst = connection.prepareStatement(sql);

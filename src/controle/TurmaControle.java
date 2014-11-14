@@ -35,7 +35,7 @@ public class TurmaControle {
         if(validarCampos(turmaFrame)){
             Turma turma = new Turma();
             boolean test = false; 
-            turma.setIdTurma(Integer.parseInt(turmaFrame.getjTextFieldCodigoTurmaAlterar().getText()));
+            turma.setIdTurma(Integer.parseInt(turmaFrame.getjComboBoxCodigo().getSelectedItem().toString()));
             turma.setNome(turmaFrame.getjTextNomeTurmaAlterar().getText());
             turma.setCurso(turmaFrame.getjTextFieldCursoTurmaAlterar().getText());
             turma.setDisciplina(turmaFrame.getjTextTurmaDisciplinaTurma().getText());
@@ -93,9 +93,9 @@ public class TurmaControle {
     }
     
     public boolean validarCampos(TurmaAlterarFrame turmaFrame){
-        if(turmaFrame.getjTextFieldCodigoTurmaAlterar().getText().equals("")){
+        if(turmaFrame.getjComboBoxCodigo().getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(turmaFrame, "Digite o Código");
-            turmaFrame.getjTextFieldCodigoTurmaAlterar().requestFocus();
+            turmaFrame.getjComboBoxCodigo().requestFocus();
             return false;
         }
         
@@ -137,7 +137,7 @@ public class TurmaControle {
     }
     
     public void limparTela(TurmaAlterarFrame turmaFrame){
-        turmaFrame.getjTextFieldCodigoTurmaAlterar().setText("");
+        turmaFrame.getjComboBoxCodigo().setSelectedIndex(0);
         turmaFrame.getjTextFieldCursoTurmaAlterar().setText("");
         turmaFrame.getjTextNomeTurmaAlterar().setText("");
         turmaFrame.getjTextTurmaDisciplinaTurma().setText("");

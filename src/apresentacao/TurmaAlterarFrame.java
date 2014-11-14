@@ -1,6 +1,7 @@
 package apresentacao;
 
 import controle.TurmaControle;
+import persistencia.TurmaDao;
 
 public class TurmaAlterarFrame extends javax.swing.JFrame {
 
@@ -33,12 +34,12 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
         jTextNomeTurmaAlterar = new javax.swing.JTextField();
         jTextFieldCursoTurmaAlterar = new javax.swing.JTextField();
         jComboBoxTurnoTurmaAlterar = new javax.swing.JComboBox();
-        jTextFieldCodigoTurmaAlterar = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabelTurmaDisciplinaTurma = new javax.swing.JLabel();
         jTextTurmaDisciplinaTurma = new javax.swing.JTextField();
         jLabelTurmaPeriodoTurma = new javax.swing.JLabel();
         jTextTurmaPeriodoTurma = new javax.swing.JTextField();
+        jComboBoxCodigo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -130,8 +131,6 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldCodigoTurmaAlterar.setColumns(2);
-
         jLabelTurmaDisciplinaTurma.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelTurmaDisciplinaTurma.setText("Disciplina");
 
@@ -141,6 +140,14 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
         jLabelTurmaPeriodoTurma.setText("Periodo");
 
         jTextTurmaPeriodoTurma.setColumns(2);
+
+        jComboBoxCodigo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBoxCodigo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Codigo" }));
+        jComboBoxCodigo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxCodigoItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,7 +162,7 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabelCodigoTurmaAlterar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCodigoTurmaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelCursoTurmaAlterar)
@@ -179,7 +186,7 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCodigoTurmaAlterar)
-                    .addComponent(jTextFieldCodigoTurmaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -246,8 +253,14 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTurnoTurmaAlterarFocusGained
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        TurmaDao dao = new TurmaDao();
+        dao.preencherComboCodigo(this);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jComboBoxCodigoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCodigoItemStateChanged
+        TurmaDao dao = new TurmaDao();
+        dao.preencherCodigoText(this);
+    }//GEN-LAST:event_jComboBoxCodigoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -291,6 +304,7 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
     private javax.swing.JLabel LabelTurmaTurnoAlterar;
     private javax.swing.JPanel PanelMenuTurma;
     private javax.swing.JToolBar ToolBarMenuTurma;
+    private javax.swing.JComboBox jComboBoxCodigo;
     private javax.swing.JComboBox jComboBoxTurnoTurmaAlterar;
     private javax.swing.JLabel jLabelCodigoTurmaAlterar;
     private javax.swing.JLabel jLabelCursoTurmaAlterar;
@@ -298,7 +312,6 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTurmaPeriodoTurma;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextFieldCodigoTurmaAlterar;
     private javax.swing.JTextField jTextFieldCursoTurmaAlterar;
     private javax.swing.JTextField jTextNomeTurmaAlterar;
     private javax.swing.JTextField jTextTurmaDisciplinaTurma;
@@ -317,20 +330,6 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
      */
     public void setjComboBoxTurnoTurmaAlterar(javax.swing.JComboBox jComboBoxTurnoTurmaAlterar) {
         this.jComboBoxTurnoTurmaAlterar = jComboBoxTurnoTurmaAlterar;
-    }
-
-    /**
-     * @return the jTextFieldCodigoTurmaAlterar
-     */
-    public javax.swing.JTextField getjTextFieldCodigoTurmaAlterar() {
-        return jTextFieldCodigoTurmaAlterar;
-    }
-
-    /**
-     * @param jTextFieldCodigoTurmaAlterar the jTextFieldCodigoTurmaAlterar to set
-     */
-    public void setjTextFieldCodigoTurmaAlterar(javax.swing.JTextField jTextFieldCodigoTurmaAlterar) {
-        this.jTextFieldCodigoTurmaAlterar = jTextFieldCodigoTurmaAlterar;
     }
 
     /**
@@ -387,6 +386,20 @@ public class TurmaAlterarFrame extends javax.swing.JFrame {
      */
     public void setjTextTurmaPeriodoTurma(javax.swing.JTextField jTextTurmaPeriodoTurma) {
         this.jTextTurmaPeriodoTurma = jTextTurmaPeriodoTurma;
+    }
+
+    /**
+     * @return the jComboBoxCodigo
+     */
+    public javax.swing.JComboBox getjComboBoxCodigo() {
+        return jComboBoxCodigo;
+    }
+
+    /**
+     * @param jComboBoxCodigo the jComboBoxCodigo to set
+     */
+    public void setjComboBoxCodigo(javax.swing.JComboBox jComboBoxCodigo) {
+        this.jComboBoxCodigo = jComboBoxCodigo;
     }
 
  

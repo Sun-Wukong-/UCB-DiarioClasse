@@ -35,14 +35,16 @@ public class AlunoControle {
  public void Atualizar(AlunoAlterarFrame alunoFrame){
         if(validarCampos(alunoFrame)){
             Aluno aluno = new Aluno();
+            Turma turma = new Turma();
             boolean test = false; 
-            aluno.setIdAluno(Integer.parseInt(alunoFrame.getjTextFieldCodigoAlunoAlterar().getText()));
+            aluno.setIdAluno(Integer.parseInt(alunoFrame.getjComboBoxAlterarCodigo().getSelectedItem().toString()));
             aluno.setMatricula(Integer.parseInt(alunoFrame.getjTextFieldMatriculaAlunoAlterar().getText()));
             aluno.setNome(alunoFrame.getjTextNomeAlunoAlterar().getText());
+            turma.setNome(alunoFrame.getjComboBoxTurmaAlunoAlterar().getSelectedItem().toString());
             test = true;
             if(test){
                 AlunoDao dao = new AlunoDao();
-                dao.alterar(aluno);
+                dao.alterar(aluno,turma);
                 JOptionPane.showMessageDialog(alunoFrame, "Cadastro Atualizado com Sucesso");
                 limparTela(alunoFrame);
             }
@@ -61,9 +63,9 @@ public class AlunoControle {
     }
     
         public boolean validarCampos(AlunoAlterarFrame alunoFrame) {
-        if(alunoFrame.getjTextFieldCodigoAlunoAlterar().getText().equals("")){
+        if(alunoFrame.getjComboBoxAlterarCodigo().getSelectedItem().equals("")){
             JOptionPane.showMessageDialog(alunoFrame, "Digite o Codigo");
-            alunoFrame.getjTextFieldCodigoAlunoAlterar().requestFocus();
+            alunoFrame.getjComboBoxAlterarCodigo().requestFocus();
             return false;
         } 
          
@@ -125,7 +127,7 @@ public class AlunoControle {
     
      // Metodo de Limpar Campos
     public void limparTela(AlunoAlterarFrame alunoFrame) {
-        alunoFrame.getjTextFieldCodigoAlunoAlterar().setText("");
+        alunoFrame.getjComboBoxAlterarCodigo().setSelectedIndex(0);
         alunoFrame.getjTextNomeAlunoAlterar().setText("");
         alunoFrame.getjTextFieldMatriculaAlunoAlterar().setText("");
         alunoFrame.getjComboBoxTurmaAlunoAlterar().setSelectedIndex(0);
