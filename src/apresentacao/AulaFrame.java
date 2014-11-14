@@ -1,6 +1,7 @@
 package apresentacao;
 
 import controle.AulaControle;
+import javax.swing.JTextField;
 import modelo.entidades.Aula;
 import persistencia.AulaDao;
 
@@ -27,7 +28,7 @@ public class AulaFrame extends javax.swing.JFrame {
         ButtonLimpar = new javax.swing.JButton();
         jPanelBodyAula = new javax.swing.JPanel();
         jLabelData = new javax.swing.JLabel();
-        jComboBoxDataAula = new javax.swing.JComboBox();
+        jDateChooserAula = new com.toedter.calendar.JDateChooser();
         jPanelPrensencaAula = new javax.swing.JPanel();
         jLabelAlunoTurma = new javax.swing.JLabel();
         jComboBoxTurmaAula = new javax.swing.JComboBox();
@@ -163,8 +164,9 @@ public class AulaFrame extends javax.swing.JFrame {
         jLabelData.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelData.setText("Data");
 
-        jComboBoxDataAula.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBoxDataAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Data" }));
+        jDateChooserAula.setDateFormatString("yyyy-MM-dd");
+        jDateChooserAula.setInheritsPopupMenu(true);
+        jDateChooserAula.setMinSelectableDate(new java.util.Date(-62135755084000L));
 
         javax.swing.GroupLayout jPanelBodyAulaLayout = new javax.swing.GroupLayout(jPanelBodyAula);
         jPanelBodyAula.setLayout(jPanelBodyAulaLayout);
@@ -174,16 +176,16 @@ public class AulaFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelData)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBoxDataAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addComponent(jDateChooserAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelBodyAulaLayout.setVerticalGroup(
             jPanelBodyAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBodyAulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelBodyAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelData)
-                    .addComponent(jComboBoxDataAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelBodyAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooserAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelData))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -302,7 +304,7 @@ public class AulaFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
@@ -316,11 +318,11 @@ public class AulaFrame extends javax.swing.JFrame {
                 .addComponent(PanelMenuAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                    .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
@@ -362,8 +364,6 @@ public class AulaFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         AulaDao dao = new AulaDao();
         dao.preencherCombo(this);
-        AulaControle controle = new AulaControle();
-        controle.preencherComboBoxData(this);
     }//GEN-LAST:event_formWindowOpened
 
     private void jComboBoxTurmaAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTurmaAulaActionPerformed
@@ -417,8 +417,8 @@ public class AulaFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PanelTituloAula;
     private javax.swing.JToolBar ToolBarMenuAula;
     private javax.swing.JButton jButtonConsultarAula;
-    private javax.swing.JComboBox jComboBoxDataAula;
     private javax.swing.JComboBox jComboBoxTurmaAula;
+    private com.toedter.calendar.JDateChooser jDateChooserAula;
     private javax.swing.JLabel jLabelAlunoTurma;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JPanel jPanelBodyAula;
@@ -430,19 +430,6 @@ public class AulaFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTablePresenca;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the jComboBoxDiaAula
-     */
-    public javax.swing.JComboBox getjComboBoxDiaAula() {
-        return getjComboBoxDataAula();
-    }
-
-    /**
-     * @param jComboBoxDiaAula the jComboBoxDiaAula to set
-     */
-    public void setjComboBoxDiaAula(javax.swing.JComboBox jComboBoxDiaAula) {
-        this.setjComboBoxDataAula(jComboBoxDiaAula);
-    }
 
     /**
      * @return the jComboBoxTurmaAula
@@ -456,20 +443,6 @@ public class AulaFrame extends javax.swing.JFrame {
      */
     public void setjComboBoxTurmaAula(javax.swing.JComboBox jComboBoxTurmaAula) {
         this.jComboBoxTurmaAula = jComboBoxTurmaAula;
-    }
-
-    /**
-     * @return the jComboBoxDataAula
-     */
-    public javax.swing.JComboBox getjComboBoxDataAula() {
-        return jComboBoxDataAula;
-    }
-
-    /**
-     * @param jComboBoxDataAula the jComboBoxDataAula to set
-     */
-    public void setjComboBoxDataAula(javax.swing.JComboBox jComboBoxDataAula) {
-        this.jComboBoxDataAula = jComboBoxDataAula;
     }
 
     /**
@@ -498,6 +471,20 @@ public class AulaFrame extends javax.swing.JFrame {
      */
     public void setjTablePresenca(javax.swing.JTable jTablePresenca) {
         this.jTablePresenca = jTablePresenca;
+    }
+
+    /**
+     * @return the jDateChooserAula
+     */
+    public com.toedter.calendar.JDateChooser getjDateChooserAula() {
+        return jDateChooserAula;
+    }
+
+    /**
+     * @param jDateChooserAula the jDateChooserAula to set
+     */
+    public void setjDateChooserAula(com.toedter.calendar.JDateChooser jDateChooserAula) {
+        this.jDateChooserAula = jDateChooserAula;
     }
     
     

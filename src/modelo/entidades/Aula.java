@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Aula {
     
     private int idAula;
-    private Date data;
+    private String data;
     private boolean presenca;
 
     /**
@@ -25,14 +25,14 @@ public class Aula {
     /**
      * @return the data
      */
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
     /**
      * @param data the data to set
      */
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

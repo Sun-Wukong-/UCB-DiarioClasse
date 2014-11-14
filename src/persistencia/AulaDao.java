@@ -30,7 +30,7 @@ public class AulaDao {
         try {
             // prepared statement para inserção
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setDate(1, aula.getData());
+            stmt.setString(1, aula.getData());
             stmt.setBoolean(2, aula.getPresenca());
             stmt.setInt(3, aluno.getMatricula());
             // executa

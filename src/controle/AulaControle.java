@@ -3,9 +3,9 @@ package controle;
 import apresentacao.AulaAlterarFrame;
 import apresentacao.AulaFrame;
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import modelo.entidades.Aluno;
 import modelo.entidades.Aula;
 import net.proteanit.sql.DbUtils;
@@ -28,7 +28,7 @@ public class AulaControle {
         Aula aula = new Aula();
         Aluno aluno = new Aluno();
         for (int i = 0; i < aulaFrame.getjTablePresenca().getRowCount(); i++) {
-            aula.setData(Date.valueOf(aulaFrame.getjComboBoxDataAula().getSelectedItem().toString()));
+            aula.setData(((JTextField)aulaFrame.getjDateChooserAula().getDateEditor().getUiComponent()).getText());
             
             try {
                 aula.setPresenca((boolean) aulaFrame.getjTablePresenca().getModel().getValueAt(i, 2));
@@ -87,7 +87,7 @@ public class AulaControle {
     }
     
     public void limparTela(AulaFrame aulaFrame) {
-        aulaFrame.getjComboBoxDataAula().setSelectedIndex(0);
+        ((JTextField)aulaFrame.getjDateChooserAula().getDateEditor().getUiComponent()).setText("");;
         aulaFrame.getjComboBoxTurmaAula().setSelectedIndex(0);
     }
     
@@ -96,10 +96,12 @@ public class AulaControle {
     }
     
     public boolean validarCampos(AulaFrame aulaFrame){
-        if(aulaFrame.getjComboBoxDataAula().getSelectedIndex() == 0){
+        
+        if(((JTextField)aulaFrame.getjDateChooserAula().getDateEditor().getUiComponent()).getText().equals("")){
             JOptionPane.showMessageDialog(aulaFrame, "Selecione uma Data");
             return false;
         }
+        
         if(aulaFrame.getjComboBoxTurmaAula().getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(aulaFrame, "Selecione uma Turma");
             return false;
@@ -115,14 +117,4 @@ public class AulaControle {
 
         return true;
     }
-    
-    public void preencherComboBoxData(AulaFrame aulaFrame){
-        Calendar cal = new GregorianCalendar();
-        int month =cal.get(Calendar.MONTH);
-        int year =cal.get(Calendar.YEAR);
-        int day =cal.get(Calendar.DAY_OF_MONTH);
-        aulaFrame.getjComboBoxDiaAula().addItem(+year+"-"+(month+1)+"-"+day);
-        aulaFrame.getjComboBoxDiaAula().addItem(+year+"-"+(month+1)+"-"+(day+1));
-    }
-    
 }
