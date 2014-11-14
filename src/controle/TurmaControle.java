@@ -32,27 +32,35 @@ public class TurmaControle {
     }
     
     public void Atualizar(TurmaAlterarFrame turmaFrame){
-        Turma turma = new Turma();
-        boolean test = false; 
-        turma.setIdTurma(Integer.parseInt(turmaFrame.getjTextFieldCodigoTurmaAlterar().getText()));
-        turma.setNome(turmaFrame.getjTextNomeTurmaAlterar().getText());
-        turma.setCurso(turmaFrame.getjTextFieldCursoTurmaAlterar().getText());
-        turma.setDisciplina(turmaFrame.getjTextTurmaDisciplinaTurma().getText());
-        turma.setPeriodo(Integer.parseInt(turmaFrame.getjTextTurmaPeriodoTurma().getText()));
-        turma.setTurno(turmaFrame.getjComboBoxTurnoTurmaAlterar().getSelectedItem().toString());
-        test = true;
-        if(test){
-            TurmaDao dao = new TurmaDao();
-            dao.alterar(turma);
-            JOptionPane.showMessageDialog(turmaFrame, "Cadastro Atualizado com Sucesso");
+        if(validarCampos(turmaFrame)){
+            Turma turma = new Turma();
+            boolean test = false; 
+            turma.setIdTurma(Integer.parseInt(turmaFrame.getjTextFieldCodigoTurmaAlterar().getText()));
+            turma.setNome(turmaFrame.getjTextNomeTurmaAlterar().getText());
+            turma.setCurso(turmaFrame.getjTextFieldCursoTurmaAlterar().getText());
+            turma.setDisciplina(turmaFrame.getjTextTurmaDisciplinaTurma().getText());
+            turma.setPeriodo(Integer.parseInt(turmaFrame.getjTextTurmaPeriodoTurma().getText()));
+            turma.setTurno(turmaFrame.getjComboBoxTurnoTurmaAlterar().getSelectedItem().toString());
+            test = true;
+            if(test){
+                TurmaDao dao = new TurmaDao();
+                dao.alterar(turma);
+                JOptionPane.showMessageDialog(turmaFrame, "Cadastro Atualizado com Sucesso");
+                limparTela(turmaFrame);
+            }
         }
     }
     
     public void Deletar(Turma turma){
-        int id;  
-        id = Integer.parseInt(JOptionPane.showInputDialog("Informe o Id do Registro para ser Deletado"));
-        TurmaDao dao = new TurmaDao();
-        dao.remover(turma, id);
+        try{
+            int id;  
+            id = Integer.parseInt(JOptionPane.showInputDialog("Informe o Id do Registro para ser Deletado"));
+            
+            TurmaDao dao = new TurmaDao();
+            dao.remover(turma, id);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Cancelado");
+        }
     }
     
     private boolean validarCampos(TurmaFrame turmaFrame) {
@@ -79,6 +87,41 @@ public class TurmaControle {
         if (turmaFrame.getjComboBoxTurnoTurma().getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(turmaFrame, "Selecione um Turno");
             turmaFrame.getjComboBoxTurnoTurma().requestFocus();
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean validarCampos(TurmaAlterarFrame turmaFrame){
+        if(turmaFrame.getjTextFieldCodigoTurmaAlterar().getText().equals("")){
+            JOptionPane.showMessageDialog(turmaFrame, "Digite o Código");
+            turmaFrame.getjTextFieldCodigoTurmaAlterar().requestFocus();
+            return false;
+        }
+        
+        if (turmaFrame.getjTextNomeTurmaAlterar().getText().equals("")) {
+            JOptionPane.showMessageDialog(turmaFrame, "Digite o Nome");
+            turmaFrame.getjTextNomeTurmaAlterar().requestFocus();
+            return false;
+        }
+        if (turmaFrame.getjTextFieldCursoTurmaAlterar().getText().equals("")) {
+            JOptionPane.showMessageDialog(turmaFrame, "Digite o Curso");
+            turmaFrame.getjTextFieldCursoTurmaAlterar().requestFocus();
+            return false;
+        }
+        if (turmaFrame.getjTextTurmaDisciplinaTurma().getText().equals("")) {
+            JOptionPane.showMessageDialog(turmaFrame, "Digite a Disciplina");
+            turmaFrame.getjTextTurmaDisciplinaTurma().requestFocus();
+            return false;
+        }
+        if (turmaFrame.getjTextTurmaPeriodoTurma().getText().equals("")) {
+            JOptionPane.showMessageDialog(turmaFrame, "Digite o Periodo");
+            turmaFrame.getjTextTurmaPeriodoTurma().requestFocus();
+            return false;
+        }
+        if (turmaFrame.getjComboBoxTurnoTurmaAlterar().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(turmaFrame, "Selecione um Turno");
+            turmaFrame.getjComboBoxTurnoTurmaAlterar().requestFocus();
             return false;
         }
         return true;

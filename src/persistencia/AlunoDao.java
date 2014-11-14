@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.entidades.Aluno;
+import modelo.entidades.Turma;
 
 public class AlunoDao {
     
@@ -19,20 +20,20 @@ public class AlunoDao {
    }
    
    //Adicionar no BD
-   public void adicionar(Aluno aluno) {
+   public void adicionar(Aluno aluno,Turma turma) {
        AlunoFrame alunoFrame = new AlunoFrame();
         String sql = "insert into aluno " +
-             "(matricula,nome,turma)" +
-             " values (?,?,?)";
-       
+             "(matricula,nome,codigoTurma)" +
+             " values (?,?,(select idTurma from turma where nome = ?))";
  
         try {
             // prepared statement para inserção
             PreparedStatement stmt = connection.prepareStatement(sql);
             // seta os valores
-            stmt.setString(1,aluno.getMatricula());
+            stmt.setInt(1,aluno.getMatricula());
             stmt.setString(2,aluno.getNome());
-            stmt.setString(3,aluno.getTurma());
+            stmt.setString(3, turma.getNome());
+            
 
          
             // executa
@@ -45,17 +46,16 @@ public class AlunoDao {
    
      //Alterar BD
     public void alterar(Aluno aluno) {
-        String sql = "update aluno set matricula=?, nome=?,"+
-            "turma=?  where idAluno=?";
+        String sql = "update aluno set matricula=?, nome=?"+
+            "where idAluno=?";
         
         try {
          PreparedStatement stmt = connection
             .prepareStatement(sql);
-         stmt.setString(1, aluno.getMatricula());
+         stmt.setInt(1, aluno.getMatricula());
          stmt.setString(2, aluno.getNome());
-         stmt.setObject(3, aluno.getTurma());
-         stmt.setInt(4, aluno.getIdAluno());
-         stmt.execute();
+         stmt.setInt(3, aluno.getIdAluno());
+         stmt.executeUpdate();
          stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -82,12 +82,7 @@ public class AlunoDao {
         
         try {
             String sql;
-            sql = "select idAluno as CodigoAluno, "
-                    + "matricula as Matricula,"
-                    + "nome as Nome,"
-                    + "turma as Turma "
-                    + "from aluno "
-                    + "order by turma,nome";
+            sql = "select idAluno as CodigoAluno, matricula as Matricula, nome as Nome, (select turma.nome from turma join aluno where turma.idTurma = aluno.codigoTurma limit 1) as Turma from aluno";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             

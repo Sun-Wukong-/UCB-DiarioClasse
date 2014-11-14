@@ -1,6 +1,7 @@
 package controle;
 
 import apresentacao.AulaFrame;
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
@@ -24,8 +25,7 @@ public class AulaControle {
     public void Inserir(AulaFrame aulaFrame) {
         Aula aula = new Aula();
         for (int i = 0; i < aulaFrame.getjTableAula().getRowCount(); i++) {
-            aula.setData(aulaFrame.getjComboBoxDataAula().getSelectedItem().toString());
-            aula.setAluno((String) aulaFrame.getjTableAula().getModel().getValueAt(i, 0));
+            aula.setData(Date.valueOf(aulaFrame.getjComboBoxDataAula().getSelectedItem().toString()));
             try {
                 aula.setPresenca((boolean) aulaFrame.getjTableAula().getModel().getValueAt(i, 1));
                 

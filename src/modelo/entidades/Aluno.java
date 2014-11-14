@@ -3,9 +3,8 @@ package modelo.entidades;
 public class Aluno {
     
     private int idAluno;
-    private String matricula;
+    private int matricula;
     private String nome;
-    private String turma;
 
     /**
      * @return the idAluno
@@ -24,14 +23,14 @@ public class Aluno {
     /**
      * @return the matricula
      */
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
     /**
      * @param matricula the matricula to set
      */
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -47,19 +46,5 @@ public class Aluno {
      */
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @return the turma
-     */
-    public String getTurma() {
-        return turma;
-    }
-
-    /**
-     * @param turma the turma to set
-     */
-    public void setTurma(String turma) {
-        this.turma = turma;
-    }    
+    } 
 }

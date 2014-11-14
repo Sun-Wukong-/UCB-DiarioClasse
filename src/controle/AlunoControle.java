@@ -4,6 +4,7 @@ import apresentacao.AlunoAlterarFrame;
 import apresentacao.AlunoFrame;
 import javax.swing.JOptionPane;
 import modelo.entidades.Aluno;
+import modelo.entidades.Turma;
 import net.proteanit.sql.DbUtils;
 import persistencia.AlunoDao;
 
@@ -22,34 +23,66 @@ public class AlunoControle {
     //Gravar no BD
     public void Inserir(AlunoFrame alunoFrame) {
         Aluno aluno = new Aluno();
+        Turma turma = new Turma();
         AlunoDao dao = new AlunoDao();
-        aluno.setMatricula(alunoFrame.getjTextFieldMatriculaAluno().getText());
-        aluno.setNome(alunoFrame.getjTextNomeAluno().getText());
-        aluno.setTurma(alunoFrame.getjComboBoxTurmaAluno().getSelectedItem().toString());
 
-        dao.adicionar(aluno);
+        aluno.setMatricula(Integer.parseInt(alunoFrame.getjTextFieldMatriculaAluno().getText()));
+        aluno.setNome(alunoFrame.getjTextNomeAluno().getText());
+        turma.setNome(alunoFrame.getjComboBoxTurmaAluno().getSelectedItem().toString());
+        
+        dao.adicionar(aluno,turma);
     }
-    
-    public void Atualizar(AlunoAlterarFrame alunoFrame){
-        Aluno aluno = new Aluno();
-        boolean test = false; 
-        aluno.setIdAluno(Integer.parseInt(alunoFrame.getjTextFieldCodigoAlunoAlterar().getText()));
-        aluno.setMatricula(alunoFrame.getjTextFieldMatriculaAlunoAlterar().getText());
-        aluno.setNome(alunoFrame.getjTextNomeAlunoAlterar().getText());
-        aluno.setTurma(alunoFrame.getjComboBoxTurmaAlunoAlterar().getSelectedItem().toString());
-        test = true;
-        if(test){
-            AlunoDao dao = new AlunoDao();
-            dao.alterar(aluno);
-            JOptionPane.showMessageDialog(alunoFrame, "Cadastro Atualizado com Sucesso");
+ public void Atualizar(AlunoAlterarFrame alunoFrame){
+        if(validarCampos(alunoFrame)){
+            Aluno aluno = new Aluno();
+            boolean test = false; 
+            aluno.setIdAluno(Integer.parseInt(alunoFrame.getjTextFieldCodigoAlunoAlterar().getText()));
+            aluno.setMatricula(Integer.parseInt(alunoFrame.getjTextFieldMatriculaAlunoAlterar().getText()));
+            aluno.setNome(alunoFrame.getjTextNomeAlunoAlterar().getText());
+            test = true;
+            if(test){
+                AlunoDao dao = new AlunoDao();
+                dao.alterar(aluno);
+                JOptionPane.showMessageDialog(alunoFrame, "Cadastro Atualizado com Sucesso");
+                limparTela(alunoFrame);
+            }
+        }
+    }
+ 
+    public void Deletar(Aluno aluno){  
+        try{
+            int id;
+            id = Integer.parseInt(JOptionPane.showInputDialog("Informe o Id do Registro para ser Deletado"));
+             AlunoDao dao = new AlunoDao();
+            dao.remover(aluno, id);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Cancelado");
         }
     }
     
-    public void Deletar(Aluno aluno){
-        int id;  
-        id = Integer.parseInt(JOptionPane.showInputDialog("Informe o Id do Registro para ser Deletado"));
-        AlunoDao dao = new AlunoDao();
-        dao.remover(aluno, id);
+        public boolean validarCampos(AlunoAlterarFrame alunoFrame) {
+        if(alunoFrame.getjTextFieldCodigoAlunoAlterar().getText().equals("")){
+            JOptionPane.showMessageDialog(alunoFrame, "Digite o Codigo");
+            alunoFrame.getjTextFieldCodigoAlunoAlterar().requestFocus();
+            return false;
+        } 
+         
+        if (alunoFrame.getjTextNomeAlunoAlterar().getText().equals("")) {
+            JOptionPane.showMessageDialog(alunoFrame, "Digite o Nome");
+            alunoFrame.getjTextNomeAlunoAlterar().requestFocus();
+            return false;
+        }
+        if (alunoFrame.getjTextFieldMatriculaAlunoAlterar().getText().equals("")) {
+            JOptionPane.showMessageDialog(alunoFrame, "Digite a matricula do aluno");
+            alunoFrame.getjTextFieldMatriculaAlunoAlterar().requestFocus();
+            return false;
+        }
+        if (alunoFrame.getjComboBoxTurmaAlunoAlterar().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(alunoFrame, "Selecione uma Turma");
+            alunoFrame.getjComboBoxTurmaAlunoAlterar().requestFocus();
+            return false;
+        }
+        return true;
     }
     
     //Metodo de Salvar Campos
@@ -92,6 +125,7 @@ public class AlunoControle {
     
      // Metodo de Limpar Campos
     public void limparTela(AlunoAlterarFrame alunoFrame) {
+        alunoFrame.getjTextFieldCodigoAlunoAlterar().setText("");
         alunoFrame.getjTextNomeAlunoAlterar().setText("");
         alunoFrame.getjTextFieldMatriculaAlunoAlterar().setText("");
         alunoFrame.getjComboBoxTurmaAlunoAlterar().setSelectedIndex(0);

@@ -21,14 +21,13 @@ public class AulaDao {
       //Adicionar no BD
     public void adicionar(Aula aula) {
         String sql = "insert into aula " +
-             "(data,aluno,presente)" +
-             " values (?,?,?)";
+             "(data,aluno,presente,codigoAluno)" +
+             " values (?,?,?,(select idAluno from aluno where nome ?))";
  
         try {
             // prepared statement para inserção
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aula.getData());
-            stmt.setString(2, aula.getAluno());
+            stmt.setDate(1, aula.getData());
             stmt.setBoolean(3, aula.getPresenca());
             // executa
             stmt.execute();
@@ -48,8 +47,7 @@ public class AulaDao {
         try {
          PreparedStatement stmt = connection
             .prepareStatement(sql);
-         stmt.setString(1, aula.getData());
-         stmt.setString(2, aula.getAluno());
+         stmt.setDate(1, aula.getData());
          stmt.setBoolean(3, aula.getPresenca());;
          stmt.setInt(4, aula.getIdAula());
          stmt.execute();
@@ -94,7 +92,8 @@ public class AulaDao {
    public void preencherJTable(AulaFrame aulaFrame) {
         try {
             String var = aulaFrame.getjComboBoxTurmaAula().getSelectedItem().toString();
-            String sql = "select nome from aluno where turma = ?" ;
+            String sql = "select nome from aluno where codigoTurma = "
+                    + "(select idTurma from turma where nome = ?)" ;
             PreparedStatement pst = connection.prepareStatement(sql);
             pst.setString(1, var);
             ResultSet rs = pst.executeQuery();
