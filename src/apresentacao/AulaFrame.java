@@ -1,6 +1,7 @@
 package apresentacao;
 
 import controle.AulaControle;
+import modelo.entidades.Aula;
 import persistencia.AulaDao;
 
 public class AulaFrame extends javax.swing.JFrame {
@@ -31,6 +32,8 @@ public class AulaFrame extends javax.swing.JFrame {
         jLabelAlunoTurma = new javax.swing.JLabel();
         jComboBoxTurmaAula = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePresenca = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jTableAula = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,7 +145,7 @@ public class AulaFrame extends javax.swing.JFrame {
             PanelMenuAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenuAulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToolBarMenuAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ToolBarMenuAula, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelMenuAulaLayout.setVerticalGroup(
@@ -172,7 +175,7 @@ public class AulaFrame extends javax.swing.JFrame {
                 .addComponent(jLabelData)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxDataAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanelBodyAulaLayout.setVerticalGroup(
             jPanelBodyAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,11 +212,11 @@ public class AulaFrame extends javax.swing.JFrame {
         jPanelPrensencaAulaLayout.setHorizontalGroup(
             jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPrensencaAulaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabelAlunoTurma)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jComboBoxTurmaAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPrensencaAulaLayout.setVerticalGroup(
             jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,20 +231,20 @@ public class AulaFrame extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Presença em Aulas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
 
-        jTableAula.setBackground(new java.awt.Color(204, 204, 204));
-        jTableAula.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePresenca.setBackground(new java.awt.Color(204, 204, 204));
+        jTablePresenca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Aluno", "Presente"
+                "Matricula", "Aluno", "Presente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -252,19 +255,58 @@ public class AulaFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableAula);
+        jScrollPane1.setViewportView(jTablePresenca);
+
+        jScrollPane2.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabela Aula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
+
+        jTableAula.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTableAula.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo-Aula", "Data-Aula", "Turma", "Aluno", "Presente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableAula);
+        if (jTableAula.getColumnModel().getColumnCount() > 0) {
+            jTableAula.getColumnModel().getColumn(0).setResizable(false);
+            jTableAula.getColumnModel().getColumn(1).setResizable(false);
+            jTableAula.getColumnModel().getColumn(2).setResizable(false);
+            jTableAula.getColumnModel().getColumn(3).setResizable(false);
+            jTableAula.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelTituloAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
             .addComponent(PanelMenuAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanelBodyAula, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +319,9 @@ public class AulaFrame extends javax.swing.JFrame {
                     .addComponent(jPanelPrensencaAula, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                     .addComponent(jPanelBodyAula, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -288,7 +332,6 @@ public class AulaFrame extends javax.swing.JFrame {
 
         AulaControle controle = new AulaControle();
         controle.salvarCampos(this);
-        
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
@@ -297,11 +340,14 @@ public class AulaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-       
+       AulaAlterarFrame aulaFrame = new AulaAlterarFrame();
+       aulaFrame.setVisible(true);
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
-
+        AulaControle controle = new AulaControle();
+        Aula aula = new Aula();
+        controle.Deletar(aula);
     }//GEN-LAST:event_ButtonExcluirActionPerformed
 
     private void jButtonConsultarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarAulaActionPerformed
@@ -351,6 +397,7 @@ public class AulaFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AulaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -377,23 +424,11 @@ public class AulaFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBodyAula;
     private javax.swing.JPanel jPanelPrensencaAula;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTable jTableAula;
+    private javax.swing.JTable jTablePresenca;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the jTableAula
-     */
-    public javax.swing.JTable getjTableAula() {
-        return jTableAula;
-    }
-
-    /**
-     * @param jTableAula the jTableAula to set
-     */
-    public void setjTableAula(javax.swing.JTable jTableAula) {
-        this.jTableAula = jTableAula;
-    }
 
     /**
      * @return the jComboBoxDiaAula
@@ -435,6 +470,34 @@ public class AulaFrame extends javax.swing.JFrame {
      */
     public void setjComboBoxDataAula(javax.swing.JComboBox jComboBoxDataAula) {
         this.jComboBoxDataAula = jComboBoxDataAula;
+    }
+
+    /**
+     * @return the jTableAula
+     */
+    public javax.swing.JTable getjTableAula() {
+        return jTableAula;
+    }
+
+    /**
+     * @param jTableAula the jTableAula to set
+     */
+    public void setjTableAula(javax.swing.JTable jTableAula) {
+        this.jTableAula = jTableAula;
+    }
+
+    /**
+     * @return the jTablePresenca
+     */
+    public javax.swing.JTable getjTablePresenca() {
+        return jTablePresenca;
+    }
+
+    /**
+     * @param jTablePresenca the jTablePresenca to set
+     */
+    public void setjTablePresenca(javax.swing.JTable jTablePresenca) {
+        this.jTablePresenca = jTablePresenca;
     }
     
     
