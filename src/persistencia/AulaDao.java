@@ -83,7 +83,7 @@ public class AulaDao {
             sql = "select idAula as CodigoAula, data as DataAula, "
                     + "(select turma.nome from turma join aluno where codigoTurma = idTurma limit 1) as Turma,"
                     + "(select aluno.nome from aluno where idAluno = codigoAluno limit 1) as Aluno,"
-                    + "presente as Presente from aula order by Turma,data";
+                    + "(select (case when presente <> 0 then 'Sim' else 'Não' end)) as Presente from aula order by Turma,data ";
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();     
             
